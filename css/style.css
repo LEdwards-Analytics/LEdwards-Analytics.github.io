@@ -298,3 +298,45 @@ footer {
     padding: 20px;
     color: #666;
 }
+
+/* Fade-in animation for sections */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#home, #projects, #about, #contact {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+#projects {
+    animation-delay: 0.2s;
+}
+
+#about {
+    animation-delay: 0.4s;
+}
+
+#contact {
+    animation-delay: 0.6s;
+}
+
+/* Subtle hover effect for social links */
+.social-links a {
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: #004499;
+}
+
+/* Skills tags hover effect */
+.skills li {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.skills li:hover {
+    background-color: rgba(0, 102, 204, 0.2);
+    transform: translateY(-2px);
+}
