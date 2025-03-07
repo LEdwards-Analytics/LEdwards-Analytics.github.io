@@ -1,0 +1,59 @@
+/* Homepage specific styles */
+.hero {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 1.8rem;
+    color: #0066cc;
+    border: none;
+    margin-top: 0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    padding: 25px;
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h3 {
+    margin-top: 0;
+}
+
+.project-card .button {
+    margin-top: 15px;
+}
+
+.skills, .contact {
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .project-details {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
