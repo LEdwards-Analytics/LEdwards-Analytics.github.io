@@ -7,134 +7,512 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Project-specific styles -->
     <style>
-        .project-header {
-            background: linear-gradient(135deg, var(--primary) 0%, #004080 100%);
-            color: white;
-            padding: 60px 30px;
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 30px;
+        /* Custom cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+            z-index: 9999;
+            mix-blend-mode: difference;
         }
 
+        .cursor-hover {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 102, 204, 0.1);
+            border-color: var(--secondary);
+        }
+
+        /* Enhanced header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0066cc 0%, #6c42c7 100%);
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-link {
+            position: relative;
+            margin: 0 15px;
+            padding: 8px 12px;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Project header */
+        .project-header {
+            background: linear-gradient(135deg, #0066cc 0%, #6c42c7 100%);
+            color: white;
+            padding: 100px 30px 60px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../images/pattern.png');
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .project-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .project-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .project-header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .project-tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Project sections */
         .project-section {
             background-color: white;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
+        .project-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #0066cc, #6c42c7);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #0066cc, #6c42c7);
+            border-radius: 3px;
+        }
+
+        /* Visualizations */
         .visualization {
-            margin: 30px 0;
+            margin: 40px 0;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .visualization:hover {
+            transform: scale(1.02);
         }
 
         .visualization img {
             max-width: 100%;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
         }
 
+        .visualization:hover img {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .visualization p {
+            margin-top: 15px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Code blocks */
         .code-block {
-            background-color: #f5f7f9;
-            padding: 20px;
-            border-radius: 8px;
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
             overflow-x: auto;
-            margin: 20px 0;
-            font-family: monospace;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.6;
+            border-left: 4px solid #6c42c7;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
 
+        /* Key findings */
         .key-finding {
-            background-color: rgba(0, 102, 204, 0.1);
-            border-left: 4px solid var(--primary);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+            background-color: rgba(108, 66, 199, 0.08);
+            border-left: 4px solid #6c42c7;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+            transition: transform 0.3s ease;
         }
 
+        .key-finding:hover {
+            transform: translateX(5px);
+        }
+
+        .key-finding h3 {
+            color: #6c42c7;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Metrics grid */
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 35px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(145deg, #ffffff, #f5f7fa);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #0066cc, #6c42c7);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #0066cc, #6c42c7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 15px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Lists */
+        ul, ol {
+            padding-left: 20px;
+            margin: 20px 0;
+        }
+
+        ul li, ol li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '•';
+            color: #6c42c7;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        ol {
+            counter-reset: item;
+            list-style-type: none;
+        }
+
+        ol li {
+            counter-increment: item;
+        }
+
+        ol li::before {
+            content: counter(item) ".";
+            color: #0066cc;
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            margin-left: -1.5em;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #f1f3f5;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            margin-top: 60px;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #0066cc, #6c42c7);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0066cc, #6c42c7);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Tools section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
             margin: 30px 0;
         }
 
-        .metric-card {
+        .tool-card {
             background-color: #f8f9fa;
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
 
-        .metric-value {
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-icon {
             font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 10px 0;
+            margin-bottom: 15px;
+            color: #6c42c7;
+        }
+
+        .tool-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .tool-category {
+            font-size: 0.9rem;
+            color: #666;
         }
     </style>
 </head>
 
 <body>
+    <div class="custom-cursor"></div>
+
     <header>
+        <div class="header-background"></div>
         <nav>
-            <a href="../index.html">Home</a>
-            <a href="../index.html#projects">Projects</a>
-            <a href="../index.html#about">About</a>
-            <a href="../index.html#contact">Contact</a>
-            <a href="../files/Edwards, Luke - Resume.pdf" target="_blank">Resume</a>
+            <a href="../index.html" class="nav-link"><span>Home</span></a>
+            <a href="../index.html#projects" class="nav-link"><span>Projects</span></a>
+            <a href="../index.html#about" class="nav-link"><span>About</span></a>
+            <a href="../index.html#contact" class="nav-link"><span>Contact</span></a>
+            <a href="../files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
         </nav>
     </header>
 
     <div class="project-header">
-        <h1>Amazon Prime Subscription Analysis</h1>
-        <p>Predictive Modeling for Subscription Plan Preferences</p>
-    </div>
-
-    <div class="project-section">
-        <h2>Project Overview</h2>
-        <p>This project focused on analyzing Amazon Prime subscriber data to build predictive models that identify factors influencing users' subscription plan choices between Annual and Monthly plans. The insights aim to help optimize subscription offerings, improve customer retention, and enhance overall user satisfaction.</p>
-
-        <div class="key-finding">
-            <h3>Key Achievement</h3>
-            <p>Developed a Decision Tree model that achieved an F1-score of 58.3%, recall of 60.6%, and accuracy of 54.7% in predicting subscription plan preferences, providing actionable insights for targeted marketing and retention strategies.</p>
+        <div class="project-header-content">
+            <h1>Amazon Prime Subscription Analysis</h1>
+            <p>Predictive Modeling for Subscription Plan Preferences</p>
+            <div class="project-tags">
+                <span class="project-tag">Machine Learning</span>
+                <span class="project-tag">Python</span>
+                <span class="project-tag">Decision Trees</span>
+                <span class="project-tag">Data Analysis</span>
+            </div>
         </div>
     </div>
 
-    <div class="project-section">
-        <h2>Data & Methodology</h2>
-        <p>The analysis utilized Amazon Prime subscriber data containing demographic information, engagement metrics (such as usage frequency and favorite genres), and behavioral patterns (including renewal status and payment methods).</p>
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="project-section">
+            <h2 class="section-title">Project Overview</h2>
+            <p>This project focused on analyzing Amazon Prime subscriber data to build predictive models that identify factors influencing users' subscription plan choices between Annual and Monthly plans. The insights aim to help optimize subscription offerings, improve customer retention, and enhance overall user satisfaction.</p>
 
-        <h3>Project Workflow</h3>
-        <ol>
-            <li><strong>Data Preprocessing:</strong> Cleaned the dataset, handled missing values, and encoded categorical variables</li>
-            <li><strong>Exploratory Data Analysis:</strong> Identified patterns and correlations between features and subscription plan choices</li>
-            <li><strong>Feature Selection:</strong> Determined the most influential variables for predicting plan preferences</li>
-            <li><strong>Model Development:</strong> Trained and evaluated multiple machine learning models</li>
-            <li><strong>Model Evaluation:</strong> Compared performance metrics to select the best model</li>
-            <li><strong>Insights & Recommendations:</strong> Derived actionable strategies based on model findings</li>
-        </ol>
-
-        <div class="visualization">
-            <img src="../images/amazon-workflow.jpg" alt="Project Workflow Diagram">
-            <p><em>Workflow diagram showing the end-to-end process from data preprocessing to recommendations</em></p>
+            <div class="key-finding">
+                <h3>Key Achievement</h3>
+                <p>Developed a Decision Tree model that achieved an F1-score of 58.3%, recall of 60.6%, and accuracy of 54.7% in predicting subscription plan preferences, providing actionable insights for targeted marketing and retention strategies.</p>
+            </div>
         </div>
 
-        <h3>Modeling Approach</h3>
-        <p>I implemented and compared multiple machine learning algorithms to find the most effective approach for predicting subscription plan preferences:</p>
-        <ul>
-            <li>Decision Tree</li>
-            <li>Random Forest</li>
-            <li>XGBoost</li>
-        </ul>
+        <div class="project-section">
+            <h2 class="section-title">Data & Methodology</h2>
+            <p>The analysis utilized Amazon Prime subscriber data containing demographic information, engagement metrics (such as usage frequency and favorite genres), and behavioral patterns (including renewal status and payment methods).</p>
 
-        <div class="code-block">
+            <h3>Project Workflow</h3>
+            <ol>
+                <li><strong>Data Preprocessing:</strong> Cleaned the dataset, handled missing values, and encoded categorical variables</li>
+                <li><strong>Exploratory Data Analysis:</strong> Identified patterns and correlations between features and subscription plan choices</li>
+                <li><strong>Feature Selection:</strong> Determined the most influential variables for predicting plan preferences</li>
+                <li><strong>Model Development:</strong> Trained and evaluated multiple machine learning models</li>
+                <li><strong>Model Evaluation:</strong> Compared performance metrics to select the best model</li>
+                <li><strong>Insights & Recommendations:</strong> Derived actionable strategies based on model findings</li>
+            </ol>
+
+            <div class="visualization">
+                <img src="../images/amazon-workflow.jpg" alt="Project Workflow Diagram">
+                <p><em>Workflow diagram showing the end-to-end process from data preprocessing to recommendations</em></p>
+            </div>
+
+            <h3>Modeling Approach</h3>
+            <p>I implemented and compared multiple machine learning algorithms to find the most effective approach for predicting subscription plan preferences:</p>
+            <ul>
+                <li>Decision Tree</li>
+                <li>Random Forest</li>
+                <li>XGBoost</li>
+            </ul>
+
+            <div class="code-block">
 <pre>
 # Model training and evaluation code snippet
 from sklearn.model_selection import train_test_split
@@ -161,98 +539,129 @@ print(f"F1-Score: {f1:.3f}")
 print(f"Recall: {recall:.3f}")
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
 </pre>
-        </div>
-    </div>
-
-    <div class="project-section">
-        <h2>Model Performance</h2>
-
-        <p>After evaluating multiple models, the <strong>Decision Tree</strong> algorithm emerged as the best performer for this specific prediction task.</p>
-
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <h4>Accuracy</h4>
-                <div class="metric-value">54.7%</div>
-            </div>
-            <div class="metric-card">
-                <h4>F1-Score</h4>
-                <div class="metric-value">58.3%</div>
-            </div>
-            <div class="metric-card">
-                <h4>Recall</h4>
-                <div class="metric-value">60.6%</div>
             </div>
         </div>
 
-        <div class="visualization">
-            <img src="../images/amazon-model-comparison.jpg" alt="Model Performance Comparison">
-            <p><em>Performance comparison of different modeling approaches</em></p>
+        <div class="project-section">
+            <h2 class="section-title">Model Performance</h2>
+
+            <p>After evaluating multiple models, the <strong>Decision Tree</strong> algorithm emerged as the best performer for this specific prediction task.</p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4>Accuracy</h4>
+                    <div class="metric-value">54.7%</div>
+                    <p>Overall prediction correctness</p>
+                </div>
+                <div class="metric-card">
+                    <h4>F1-Score</h4>
+                    <div class="metric-value">58.3%</div>
+                    <p>Balance of precision and recall</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Recall</h4>
+                    <div class="metric-value">60.6%</div>
+                    <p>True positive rate</p>
+                </div>
+            </div>
+
+            <div class="visualization">
+                <img src="../images/amazon-model-comparison.jpg" alt="Model Performance Comparison">
+                <p><em>Performance comparison of different modeling approaches</em></p>
+            </div>
+
+            <p>While the accuracy metrics might appear moderate, they represent a significant improvement over baseline predictions in this complex domain where subscription choices are influenced by numerous subtle factors.</p>
         </div>
 
-        <p>While the accuracy metrics might appear moderate, they represent a significant improvement over baseline predictions in this complex domain where subscription choices are influenced by numerous subtle factors.</p>
-    </div>
+        <div class="project-section">
+            <h2 class="section-title">Key Findings</h2>
 
-    <div class="project-section">
-        <h2>Key Findings</h2>
+            <div class="visualization">
+                <img src="../images/amazon-feature-importance.jpg" alt="Feature Importance Chart">
+                <p><em>Feature importance chart showing the top factors influencing subscription plan choice</em></p>
+            </div>
 
-        <div class="visualization">
-            <img src="../images/amazon-feature-importance.jpg" alt="Feature Importance Chart">
-            <p><em>Feature importance chart showing the top factors influencing subscription plan choice</em></p>
+            <h3>Critical Factors Influencing Plan Choice</h3>
+            <p>The analysis revealed several key factors that significantly impact users' subscription plan preferences:</p>
+            <ul>
+                <li><strong>Engagement Metrics:</strong> Higher engagement levels correlated with preference for Annual plans</li>
+                <li><strong>Renewal Status:</strong> Users with automatic renewals were more likely to choose Annual plans</li>
+                <li><strong>Usage Frequency:</strong> Regular, consistent usage patterns influenced plan selection</li>
+                <li><strong>Customer Support Interactions:</strong> More frequent support interactions were associated with Monthly plan preferences</li>
+            </ul>
+
+            <div class="key-finding">
+                <h3>Subscriber Behavior Patterns</h3>
+                <p>Annual plan subscribers typically showed higher engagement and loyalty, while Monthly plan subscribers exhibited more variable usage patterns and required more customer support assistance.</p>
+            </div>
         </div>
 
-        <h3>Critical Factors Influencing Plan Choice</h3>
-        <p>The analysis revealed several key factors that significantly impact users' subscription plan preferences:</p>
-        <ul>
-            <li><strong>Engagement Metrics:</strong> Higher engagement levels correlated with preference for Annual plans</li>
-            <li><strong>Renewal Status:</strong> Users with automatic renewals were more likely to choose Annual plans</li>
-            <li><strong>Usage Frequency:</strong> Regular, consistent usage patterns influenced plan selection</li>
-            <li><strong>Customer Support Interactions:</strong> More frequent support interactions were associated with Monthly plan preferences</li>
-        </ul>
+        <div class="project-section">
+            <h2 class="section-title">Recommendations</h2>
+            <p>Based on the model insights, I developed the following actionable recommendations:</p>
 
-        <div class="key-finding">
-            <h3>Subscriber Behavior Patterns</h3>
-            <p>Annual plan subscribers typically showed higher engagement and loyalty, while Monthly plan subscribers exhibited more variable usage patterns and required more customer support assistance.</p>
+            <ol>
+                <li><strong>Personalized Subscription Plans:</strong> Offer customized plans based on users' usage patterns and favorite content genres</li>
+                <li><strong>Targeted Retention Campaigns:</strong> Identify users at risk of churning and target them with specific promotional offers</li>
+                <li><strong>Optimized Renewal Strategies:</strong> Implement timely renewal reminders and incentives for auto-renewal enrollment</li>
+                <li><strong>Enhanced Customer Support:</strong> Improve support services for users showing patterns associated with churn risk</li>
+            </ol>
+
+            <div class="key-finding">
+                <h3>Business Impact</h3>
+                <p>Implementation of these data-driven strategies could significantly improve customer retention rates and optimize the distribution of subscription plans, ultimately enhancing revenue and customer satisfaction.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="project-section">
-        <h2>Recommendations</h2>
-        <p>Based on the model insights, I developed the following actionable recommendations:</p>
+        <div class="project-section">
+            <h2 class="section-title">Conclusion & Future Work</h2>
+            <p>This project successfully identified key factors influencing Amazon Prime users' subscription plan preferences and developed a predictive model to guide business strategies. The insights provide a foundation for more personalized marketing approaches and improved customer retention efforts.</p>
 
-        <ol>
-            <li><strong>Personalized Subscription Plans:</strong> Offer customized plans based on users' usage patterns and favorite content genres</li>
-            <li><strong>Targeted Retention Campaigns:</strong> Identify users at risk of churning and target them with specific promotional offers</li>
-            <li><strong>Optimized Renewal Strategies:</strong> Implement timely renewal reminders and incentives for auto-renewal enrollment</li>
-            <li><strong>Enhanced Customer Support:</strong> Improve support services for users showing patterns associated with churn risk</li>
-        </ol>
-
-        <div class="key-finding">
-            <h3>Business Impact</h3>
-            <p>Implementation of these data-driven strategies could significantly improve customer retention rates and optimize the distribution of subscription plans, ultimately enhancing revenue and customer satisfaction.</p>
+            <p>Future work could expand on these findings by:</p>
+            <ul>
+                <li>Incorporating additional data sources such as content viewing history and browsing patterns</li>
+                <li>Implementing more advanced ensemble methods to improve prediction accuracy</li>
+                <li>Developing time-series models to capture seasonal variations in subscription preferences</li>
+                <li>Creating a real-time recommendation system for personalized subscription offers</li>
+            </ul>
         </div>
-    </div>
 
-    <div class="project-section">
-        <h2>Conclusion & Future Work</h2>
-        <p>This project successfully identified key factors influencing Amazon Prime users' subscription plan preferences and developed a predictive model to guide business strategies. The insights provide a foundation for more personalized marketing approaches and improved customer retention efforts.</p>
+        <div class="project-section">
+            <h2 class="section-title">Tools & Technologies</h2>
 
-        <p>Future work could expand on these findings by:</p>
-        <ul>
-            <li>Incorporating additional data sources such as content viewing history and browsing patterns</li>
-            <li>Implementing more advanced ensemble methods to improve prediction accuracy</li>
-            <li>Developing time-series models to capture seasonal variations in subscription preferences</li>
-            <li>Creating a real-time recommendation system for personalized subscription offers</li>
-        </ul>
-    </div>
-
-    <div class="project-section">
-        <h2>Tools & Technologies</h2>
-        <ul>
-            <li><strong>Programming:</strong> Python (Pandas, NumPy, Scikit-learn)</li>
-            <li><strong>Machine Learning:</strong> Decision Trees, Random Forest, XGBoost</li>
-            <li><strong>Data Visualization:</strong> Matplotlib, Seaborn</li>
-            <li><strong>Development Environment:</strong> Jupyter Notebook</li>
-        </ul>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fab fa-python"></i></div>
+                    <div class="tool-name">Python</div>
+                    <div class="tool-category">Programming</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-database"></i></div>
+                    <div class="tool-name">Pandas</div>
+                    <div class="tool-category">Data Processing</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-brain"></i></div>
+                    <div class="tool-name">Scikit-learn</div>
+                    <div class="tool-category">Machine Learning</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-chart-bar"></i></div>
+                    <div class="tool-name">Matplotlib</div>
+                    <div class="tool-category">Visualization</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="tool-name">Seaborn</div>
+                    <div class="tool-category">Visualization</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-code"></i></div>
+                    <div class="tool-name">Jupyter</div>
+                    <div class="tool-category">Development</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -263,6 +672,7 @@ print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Back to top button functionality
             const backToTopButton = document.querySelector('.back-to-top');
 
             function toggleBackToTop() {
@@ -287,6 +697,55 @@ print("\nClassification Report:\n", classification_report(y_test, y_pred))
                     behavior: 'smooth'
                 });
             });
+
+            // Custom cursor effect
+            const cursor = document.querySelector('.custom-cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, .visualization, .metric-card, .tool-card');
+
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.classList.add('cursor-hover');
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('cursor-hover');
+                });
+            });
+
+            // Animate metric values on scroll
+            const metricValues = document.querySelectorAll('.metric-value');
+
+            function animateMetrics() {
+                metricValues.forEach(metric => {
+                    const metricPosition = metric.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+
+                    if (metricPosition < screenPosition) {
+                        metric.style.opacity = 1;
+                        metric.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+
+            // Set initial styles
+            metricValues.forEach(metric => {
+                metric.style.opacity = 0;
+                metric.style.transform = 'translateY(20px)';
+                metric.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+
+            // Check on scroll
+            window.addEventListener('scroll', animateMetrics);
+
+            // Initial check
+            animateMetrics();
         });
     </script>
 </body>
