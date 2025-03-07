@@ -129,10 +129,10 @@ nav a.active {
 }
 
 .hero h1 {
-    background: linear-gradient(to right, #ffffff, #e0e8ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
+    color: #ffffff; /* Pure white */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
+    font-weight: 800; /* Extra bold */
+    letter-spacing: 0.5px; /* Slightly increased letter spacing */
 }
 
 .hero h2 {
