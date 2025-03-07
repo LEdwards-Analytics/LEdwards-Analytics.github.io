@@ -211,3 +211,53 @@ html {
     height: 100%;
     object-fit: cover;
 }
+
+:root {
+    --primary: #0066cc;
+    --secondary: #2ecc71;
+    --accent: #e74c3c;
+    --light: #f8f9fa;
+    --dark: #343a40;
+}
+
+body {
+    background-color: #f0f2f5;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #004080 100%);
+    color: white;
+}
+
+.hero h2 {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.project-card:nth-child(1) {
+    border-top: 4px solid var(--primary);
+}
+
+.project-card:nth-child(2) {
+    border-top: 4px solid var(--secondary);
+}
+
+.project-card:nth-child(3) {
+    border-top: 4px solid var(--accent);
+}
+
+.skills li {
+    background-color: rgba(0, 102, 204, 0.1);
+    border: 1px solid rgba(0, 102, 204, 0.2);
+}
+
+#about, #projects, #contact {
+    border-radius: 10px;
+}
+
+.button {
+    background-color: var(--primary);
+}
+
+.button:hover {
+    background-color: #004d99;
+}
