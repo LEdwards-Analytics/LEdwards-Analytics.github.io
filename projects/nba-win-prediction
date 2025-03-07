@@ -578,7 +578,7 @@
                 </div>
 
                 <div class="visualization">
-                    <img src="../images/nba-stat-importance.jpg" alt="Statistical Importance Chart">
+                    <img src="../images/nba-statistical-importance.png" alt="Statistical Importance Chart">
                     <p><em>Relative importance of statistical factors in predicting wins</em></p>
                 </div>
             </div>
@@ -609,8 +609,8 @@
             </ol>
 
             <div class="visualization">
-                <img src="../images/nba-model-accuracy.jpg" alt="Model Accuracy Chart">
-                <p><em>Predicted vs. actual wins showing model accuracy</em></p>
+                <img src="../images/nba-model-accuracy.png" alt="Model Accuracy Chart">
+                <p><em>Normal probability plot of residuals showing model validity</em></p>
             </div>
 
             <button class="collapsible">Technical Details <i class="fas fa-code"></i></button>
@@ -618,6 +618,11 @@
                 <div class="collapsible-content-inner">
                     <h3>Model Refinement Process</h3>
                     <p>The initial model included all available variables but showed issues with multicollinearity, particularly with the "points" variable which had high correlation with other statistics. After removing problematic variables and testing for multicollinearity using Variance Inflation Factor (VIF), the mean VIF was reduced to 1.98, indicating an improved model.</p>
+
+                    <div class="visualization">
+                        <img src="../images/nba-vif-analysis.png" alt="VIF Analysis Table">
+                        <p><em>Variance Inflation Factor (VIF) analysis showing low multicollinearity in the final model</em></p>
+                    </div>
 
                     <h3>Statistical Tests</h3>
                     <p>The final model passed testing for heteroskedasticity with a p-value of 0.5167, confirming that the variance in the data is uniform.</p>
