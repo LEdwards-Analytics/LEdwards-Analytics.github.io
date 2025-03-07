@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luke Edwards | Data Science Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
+    
 <body>
     <header>
         <nav>
@@ -23,7 +27,11 @@
         <div class="profile-image">
             <img src="images/profile-photo.jpg" alt="Luke Edwards">
         </div>
-        
+
+        <div class="profile-image">
+            <img src="images/profile-photo.jpg" alt="Luke Edwards">
+        </div>
+
     </section>
 
     <section id="projects">
@@ -34,18 +42,32 @@
                 <h3>Amazon Prime Subscription Analysis</h3>
                 <p>Developed ensemble models using XGBoost and Random Forest to predict subscription behavior and identify key retention drivers.</p>
                 <a href="projects/amazon-prime-analysis.html" class="button">View Project</a>
+
+                <div class="project-image">
+                    <img src="images/amazon-project.jpg" alt="Amazon Prime Analysis">
+                </div>
+                
             </div>
 
             <div class="project-card">
                 <h3>Employee Retention Prediction</h3>
                 <p>Engineered decision tree model to predict employee attrition, achieving 90% accuracy through model optimization.</p>
                 <a href="#" class="button">Coming Soon</a>
+                
+                <div class="project-image">
+                    <img src="images/amazon-project.jpg" alt="Amazon Prime Analysis">
+                </div>
+
             </div>
 
             <div class="project-card">
                 <h3>Mental Health Analysis</h3>
                 <p>Analyzed 30-year global mental health trends across 101 countries using multivariate regression analysis.</p>
                 <a href="#" class="button">Coming Soon</a>
+                
+                <div class="project-image">
+                    <img src="images/amazon-project.jpg" alt="Amazon Prime Analysis">
+                </div>
             </div>
         </div>
     </section>
@@ -65,16 +87,58 @@
             </ul>
         </div>
 
-        <div class="contact">
-            <h3>Get In Touch</h3>
-            <p>Email: <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a></p>
-            <p>GitHub: <a href="https://github.com/yourusername" target="_blank">GitHub Profile</a></p>
+        <div class="social-links">
+            <a href="mailto:luke3dwards32@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/lukeedwards32/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Dream3223"><i class="fab fa-github"></i></a>
         </div>
+
     </section>
 
     <footer>
         <p>&copy; 2025 Luke Edwards | <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a></p>
     </footer>
+
+    <script>
+    // Highlight active navigation item
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section[id]');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (pageYOffset >= sectionTop - 60) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+</script>
+
+
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    
 </body>
 </html>
