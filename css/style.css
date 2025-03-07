@@ -269,7 +269,7 @@ body {
 /* Fix for project images */
 .project-image {
     width: 100%;
-    height: 200px; /* Fixed height for all project images */
+    height: 250px; /* Increased from 200px to 250px */
     overflow: hidden;
     border-radius: 8px 8px 0 0;
     margin-bottom: 15px;
@@ -303,4 +303,43 @@ body {
 .project-card .button {
     margin: 15px;
     margin-top: auto; /* Pushes button to bottom */
+}
+
+:root {
+    --primary: #0066cc;
+    --secondary: #2ecc71;
+    --accent: #e74c3c;
+    --light: #f8f9fa;
+    --dark: #343a40;
+}
+
+.project-card:nth-child(1) {
+    border-top: 4px solid var(--primary);
+}
+
+.project-card:nth-child(2) {
+    border-top: 4px solid var(--secondary);
+}
+
+.project-card:nth-child(3) {
+    border-top: 4px solid var(--accent);
+}
+
+.project-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+
+.hero {
+    background: linear-gradient(135deg, #0066cc 0%, #004080 100%);
+    color: white;
+}
+
+.hero h2 {
+    color: rgba(255, 255, 255, 0.9);
 }
