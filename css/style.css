@@ -129,10 +129,21 @@ nav a.active {
 }
 
 .hero h1 {
-    color: #ffffff; /* Pure white */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); /* Subtle shadow for depth */
-    font-weight: 800; /* Extra bold */
-    letter-spacing: 0.5px; /* Slightly increased letter spacing */
+    color: #ffffff;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+.hero h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .hero h2 {
