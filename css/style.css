@@ -262,7 +262,7 @@ nav a.active {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
