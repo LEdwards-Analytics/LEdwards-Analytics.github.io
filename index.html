@@ -5,22 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luke Edwards | Data Science Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-    
+
     <meta name="description" content="Luke Edwards - Data Science and Analytics Portfolio showcasing projects in machine learning, statistical analysis, and business intelligence.">
     <meta name="keywords" content="data science, analytics, machine learning, portfolio, Luke Edwards">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-    
-    
 
 <body>
-    
     <header>
         <nav>
             <a href="#home">Home</a>
@@ -31,81 +26,43 @@
         </nav>
     </header>
 
-
     <section id="home" class="hero">
-        
         <div class="profile-image">
             <img src="images/profile-photo.jpg" alt="Luke Edwards">
         </div>
-        
         <h1>Luke Edwards</h1>
         <h2>Data Science & Analytics Professional</h2>
         <p>Business Intelligence and Data Analytics Professional with experience delivering measurable business impact through BI solutions, product analytics, and process automation.</p>
-        
     </section>
 
-    
-    <section id="contact">
-    <h2>Get In Touch</h2>
-    <p>I'm currently open to new opportunities in data science and analytics. Feel free to reach out!</p>
-
-        <div style="text-align: center; margin: 25px 0;">
-            <a href="files/Luke_Edwards_Resume.pdf" class="button" download>
-                <i class="fas fa-download" style="margin-right: 8px;"></i>Download Resume
-            </a>
-        </div>
-    
-        <div class="social-links">
-            <a href="mailto:luke3dwards32@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/lukeedwards32/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Dream3223"><i class="fab fa-github"></i></a>
-        </div>
-    </section>
-
-    
     <section id="projects">
         <h2>Featured Projects</h2>
-
         <div class="projects-grid">
             <div class="project-card">
-                
                 <div class="project-image">
                     <img src="images/amazon-project.jpg" alt="Amazon Prime Analysis">
                 </div>
-                
                 <h3>Amazon Prime Subscription Analysis</h3>
                 <p>Developed ensemble models using XGBoost and Random Forest to predict subscription behavior and identify key retention drivers.</p>
                 <a href="projects/amazon-prime-analysis.html" class="button">View Project</a>
-
-
-                
             </div>
 
             <div class="project-card">
-
                 <div class="project-image">
                     <img src="images/employee-retention.jpg" alt="Employee Retention Prediction">
                 </div>
-                
                 <h3>Employee Retention Prediction</h3>
                 <p>Engineered decision tree model to predict employee attrition, achieving 90% accuracy through model optimization.</p>
                 <a href="#" class="button">Coming Soon</a>
-                
-                
-
             </div>
 
             <div class="project-card">
-                
                 <div class="project-image">
                     <img src="images/mental-health.jpg" alt="Mental Health Analysis">                
                 </div>
-                
                 <h3>Mental Health Analysis</h3>
                 <p>Analyzed 30-year global mental health trends across 101 countries using multivariate regression analysis.</p>
                 <a href="#" class="button">Coming Soon</a>
-                
-                
             </div>
         </div>
     </section>
@@ -114,7 +71,6 @@
         <h2>About Me</h2>
         <p>I'm a data analytics professional with a Master's in Economics from Boise State University, specializing in econometrics and statistical analysis. My experience includes developing BI solutions, implementing predictive models, and automating data processes to drive business impact.</p>
 
-    
         <div class="skills">
             <h3>Technical Skills</h3>
             <h4>Programming</h4>
@@ -123,13 +79,13 @@
                 <li>SQL</li>
                 <li>R</li>  
             </ul>
-            
+
             <h4>Data Visualization</h4>
-            
             <ul>
                 <li>Power BI</li>
                 <li>Tableau</li>
             </ul>
+
             <h4>Machine Learning</h4>
             <ul>
                 <li>Random Forest</li>
@@ -137,61 +93,76 @@
                 <li>Decision Trees</li>
             </ul>
         </div>
-
     </section>
-    
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p>I'm currently open to new opportunities in data science and analytics. Feel free to reach out!</p>
+
+        <div style="text-align: center; margin: 25px 0;">
+            <a href="files/Luke_Edwards_Resume.pdf" class="button" download>
+                <i class="fas fa-download" style="margin-right: 8px;"></i>Download Resume
+            </a>
+        </div>
+
+        <div class="social-links">
+            <a href="mailto:luke3dwards32@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/lukeedwards32/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Dream3223"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2025 Luke Edwards | <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a></p>
     </footer>
 
-    <script>
-        
-    // Highlight active navigation item
-    const navLinks = document.querySelectorAll('nav a');
-    const sections = document.querySelectorAll('section[id]');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-
-            if (pageYOffset >= sectionTop - 60) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    });
-
-    </script>
-
-
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
     <script>
-    // Back to top button
+        // Highlight active navigation item
         document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section[id]');
+
+            function highlightNav() {
+                let current = '';
+                const scrollPosition = window.scrollY;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+
+                    if (scrollPosition >= sectionTop - 60) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Back to top button functionality
             const backToTopButton = document.querySelector('.back-to-top');
 
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
+            function toggleBackToTop() {
+                if (window.scrollY > 300) {
                     backToTopButton.classList.add('visible');
                 } else {
                     backToTopButton.classList.remove('visible');
                 }
-            });
-
-            // Check initial scroll position
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
             }
+
+            // Initial checks
+            highlightNav();
+            toggleBackToTop();
+
+            // Event listeners
+            window.addEventListener('scroll', highlightNav);
+            window.addEventListener('scroll', toggleBackToTop);
 
             // Smooth scroll to top when clicked
             backToTopButton.addEventListener('click', function(e) {
@@ -203,7 +174,5 @@
             });
         });
     </script>
-
 </body>
 </html>
-
