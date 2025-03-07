@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Prime Subscription Analysis | Luke Edwards</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../index.html#projects">Projects</a>
+            <a href="../index.html#about">About</a>
+        </nav>
+    </header>
+
+    <main class="project-container">
+        <h1>Amazon Prime Subscription Analysis</h1>
+
+        <section class="project-overview">
+            <h2>Project Overview</h2>
+            <p>This project focused on analyzing subscription behavior patterns to identify key retention drivers for Amazon Prime services.</p>
+
+            <div class="project-details">
+                <div class="detail-item">
+                    <h3>Tools Used</h3>
+                    <ul>
+                        <li>Python (Pandas, Scikit-learn, NumPy)</li>
+                        <li>XGBoost</li>
+                        <li>Random Forest</li>
+                    </ul>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Skills Applied</h3>
+                    <ul>
+                        <li>Ensemble Modeling</li>
+                        <li>Feature Engineering</li>
+                        <li>Predictive Analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="methodology">
+            <h2>Methodology</h2>
+            <p>The analysis followed these key steps:</p>
+            <ol>
+                <li>Data collection and preprocessing</li>
+                <li>Exploratory data analysis to identify patterns</li>
+                <li>Feature engineering to create relevant variables</li>
+                <li>Model development using ensemble techniques</li>
+                <li>Evaluation and interpretation of results</li>
+            </ol>
+
+            <div class="code-sample">
+                <h3>Sample Code</h3>
+                <pre><code>
+# Example of model implementation
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+
+# Random Forest model
+rf_model = RandomForestClassifier(
+    n_estimators=100, 
+    max_depth=10,
+    random_state=42
+)
+rf_model.fit(X_train, y_train)
+
+# XGBoost model
+xgb_model = XGBClassifier(
+    n_estimators=100,
+    learning_rate=0.1,
+    max_depth=5,
+    random_state=42
+)
+xgb_model.fit(X_train, y_train)
+                </code></pre>
+            </div>
+        </section>
+
+        <section class="results">
+            <h2>Key Findings</h2>
+            <ul>
+                <li>Identified three primary customer segments with distinct retention patterns</li>
+                <li>Discovered that content engagement was the strongest predictor of retention</li>
+                <li>Found that pricing sensitivity varied significantly by user demographics</li>
+            </ul>
+
+            <div class="visualization">
+                <h3>Feature Importance</h3>
+                <img src="../images/amazon-feature-importance.png" alt="Feature Importance Chart">
+                <p class="caption">Relative importance of features in predicting subscription retention</p>
+            </div>
+        </section>
+
+        <section class="conclusion">
+            <h2>Conclusion</h2>
+            <p>This analysis provided actionable insights into subscription behavior, highlighting the importance of personalized content recommendations and targeted pricing strategies to improve retention rates.</p>
+
+            <div class="project-links">
+                <a href="https://github.com/yourusername/amazon-prime-analysis" class="button" target="_blank">View Code on GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Luke Edwards | <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a></p>
+    </footer>
+</body>
+</html>
