@@ -13,101 +13,231 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Added Montserrat as a secondary font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="custom-cursor"></div>
+
     <header>
+        <div class="header-background"></div>
         <nav>
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <a href="files/Edwards, Luke - Resume.pdf" target="_blank">Resume</a>
+            <a href="#home" class="nav-link"><span>Home</span></a>
+            <a href="#projects" class="nav-link"><span>Projects</span></a>
+            <a href="#about" class="nav-link"><span>About</span></a>
+            <a href="#contact" class="nav-link"><span>Contact</span></a>
+            <a href="files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
         </nav>
     </header>
 
     <section id="home" class="hero">
-        <div class="profile-image">
-            <img src="images/profile-photo.jpg" alt="Luke Edwards">
+        <div class="hero-content">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="images/profile-photo.jpg" alt="Luke Edwards">
+                </div>
+                <div class="profile-backdrop"></div>
+            </div>
+            <div class="hero-text">
+                <h1>Luke Edwards</h1>
+                <h2>Data Science & Analytics Professional</h2>
+                <div class="typewriter">
+                    <span id="typewriter-text"></span><span class="cursor">|</span>
+                </div>
+                <p>Business Intelligence and Data Analytics Professional with experience delivering measurable business impact through BI solutions, product analytics, and process automation.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="button primary-button">View Projects</a>
+                    <a href="#contact" class="button secondary-button">Contact Me</a>
+                </div>
+            </div>
         </div>
-        <h1>Luke Edwards</h1>
-        <h2>Data Science & Analytics Professional</h2>
-        <p>Business Intelligence and Data Analytics Professional with experience delivering measurable business impact through BI solutions, product analytics, and process automation.</p>
     </section>
 
     <section id="projects">
-        <h2>Featured Projects</h2>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-subtitle">Explore my data science work</div>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-image">
                     <img src="images/amazon-project.jpg" alt="Amazon Prime Analysis">
+                    <div class="project-overlay">
+                        <div class="project-tags">
+                            <span>Machine Learning</span>
+                            <span>Python</span>
+                            <span>Decision Trees</span>
+                        </div>
+                    </div>
                 </div>
-                <h3>Amazon Prime Subscription Analysis</h3>
-                <p>Developed ensemble models using XGBoost and Random Forest to predict subscription behavior and identify key retention drivers.</p>
-                <a href="projects/amazon-prime-analysis.html" class="button">View Project</a>
+                <div class="project-content">
+                    <h3>Amazon Prime Subscription Analysis</h3>
+                    <p>Developed ensemble models using XGBoost and Random Forest to predict subscription behavior and identify key retention drivers.</p>
+                    <a href="projects/amazon-prime-analysis.html" class="button">View Project</a>
+                </div>
             </div>
 
             <div class="project-card">
                 <div class="project-image">
                     <img src="images/employee-retention.jpg" alt="Employee Retention Prediction">
+                    <div class="project-overlay">
+                        <div class="project-tags">
+                            <span>Classification</span>
+                            <span>HR Analytics</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
                 </div>
-                <h3>Employee Retention Prediction</h3>
-                <p>Engineered decision tree model to predict employee attrition, achieving 90% accuracy through model optimization.</p>
-                <a href="#" class="button">Coming Soon</a>
+                <div class="project-content">
+                    <h3>Employee Retention Prediction</h3>
+                    <p>Engineered decision tree model to predict employee attrition, achieving 90% accuracy through model optimization.</p>
+                    <a href="#" class="button">Coming Soon</a>
+                </div>
             </div>
 
             <div class="project-card">
                 <div class="project-image">
-                    <img src="images/mental-health.jpg" alt="Mental Health Analysis">                
+                    <img src="images/mental-health.jpg" alt="Mental Health Analysis">
+                    <div class="project-overlay">
+                        <div class="project-tags">
+                            <span>Regression</span>
+                            <span>Time Series</span>
+                            <span>R</span>
+                        </div>
+                    </div>
                 </div>
-                <h3>Mental Health Analysis</h3>
-                <p>Analyzed 30-year global mental health trends across 101 countries using multivariate regression analysis.</p>
-                <a href="#" class="button">Coming Soon</a>
+                <div class="project-content">
+                    <h3>Mental Health Analysis</h3>
+                    <p>Analyzed 30-year global mental health trends across 101 countries using multivariate regression analysis.</p>
+                    <a href="#" class="button">Coming Soon</a>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="about">
-        <h2>About Me</h2>
-        <p>I'm a data analytics professional with a Master's in Economics from Boise State University, specializing in econometrics and statistical analysis. My experience includes developing BI solutions, implementing predictive models, and automating data processes to drive business impact.</p>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-subtitle">My journey in data science</div>
 
-        <div class="skills">
-            <h3>Technical Skills</h3>
-            <h4>Programming</h4>
-            <ul>
-                <li>Python (Pandas, Scikit-learn, NumPy)</li>
-                <li>SQL</li>
-                <li>R</li>  
-            </ul>
+        <div class="about-container">
+            <div class="about-text">
+                <p>I'm a data analytics professional with a Master's in Economics from Boise State University, specializing in econometrics and statistical analysis. My passion for finding patterns in data began during my graduate research, where I discovered how powerful data-driven insights can transform decision-making.</p>
 
-            <h4>Data Visualization</h4>
-            <ul>
-                <li>Power BI</li>
-                <li>Tableau</li>
-            </ul>
+                <p>My experience includes developing BI solutions, implementing predictive models, and automating data processes to drive business impact. I'm particularly interested in the intersection of economics and machine learning.</p>
+            </div>
 
-            <h4>Machine Learning</h4>
-            <ul>
-                <li>Random Forest</li>
-                <li>XGBoost</li>
-                <li>Decision Trees</li>
-            </ul>
+            <div class="skills-container">
+                <h3>Technical Skills</h3>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-code"></i> Programming</h4>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-name">Python</div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">SQL</div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">R</div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-chart-line"></i> Data Visualization</h4>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-name">Power BI</div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">Tableau</div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-brain"></i> Machine Learning</h4>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-name">Random Forest</div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">XGBoost</div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">Decision Trees</div>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="contact">
-        <h2>Get In Touch</h2>
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-subtitle">Let's collaborate</div>
         <p>I'm currently open to new opportunities in data science and analytics. Feel free to reach out!</p>
 
-        <div class="social-links">
-            <a href="mailto:luke3dwards32@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/lukeedwards32/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Dream3223"><i class="fab fa-github"></i></a>
+        <div class="contact-container">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+                <h3>LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/lukeedwards32/" target="_blank">Connect with me</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <h3>GitHub</h3>
+                <a href="https://github.com/ledwards-analytics" target="_blank">View my repositories</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Luke Edwards | <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a></p>
+        <div class="footer-content">
+            <p>&copy; 2025 Luke Edwards</p>
+            <div class="footer-links">
+                <a href="mailto:luke3dwards32@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/lukeedwards32/">LinkedIn</a>
+                <a href="https://github.com/ledwards-analytics">GitHub</a>
+            </div>
+        </div>
     </footer>
 
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
@@ -164,6 +294,68 @@
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
+                });
+            });
+
+            // Typewriter effect
+            const typewriterText = document.getElementById('typewriter-text');
+            const phrases = [
+                "Turning data into insights.",
+                "Building predictive models.",
+                "Solving business problems.",
+                "Creating data visualizations."
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+
+            function typeWriter() {
+                const currentPhrase = phrases[phraseIndex];
+
+                if (isDeleting) {
+                    typewriterText.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50;
+                } else {
+                    typewriterText.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100;
+                }
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    typingSpeed = 1500; // Pause at end of phrase
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typingSpeed = 500; // Pause before starting new phrase
+                }
+
+                setTimeout(typeWriter, typingSpeed);
+            }
+
+            // Start the typewriter effect
+            setTimeout(typeWriter, 1000);
+
+            // Custom cursor effect
+            const cursor = document.querySelector('.custom-cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, .project-card');
+
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.classList.add('cursor-hover');
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('cursor-hover');
                 });
             });
         });
