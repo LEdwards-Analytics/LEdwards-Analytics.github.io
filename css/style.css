@@ -109,17 +109,23 @@ nav a.active {
 }
 
 /* Section styles */
-#about, #projects, #contact {
+#about {
     background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    margin-bottom: 30px;
+    position: relative;
 }
 
-#about {
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f0f0f0' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary);
+    opacity: 0.1;
+    border-radius: 0 0 30px 0;
 }
+
 
 /* Projects grid */
 .projects-grid {
@@ -276,8 +282,4 @@ footer {
     text-align: center;
     padding: 20px;
     color: #666;
-}
-
-#about {
-    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cccccc' fill-opacity='0.7' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
 }
