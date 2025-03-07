@@ -128,6 +128,13 @@ nav a.active {
     animation: fadeIn 0.8s ease-out forwards;
 }
 
+.hero h1 {
+    background: linear-gradient(to right, #ffffff, #e0e8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
 .hero h2 {
     color: rgba(255, 255, 255, 0.9);
     font-weight: 500;
