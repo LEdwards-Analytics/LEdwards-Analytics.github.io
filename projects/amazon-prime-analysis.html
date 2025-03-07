@@ -5,109 +5,290 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon Prime Subscription Analysis | Luke Edwards</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Project-specific styles -->
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, var(--primary) 0%, #004080 100%);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .project-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .visualization {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .visualization img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .code-block {
+            background-color: #f5f7f9;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .key-finding {
+            background-color: rgba(0, 102, 204, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <nav>
             <a href="../index.html">Home</a>
             <a href="../index.html#projects">Projects</a>
             <a href="../index.html#about">About</a>
+            <a href="../index.html#contact">Contact</a>
+            <a href="../files/Edwards, Luke - Resume.pdf" target="_blank">Resume</a>
         </nav>
     </header>
 
-    <main class="project-container">
+    <div class="project-header">
         <h1>Amazon Prime Subscription Analysis</h1>
+        <p>Predictive Modeling for Subscription Plan Preferences</p>
+    </div>
 
-        <section class="project-overview">
-            <h2>Project Overview</h2>
-            <p>This project focused on analyzing subscription behavior patterns to identify key retention drivers for Amazon Prime services.</p>
+    <div class="project-section">
+        <h2>Project Overview</h2>
+        <p>This project focused on analyzing Amazon Prime subscriber data to build predictive models that identify factors influencing users' subscription plan choices between Annual and Monthly plans. The insights aim to help optimize subscription offerings, improve customer retention, and enhance overall user satisfaction.</p>
 
-            <div class="project-details">
-                <div class="detail-item">
-                    <h3>Tools Used</h3>
-                    <ul>
-                        <li>Python (Pandas, Scikit-learn, NumPy)</li>
-                        <li>XGBoost</li>
-                        <li>Random Forest</li>
-                    </ul>
-                </div>
+        <div class="key-finding">
+            <h3>Key Achievement</h3>
+            <p>Developed a Decision Tree model that achieved an F1-score of 58.3%, recall of 60.6%, and accuracy of 54.7% in predicting subscription plan preferences, providing actionable insights for targeted marketing and retention strategies.</p>
+        </div>
+    </div>
 
-                <div class="detail-item">
-                    <h3>Skills Applied</h3>
-                    <ul>
-                        <li>Ensemble Modeling</li>
-                        <li>Feature Engineering</li>
-                        <li>Predictive Analytics</li>
-                    </ul>
-                </div>
+    <div class="project-section">
+        <h2>Data & Methodology</h2>
+        <p>The analysis utilized Amazon Prime subscriber data containing demographic information, engagement metrics (such as usage frequency and favorite genres), and behavioral patterns (including renewal status and payment methods).</p>
+
+        <h3>Project Workflow</h3>
+        <ol>
+            <li><strong>Data Preprocessing:</strong> Cleaned the dataset, handled missing values, and encoded categorical variables</li>
+            <li><strong>Exploratory Data Analysis:</strong> Identified patterns and correlations between features and subscription plan choices</li>
+            <li><strong>Feature Selection:</strong> Determined the most influential variables for predicting plan preferences</li>
+            <li><strong>Model Development:</strong> Trained and evaluated multiple machine learning models</li>
+            <li><strong>Model Evaluation:</strong> Compared performance metrics to select the best model</li>
+            <li><strong>Insights & Recommendations:</strong> Derived actionable strategies based on model findings</li>
+        </ol>
+
+        <div class="visualization">
+            <img src="../images/amazon-workflow.jpg" alt="Project Workflow Diagram">
+            <p><em>Workflow diagram showing the end-to-end process from data preprocessing to recommendations</em></p>
+        </div>
+
+        <h3>Modeling Approach</h3>
+        <p>I implemented and compared multiple machine learning algorithms to find the most effective approach for predicting subscription plan preferences:</p>
+        <ul>
+            <li>Logistic Regression</li>
+            <li>Decision Tree</li>
+            <li>Random Forest</li>
+            <li>XGBoost</li>
+        </ul>
+
+        <div class="code-block">
+<pre>
+# Model training and evaluation code snippet
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import classification_report, accuracy_score, f1_score, recall_score
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Train Decision Tree model
+dt_model = DecisionTreeClassifier(random_state=42)
+dt_model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = dt_model.predict(X_test)
+
+# Evaluate model
+accuracy = accuracy_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+
+print(f"Accuracy: {accuracy:.3f}")
+print(f"F1-Score: {f1:.3f}")
+print(f"Recall: {recall:.3f}")
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
+</pre>
+        </div>
+    </div>
+
+    <div class="project-section">
+        <h2>Model Performance</h2>
+
+        <p>After evaluating multiple models, the <strong>Decision Tree</strong> algorithm emerged as the best performer for this specific prediction task.</p>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h4>Accuracy</h4>
+                <div class="metric-value">54.7%</div>
             </div>
-        </section>
-
-        <section class="methodology">
-            <h2>Methodology</h2>
-            <p>The analysis followed these key steps:</p>
-            <ol>
-                <li>Data collection and preprocessing</li>
-                <li>Exploratory data analysis to identify patterns</li>
-                <li>Feature engineering to create relevant variables</li>
-                <li>Model development using ensemble techniques</li>
-                <li>Evaluation and interpretation of results</li>
-            </ol>
-
-            <div class="code-sample">
-                <h3>Sample Code</h3>
-                <pre><code>
-# Example of model implementation
-from sklearn.ensemble import RandomForestClassifier
-from xgboost import XGBClassifier
-
-# Random Forest model
-rf_model = RandomForestClassifier(
-    n_estimators=100, 
-    max_depth=10,
-    random_state=42
-)
-rf_model.fit(X_train, y_train)
-
-# XGBoost model
-xgb_model = XGBClassifier(
-    n_estimators=100,
-    learning_rate=0.1,
-    max_depth=5,
-    random_state=42
-)
-xgb_model.fit(X_train, y_train)
-                </code></pre>
+            <div class="metric-card">
+                <h4>F1-Score</h4>
+                <div class="metric-value">58.3%</div>
             </div>
-        </section>
-
-        <section class="results">
-            <h2>Key Findings</h2>
-            <ul>
-                <li>Identified three primary customer segments with distinct retention patterns</li>
-                <li>Discovered that content engagement was the strongest predictor of retention</li>
-                <li>Found that pricing sensitivity varied significantly by user demographics</li>
-            </ul>
-
-            <div class="visualization">
-                <h3>Feature Importance</h3>
-                <img src="../images/amazon-feature-importance.png" alt="Feature Importance Chart">
-                <p class="caption">Relative importance of features in predicting subscription retention</p>
+            <div class="metric-card">
+                <h4>Recall</h4>
+                <div class="metric-value">60.6%</div>
             </div>
-        </section>
+        </div>
 
-        <section class="conclusion">
-            <h2>Conclusion</h2>
-            <p>This analysis provided actionable insights into subscription behavior, highlighting the importance of personalized content recommendations and targeted pricing strategies to improve retention rates.</p>
+        <div class="visualization">
+            <img src="../images/amazon-model-comparison.jpg" alt="Model Performance Comparison">
+            <p><em>Performance comparison of different modeling approaches</em></p>
+        </div>
 
-            <div class="project-links">
-                <a href="https://github.com/yourusername/amazon-prime-analysis" class="button" target="_blank">View Code on GitHub</a>
-            </div>
-        </section>
-    </main>
+        <p>While the accuracy metrics might appear moderate, they represent a significant improvement over baseline predictions in this complex domain where subscription choices are influenced by numerous subtle factors.</p>
+    </div>
+
+    <div class="project-section">
+        <h2>Key Findings</h2>
+
+        <div class="visualization">
+            <img src="../images/amazon-feature-importance.jpg" alt="Feature Importance Chart">
+            <p><em>Feature importance chart showing the top factors influencing subscription plan choice</em></p>
+        </div>
+
+        <h3>Critical Factors Influencing Plan Choice</h3>
+        <p>The analysis revealed several key factors that significantly impact users' subscription plan preferences:</p>
+        <ul>
+            <li><strong>Engagement Metrics:</strong> Higher engagement levels correlated with preference for Annual plans</li>
+            <li><strong>Renewal Status:</strong> Users with automatic renewals were more likely to choose Annual plans</li>
+            <li><strong>Usage Frequency:</strong> Regular, consistent usage patterns influenced plan selection</li>
+            <li><strong>Customer Support Interactions:</strong> More frequent support interactions were associated with Monthly plan preferences</li>
+        </ul>
+
+        <div class="key-finding">
+            <h3>Subscriber Behavior Patterns</h3>
+            <p>Annual plan subscribers typically showed higher engagement and loyalty, while Monthly plan subscribers exhibited more variable usage patterns and required more customer support assistance.</p>
+        </div>
+    </div>
+
+    <div class="project-section">
+        <h2>Recommendations</h2>
+        <p>Based on the model insights, I developed the following actionable recommendations:</p>
+
+        <ol>
+            <li><strong>Personalized Subscription Plans:</strong> Offer customized plans based on users' usage patterns and favorite content genres</li>
+            <li><strong>Targeted Retention Campaigns:</strong> Identify users at risk of churning and target them with specific promotional offers</li>
+            <li><strong>Optimized Renewal Strategies:</strong> Implement timely renewal reminders and incentives for auto-renewal enrollment</li>
+            <li><strong>Enhanced Customer Support:</strong> Improve support services for users showing patterns associated with churn risk</li>
+        </ol>
+
+        <div class="key-finding">
+            <h3>Business Impact</h3>
+            <p>Implementation of these data-driven strategies could significantly improve customer retention rates and optimize the distribution of subscription plans, ultimately enhancing revenue and customer satisfaction.</p>
+        </div>
+    </div>
+
+    <div class="project-section">
+        <h2>Conclusion & Future Work</h2>
+        <p>This project successfully identified key factors influencing Amazon Prime users' subscription plan preferences and developed a predictive model to guide business strategies. The insights provide a foundation for more personalized marketing approaches and improved customer retention efforts.</p>
+
+        <p>Future work could expand on these findings by:</p>
+        <ul>
+            <li>Incorporating additional data sources such as content viewing history and browsing patterns</li>
+            <li>Implementing more advanced ensemble methods to improve prediction accuracy</li>
+            <li>Developing time-series models to capture seasonal variations in subscription preferences</li>
+            <li>Creating a real-time recommendation system for personalized subscription offers</li>
+        </ul>
+    </div>
+
+    <div class="project-section">
+        <h2>Tools & Technologies</h2>
+        <ul>
+            <li><strong>Programming:</strong> Python (Pandas, NumPy, Scikit-learn)</li>
+            <li><strong>Machine Learning:</strong> Logistic Regression, Decision Trees, Random Forest, XGBoost</li>
+            <li><strong>Data Visualization:</strong> Matplotlib, Seaborn</li>
+            <li><strong>Development Environment:</strong> Jupyter Notebook</li>
+        </ul>
+    </div>
 
     <footer>
         <p>&copy; 2025 Luke Edwards | <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a></p>
     </footer>
+
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+
+            function toggleBackToTop() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            }
+
+            // Initial check
+            toggleBackToTop();
+
+            // Event listener
+            window.addEventListener('scroll', toggleBackToTop);
+
+            // Smooth scroll to top when clicked
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
