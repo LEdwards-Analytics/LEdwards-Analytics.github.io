@@ -265,3 +265,42 @@ body {
     background-color: white;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f0f0f0' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
 }
+
+/* Fix for project images */
+.project-image {
+    width: 100%;
+    height: 200px; /* Fixed height for all project images */
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes the image cover the container without distortion */
+    transition: transform 0.3s ease;
+}
+
+/* Prevent image from expanding too much on hover */
+.project-card:hover .project-image img {
+    transform: scale(1.05); /* Subtle zoom effect */
+}
+
+/* Ensure project card maintains its structure */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden; /* Prevents content from spilling out */
+}
+
+.project-card h3, 
+.project-card p {
+    padding: 0 15px;
+}
+
+.project-card .button {
+    margin: 15px;
+    margin-top: auto; /* Pushes button to bottom */
+}
