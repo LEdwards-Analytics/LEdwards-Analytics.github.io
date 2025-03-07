@@ -157,11 +157,41 @@
             backToTopButton.classList.remove('visible');
         }
     });
-</script>
+
+    </script>
 
 
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
-    
+    <script>
+    // Back to top button
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+
+            // Check initial scroll position
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            }
+
+            // Smooth scroll to top when clicked
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
+
