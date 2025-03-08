@@ -849,3 +849,9 @@ footer::before {
     }
 }
 
+.project-highlight {
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
