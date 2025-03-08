@@ -788,26 +788,23 @@ footer::before {
     color: var(--text-light);
 }
 
-/* Education and certification styling */
-.education-section, .certifications-section {
-    margin-top: 30px;
-}
-
-.education-section h3, .certifications-section h3 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.education-section h3 i, .certifications-section h3 i {
-    margin-right: 10px;
+/* Education timeline styling */
+.education-timeline h3, .certification-timeline h3 {
     color: var(--primary);
+    margin-top: 0;
 }
 
-.education-item, .certification-item {
-    margin-bottom: 20px;
-    padding-left: 15px;
-    border-left: 3px solid var(--primary);
+.education-timeline p, .certification-timeline ul {
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.certification-timeline ul {
+    padding-left: 20px;
+}
+
+.certification-timeline li {
+    margin-bottom: 8px;
 }
 
 .degree, .cert-name {
