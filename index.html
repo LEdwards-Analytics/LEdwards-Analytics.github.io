@@ -170,11 +170,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="skills-visualization">
-                    <h3>Technical Proficiency</h3>
-                    <canvas id="skillsChart" width="400" height="400"></canvas>
-                </div>
                 <div class="skill-category">
                     <h4><i class="fas fa-chart-line"></i> Data Visualization</h4>
                     <div class="skill-bars">
@@ -383,39 +378,5 @@
             });
         });
     </script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('skillsChart').getContext('2d');
-            const skillsChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['R', 'Python', 'SQL', 'Data Visualization', 'Statistical Analysis', 'Machine Learning'],
-                    datasets: [{
-                        label: 'Skill Level',
-                        data: [90, 85, 80, 95, 90, 75],
-                        backgroundColor: 'rgba(var(--primary-rgb), 0.2)',
-                        borderColor: 'rgb(var(--primary-rgb))',
-                        pointBackgroundColor: 'rgb(var(--secondary-rgb))',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgb(var(--primary-rgb))'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        r: {
-                            angleLines: {
-                                display: true
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 100
-                        }
-                    }
-                }
-            });
-        });
-    </script>
-</body>
+    </body>
 </html>
