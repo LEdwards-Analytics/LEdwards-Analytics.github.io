@@ -819,4 +819,75 @@ F-statistic: 0.5501 on 1 and 99 DF,  p-value: 0.4599
             // Smooth scroll to top when clicked
             backToTopButton.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.scroll
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Custom cursor effect
+            const cursor = document.querySelector('.custom-cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, .visualization, .metric-card, .application-card');
+
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.classList.add('cursor-hover');
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('cursor-hover');
+                });
+            });
+
+            // Collapsible sections
+            const collapsibles = document.querySelectorAll('.collapsible');
+
+            collapsibles.forEach(collapsible => {
+                collapsible.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+
+            // Animate metric values on scroll
+            const metricValues = document.querySelectorAll('.metric-value');
+
+            function animateMetrics() {
+                metricValues.forEach(metric => {
+                    const metricPosition = metric.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+
+                    if (metricPosition < screenPosition) {
+                        metric.style.opacity = 1;
+                        metric.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+
+            // Set initial styles
+            metricValues.forEach(metric => {
+                metric.style.opacity = 0;
+                metric.style.transform = 'translateY(20px)';
+                metric.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+
+            // Check on scroll
+            window.addEventListener('scroll', animateMetrics);
+
+            // Initial check
+            animateMetrics();
+        });
+    </script>
