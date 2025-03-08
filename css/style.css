@@ -711,3 +711,144 @@ footer::before {
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
+
+/* Timeline styling */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: var(--gradient-primary);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background: var(--primary);
+    border-radius: 50%;
+    top: 15px;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -10px;
+}
+
+.timeline-content {
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.timeline-content h4 {
+    color: var(--text-light);
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.timeline-content ul {
+    padding-left: 20px;
+}
+
+.timeline-content li {
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+/* Education and certification styling */
+.education-section, .certifications-section {
+    margin-top: 30px;
+}
+
+.education-section h3, .certifications-section h3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.education-section h3 i, .certifications-section h3 i {
+    margin-right: 10px;
+    color: var(--primary);
+}
+
+.education-item, .certification-item {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 3px solid var(--primary);
+}
+
+.degree, .cert-name {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.institution, .cert-date {
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.year, .gpa {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Responsive timeline */
+@media (max-width: 767px) {
+    .timeline::before {
+        left: 40px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    .timeline-dot {
+        left: 30px;
+        right: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 30px;
+    }
+}
+
