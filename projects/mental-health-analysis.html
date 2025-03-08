@@ -522,13 +522,13 @@
 
     <div class="project-header">
         <div class="project-header-content">
-            <h1>Mental Health Analysis</h1>
-            <p>Identifying Key Factors Affecting Mental Wellbeing in the Workplace</p>
+            <h1>Global Suicide Rate Analysis</h1>
+            <p>Examining Trends, Gender Disparities, and Economic Correlations (1985-2016)</p>
             <div class="project-tags">
-                <span class="project-tag">Healthcare Analytics</span>
-                <span class="project-tag">Machine Learning</span>
-                <span class="project-tag">Cluster Analysis</span>
-                <span class="project-tag">Predictive Modeling</span>
+                <span class="project-tag">Mental Health</span>
+                <span class="project-tag">Data Analysis</span>
+                <span class="project-tag">Statistical Modeling</span>
+                <span class="project-tag">Global Health Trends</span>
             </div>
         </div>
     </div>
@@ -536,28 +536,28 @@
     <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
         <div class="project-section">
             <h2 class="section-title">Executive Summary</h2>
-            <p>This project analyzes workplace mental health data to identify key factors affecting employee wellbeing and develops a predictive model that can accurately forecast which employees may be at risk of developing mental health conditions.</p>
+            <p>This project analyzes global suicide rates from 1985 to 2016, examining trends over time, gender differences, and potential correlations with economic factors such as GDP. The analysis provides insights into the complex patterns of suicide rates across different regions and demographic groups.</p>
 
             <div class="key-finding">
                 <h3>Key Achievement</h3>
-                <p>Developed a Random Forest classification model that predicts mental health risks with 94.2% precision and 89.7% recall, identifying work environment and support systems as the primary factors affecting mental wellbeing.</p>
+                <p>Conducted comprehensive analysis of 31 years of global suicide data, identifying significant gender disparities and regional variations while determining that economic prosperity (measured by GDP) shows no significant correlation with suicide rates.</p>
             </div>
 
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <h4>Model Precision</h4>
-                    <div class="metric-value">94.2%</div>
-                    <p>Accuracy in predicting mental health risks</p>
+                    <h4>Peak Global Suicides</h4>
+                    <div class="metric-value">256,095</div>
+                    <p>Highest number recorded (2002)</p>
                 </div>
                 <div class="metric-card">
-                    <h4>Model Recall</h4>
-                    <div class="metric-value">89.7%</div>
-                    <p>Ability to identify at-risk employees</p>
+                    <h4>Peak Rate</h4>
+                    <div class="metric-value">15.7</div>
+                    <p>Per 100k population (1995)</p>
                 </div>
                 <div class="metric-card">
-                    <h4>Key Factors</h4>
-                    <div class="metric-value">5</div>
-                    <p>Primary drivers of mental health issues</p>
+                    <h4>Gender Ratio</h4>
+                    <div class="metric-value">4:1</div>
+                    <p>Male to female suicide rate</p>
                 </div>
             </div>
         </div>
@@ -567,140 +567,125 @@
 
             <div class="two-column">
                 <div>
-                    <h3>Work Environment Impact</h3>
-                    <p>The analysis revealed a strong correlation between workplace environment and mental health:</p>
+                    <h3>Global Trends (1985-2016)</h3>
+                    <p>The analysis revealed significant patterns in global suicide rates over the 31-year period:</p>
                     <ul>
-                        <li><strong>78% of employees reporting high stress</strong> worked in environments with poor work-life balance</li>
-                        <li><strong>Nearly 65% of employees with anxiety</strong> reported excessive workloads</li>
-                        <li>Mental wellbeing scores drop significantly in environments with limited autonomy</li>
-                        <li>Employees working more than 50 hours weekly showed a 3x higher risk of developing depression</li>
+                        <li>Suicide rates worldwide <strong>increased until 2002</strong>, then began decreasing despite growing global population</li>
+                        <li>The <strong>highest number of suicides</strong> (256,095) occurred in 2002</li>
+                        <li>The <strong>highest rate per 100k population</strong> was recorded in 1995 at approximately 15.7</li>
+                        <li>By 2015, the global rate had <strong>decreased to about 11.1 per 100k</strong> population</li>
                     </ul>
                 </div>
 
                 <div class="visualization">
-                    <img src="../images/mental-workload-wellbeing.jpg" alt="Workload vs Mental Wellbeing Chart">
-                    <p><em>Relationship between workload and mental wellbeing scores</em></p>
+                    <img src="../images/suicide-global-trend.jpg" alt="Global Suicide Trends 1985-2016">
+                    <p><em>Global suicide rates per 100k population (1985-2016)</em></p>
                 </div>
             </div>
 
             <div class="key-finding">
-                <h3>Support Systems and Resources</h3>
-                <p>The analysis found that companies with robust mental health support systems had 42% lower rates of reported mental health issues. This indicates that accessible resources and clear communication about available support significantly impact employee wellbeing.</p>
+                <h3>Gender Disparities</h3>
+                <p>The analysis found striking differences between male and female suicide rates globally. Males have a suicide rate approximately 4 times higher than females (20 per 100k for males versus 5.4 per 100k for females). Male suicide rates peaked in 1995 and then steadily decreased, while female suicide rates have been consistently decreasing since 1985.</p>
             </div>
 
             <div class="visualization">
-                <img src="../images/mental-support-impact.jpg" alt="Support Systems Impact Chart">
-                <p><em>Impact of workplace support systems on mental health outcomes</em></p>
+                <img src="../images/suicide-gender-comparison.jpg" alt="Gender Comparison of Suicide Rates">
+                <p><em>Comparison of male and female suicide rates (1985-2016)</em></p>
             </div>
 
             <div class="key-finding">
-                <h3>Stigma and Disclosure</h3>
-                <p>Employees in environments with high perceived stigma around mental health were 67% less likely to seek help when needed. This suggests that creating a culture of openness and acceptance is crucial for early intervention and prevention.</p>
+                <h3>Regional Variations</h3>
+                <p>European and Asian regions show approximately double the suicide rates compared to North America and Australia. Lithuania had the highest recorded suicide rate, with 68.14 per 100k for males (roughly 5 times higher than the female rate of 13.03). Data for Africa and parts of South America is limited, highlighting gaps in global mental health monitoring.</p>
             </div>
         </div>
 
         <div class="project-section">
-            <h2 class="section-title">Methodology Overview</h2>
+            <h2 class="section-title">Economic Correlation Analysis</h2>
 
-            <p>This project followed a structured analytical approach to develop a reliable predictive model:</p>
-
-            <ol>
-                <li><strong>Data Collection</strong> - Gathered comprehensive employee data including stress levels, work environment factors, support system access, and mental health outcomes</li>
-                <li><strong>Exploratory Analysis</strong> - Identified patterns and relationships between workplace factors and mental health</li>
-                <li><strong>Feature Engineering</strong> - Created new features like "high stress environment" based on multiple indicators</li>
-                <li><strong>Model Development</strong> - Tested multiple classification algorithms including Random Forest, Gradient Boosting, and Logistic Regression</li>
-                <li><strong>Model Evaluation</strong> - Assessed performance using precision, recall, and F1-score metrics</li>
-                <li><strong>Feature Importance Analysis</strong> - Identified the most influential factors in predicting mental health risks</li>
-            </ol>
+            <p>A key focus of this research was examining the potential relationship between economic prosperity (measured by GDP) and suicide rates:</p>
 
             <div class="visualization">
-                <img src="../images/mental-model-performance.jpg" alt="Model Performance Comparison">
-                <p><em>Performance comparison of different classification models</em></p>
+                <img src="../images/suicide-gdp-correlation.jpg" alt="GDP vs Suicide Rate Scatter Plot">
+                <p><em>Scatter plot showing relationship between GDP and suicide rates</em></p>
+            </div>
+
+            <div class="key-finding">
+                <h3>No Significant GDP Correlation</h3>
+                <p>Statistical analysis found no significant correlation between a country's GDP (both annual and per capita) and its suicide rates. The regression model showed very low explanatory power (R-squared of 0.007374), indicating GDP explains very little of the variance in suicide rates. Visual representations confirmed the lack of pattern or correlation between GDP metrics and suicide rates across countries.</p>
             </div>
 
             <button class="collapsible">Technical Details <i class="fas fa-code"></i></button>
             <div class="collapsible-content">
                 <div class="collapsible-content-inner">
-                    <h3>Model Selection Process</h3>
-                    <p>Multiple classification models were evaluated for this project:</p>
+                    <h3>Statistical Methodology</h3>
+                    <p>The analysis employed several statistical approaches:</p>
                     <ul>
-                        <li><strong>Random Forest</strong> - Best overall performance with 94.2% precision and 89.7% recall</li>
-                        <li><strong>Gradient Boosting</strong> - Good performance but slightly lower recall (87.3%)</li>
-                        <li><strong>Logistic Regression</strong> - Simplest model but lowest performance (82.1% precision)</li>
+                        <li><strong>Regression Analysis</strong> - Linear regression models were used to test the relationship between GDP metrics and suicide rates</li>
+                        <li><strong>Correlation Coefficients</strong> - Pearson's r was calculated to measure the strength of association between economic indicators and suicide rates</li>
+                        <li><strong>R-squared Analysis</strong> - The coefficient of determination (0.007374) indicated that GDP explains less than 1% of the variance in suicide rates</li>
                     </ul>
 
-                    <h3>Feature Engineering</h3>
-                    <p>Several engineered features improved model performance:</p>
+                    <h3>Data Sources</h3>
+                    <p>The analysis utilized comprehensive datasets from:</p>
                     <ul>
-                        <li><strong>Work-Life Balance Score</strong> - Composite metric based on working hours, flexibility, and time off</li>
-                        <li><strong>Support Access Index</strong> - Calculated from availability and quality of mental health resources</li>
-                        <li><strong>Stigma Perception</strong> - Derived from survey responses about workplace attitudes</li>
+                        <li><strong>World Health Organization</strong> - Global suicide statistics from 1985-2016</li>
+                        <li><strong>World Bank</strong> - GDP data (annual and per capita) for corresponding countries and years</li>
+                        <li><strong>United Nations</strong> - Population data for calculating per capita rates</li>
                     </ul>
-
-                    <h3>Feature Importance</h3>
-                    <p>The Random Forest model identified these features as most predictive (in order of importance):</p>
-                    <ol>
-                        <li>Work-life balance score (24.8%)</li>
-                        <li>Weekly working hours (18.7%)</li>
-                        <li>Support access index (16.2%)</li>
-                        <li>Stigma perception (14.5%)</li>
-                        <li>Job autonomy (11.3%)</li>
-                        <li>Management quality (8.4%)</li>
-                        <li>Team dynamics (6.1%)</li>
-                    </ol>
                 </div>
             </div>
         </div>
 
         <div class="project-section">
-            <h2 class="section-title">Business Applications</h2>
+            <h2 class="section-title">Applications & Implications</h2>
 
-            <p>This predictive model offers valuable applications for HR and management teams:</p>
+            <p>This analysis offers valuable insights for mental health policy and intervention strategies:</p>
 
             <div class="application-cards">
                 <div class="application-card">
                     <div class="application-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Proactive Intervention</h3>
-                    <p>Identify at-risk employees before mental health issues develop, allowing for early support and prevention strategies.</p>
+                    <h3>Gender-Specific Interventions</h3>
+                    <p>The significant gender disparity suggests the need for targeted mental health approaches that address the unique factors affecting males and females.</p>
                 </div>
 
                 <div class="application-card">
                     <div class="application-icon">
-                        <i class="fas fa-building"></i>
+                        <i class="fas fa-globe"></i>
                     </div>
-                    <h3>Workplace Optimization</h3>
-                    <p>Design work environments and policies that promote mental wellbeing based on identified key factors.</p>
+                    <h3>Regional Focus</h3>
+                    <p>The higher rates in European and Asian regions indicate where mental health resources might be most urgently needed.</p>
                 </div>
 
                 <div class="application-card">
                     <div class="application-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Resource Allocation</h3>
-                    <p>Strategically invest in mental health resources that address the most impactful factors for employee wellbeing.</p>
+                    <h3>Beyond Economic Factors</h3>
+                    <p>The lack of GDP correlation suggests that mental health interventions should focus on social, cultural, and healthcare factors rather than assuming economic growth alone will improve outcomes.</p>
                 </div>
             </div>
 
             <div class="key-finding">
                 <h3>Strategic Insight</h3>
-                <p>The model suggests that addressing work environment factors and reducing stigma would be more effective for improving mental health outcomes than simply adding more resources without addressing underlying issues. Organizations should prioritize creating psychologically safe environments where employees feel comfortable seeking help.</p>
+                <p>The findings challenge the assumption that economic development automatically leads to better mental health outcomes. Countries at all economic levels need comprehensive mental health strategies that address cultural factors, healthcare access, and gender-specific approaches.</p>
             </div>
         </div>
 
         <div class="project-section">
             <h2 class="section-title">Conclusion & Future Work</h2>
 
-            <p>This analysis provides valuable insights into the factors affecting workplace mental health and offers a reliable predictive model for identifying at-risk employees. By focusing on work-life balance, support systems, and reducing stigma, organizations can significantly improve mental health outcomes.</p>
+            <p>This analysis provides valuable insights into global suicide trends over a 31-year period, highlighting significant gender disparities and regional variations. The lack of correlation with GDP underscores the complex, multifaceted nature of suicide as a public health issue that extends beyond economic factors.</p>
 
             <h3>Future Directions</h3>
             <p>This research could be extended in several promising directions:</p>
             <ul>
-                <li>Incorporate longitudinal data to track mental health trends over time</li>
-                <li>Develop industry-specific models to account for different workplace stressors</li>
-                <li>Create an interactive dashboard for HR teams to monitor mental health risk factors</li>
-                <li>Expand the analysis to include additional factors like remote work impact, physical workspace design, and leadership styles</li>
+                <li>Incorporate additional socioeconomic variables beyond GDP (e.g., income inequality, unemployment rates)</li>
+                <li>Analyze the impact of mental health services availability and accessibility across different regions</li>
+                <li>Examine cultural and social factors that might explain the significant gender disparities</li>
+                <li>Develop predictive models that incorporate multiple variables to better understand suicide risk factors</li>
+                <li>Address data gaps in regions with limited reporting, particularly in Africa and parts of South America</li>
             </ul>
         </div>
     </div>
