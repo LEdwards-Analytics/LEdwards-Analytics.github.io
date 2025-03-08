@@ -43,6 +43,11 @@ h1, h2, h3, h4, h5, h6 {
     transition: width 0.2s, height 0.2s, background-color 0.2s;
     z-index: 9999;
     mix-blend-mode: difference;
+    
+}
+
+body, a, button, .interactive-element {
+    cursor: none !important;
 }
 
 .cursor-hover {
