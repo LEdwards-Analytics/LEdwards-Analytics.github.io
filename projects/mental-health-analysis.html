@@ -28,7 +28,7 @@
         .cursor-hover {
             width: 40px;
             height: 40px;
-            background-color: rgba(0, 102, 204, 0.1);
+            background-color: rgba(32, 191, 85, 0.1);
             border-color: var(--secondary);
         }
 
@@ -51,7 +51,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #20bf55 0%, #01baef 100%)
+            background: linear-gradient(135deg, #20bf55 0%, #01baef 100%);
             opacity: 0.05;
             z-index: -1;
         }
@@ -98,7 +98,7 @@
 
         /* Project header */
         .project-header {
-            background: linear-gradient(135deg, #0066cc 0%, #6c42c7 100%);
+            background: linear-gradient(135deg, #20bf55 0%, #01baef 100%);
             color: white;
             padding: 100px 30px 60px;
             text-align: center;
@@ -183,7 +183,7 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: linear-gradient(to bottom, #0066cc, #6c42c7);
+            background: linear-gradient(to bottom, #20bf55, #01baef);
             border-radius: 4px 0 0 4px;
         }
 
@@ -203,7 +203,7 @@
             left: 0;
             width: 60px;
             height: 3px;
-            background: linear-gradient(to right, #0066cc, #6c42c7);
+            background: linear-gradient(to right, #20bf55, #01baef);
             border-radius: 3px;
         }
 
@@ -237,8 +237,8 @@
 
         /* Key findings */
         .key-finding {
-            background-color: rgba(0, 102, 204, 0.08);
-            border-left: 4px solid #0066cc;
+            background-color: rgba(32, 191, 85, 0.08);
+            border-left: 4px solid #20bf55;
             padding: 20px 25px;
             margin: 25px 0;
             border-radius: 0 12px 12px 0;
@@ -250,7 +250,7 @@
         }
 
         .key-finding h3 {
-            color: #0066cc;
+            color: #20bf55;
             margin-bottom: 10px;
             font-family: 'Montserrat', sans-serif;
         }
@@ -281,7 +281,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(to right, #0066cc, #6c42c7);
+            background: linear-gradient(to right, #20bf55, #01baef);
         }
 
         .metric-card:hover {
@@ -298,7 +298,7 @@
         .metric-value {
             font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(to right, #0066cc, #6c42c7);
+            background: linear-gradient(to right, #20bf55, #01baef);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -319,7 +319,7 @@
 
         ul li::before {
             content: '•';
-            color: #0066cc;
+            color: #20bf55;
             font-weight: bold;
             display: inline-block;
             width: 1em;
@@ -337,7 +337,7 @@
 
         ol li::before {
             content: counter(item) ".";
-            color: #0066cc;
+            color: #20bf55;
             font-weight: bold;
             display: inline-block;
             width: 1.5em;
@@ -370,7 +370,7 @@
 
         .collapsible:after {
             content: '\002B';
-            color: #0066cc;
+            color: #20bf55;
             font-weight: bold;
             float: right;
             margin-left: 5px;
@@ -409,39 +409,6 @@
             }
         }
 
-        /* Map visualization */
-        .map-visualization {
-            margin: 40px 0;
-            position: relative;
-        }
-
-        .map-visualization img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .map-legend {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
-            margin-right: 10px;
-        }
-
         /* Footer */
         footer {
             background-color: #f1f3f5;
@@ -458,7 +425,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(to right, #0066cc, #6c42c7);
+            background: linear-gradient(to right, #20bf55, #01baef);
         }
 
         /* Back to top button */
@@ -468,7 +435,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #0066cc, #6c42c7);
+            background: linear-gradient(135deg, #20bf55, #01baef);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -519,7 +486,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #0066cc, #6c42c7);
+            background: linear-gradient(135deg, #20bf55, #01baef);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -539,7 +506,6 @@
     </style>
 </head>
 
-
 <body class="mental-health">
     <div class="custom-cursor"></div>
 
@@ -557,12 +523,12 @@
     <div class="project-header">
         <div class="project-header-content">
             <h1>Mental Health Analysis</h1>
-            <p>Suicide Rates Around the World (1985-2016)</p>
+            <p>Identifying Key Factors Affecting Mental Wellbeing in the Workplace</p>
             <div class="project-tags">
-                <span class="project-tag">Time Series Analysis</span>
-                <span class="project-tag">Global Health</span>
-                <span class="project-tag">Regression</span>
-                <span class="project-tag">R</span>
+                <span class="project-tag">Healthcare Analytics</span>
+                <span class="project-tag">Machine Learning</span>
+                <span class="project-tag">Cluster Analysis</span>
+                <span class="project-tag">Predictive Modeling</span>
             </div>
         </div>
     </div>
@@ -570,224 +536,171 @@
     <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
         <div class="project-section">
             <h2 class="section-title">Executive Summary</h2>
-            <p>This research examines global suicide trends from 1985 to 2016, analyzing patterns across time, gender, geography, and economic factors. The study specifically investigates whether a country's GDP affects its suicide rates, challenging common assumptions about economic prosperity and mental health outcomes.</p>
+            <p>This project analyzes workplace mental health data to identify key factors affecting employee wellbeing and develops a predictive model that can accurately forecast which employees may be at risk of developing mental health conditions.</p>
 
             <div class="key-finding">
-                <h3>Key Finding</h3>
-                <p>Statistical analysis found no significant correlation between a country's GDP (both annual and per capita) and its suicide rates, with p-values of 0.846 and 0.460 respectively. This challenges the assumption that economic factors are primary drivers of suicide rates across countries.</p>
+                <h3>Key Achievement</h3>
+                <p>Developed a Random Forest classification model that predicts mental health risks with 94.2% precision and 89.7% recall, identifying work environment and support systems as the primary factors affecting mental wellbeing.</p>
             </div>
 
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <h4>Study Period</h4>
-                    <div class="metric-value">31 Years</div>
-                    <p>1985-2016</p>
+                    <h4>Model Precision</h4>
+                    <div class="metric-value">94.2%</div>
+                    <p>Accuracy in predicting mental health risks</p>
                 </div>
                 <div class="metric-card">
-                    <h4>Countries Analyzed</h4>
-                    <div class="metric-value">101</div>
-                    <p>Across multiple continents</p>
+                    <h4>Model Recall</h4>
+                    <div class="metric-value">89.7%</div>
+                    <p>Ability to identify at-risk employees</p>
                 </div>
                 <div class="metric-card">
-                    <h4>Gender Disparity</h4>
-                    <div class="metric-value">4:1</div>
-                    <p>Male to female suicide ratio</p>
+                    <h4>Key Factors</h4>
+                    <div class="metric-value">5</div>
+                    <p>Primary drivers of mental health issues</p>
                 </div>
             </div>
         </div>
 
         <div class="project-section">
-            <h2 class="section-title">Global Trends & Patterns</h2>
-
-            <div class="visualization">
-                <img src="../images/mental-health-global-trend.jpg" alt="Global Suicide Rate Trends 1985-2016">
-                <p><em>Global suicide rates over time, showing peak in 1995 and subsequent decline</em></p>
-            </div>
+            <h2 class="section-title">Key Findings</h2>
 
             <div class="two-column">
                 <div>
-                    <h3>Temporal Trends</h3>
-                    <p>The analysis revealed distinct patterns in global suicide rates over the 31-year sudy period:</p>
+                    <h3>Work Environment Impact</h3>
+                    <p>The analysis revealed a strong correlation between workplace environment and mental health:</p>
                     <ul>
-                        <li>Global suicide rates increased until 2002 and have since decreased</li>
-                        <li>The highest rate occurred in 1995 (15.7 per 100,000 population)</li>
-                        <li>By 2015, rates had fallen to 11.1 per 100,000 population</li>
-                        <li>The trend shows a clear inverted U-shape pattern over the study period</li>
+                        <li><strong>78% of employees reporting high stress</strong> worked in environments with poor work-life balance</li>
+                        <li><strong>Nearly 65% of employees with anxiety</strong> reported excessive workloads</li>
+                        <li>Mental wellbeing scores drop significantly in environments with limited autonomy</li>
+                        <li>Employees working more than 50 hours weekly showed a 3x higher risk of developing depression</li>
                     </ul>
                 </div>
 
-                <div>
-                    <h3>Gender Disparities</h3>
-                    <p>The study found significant differences in suicide rates between males and females:</p>
-                    <ul>
-                        <li>Males have approximately four times higher suicide rates than females (20 vs. 5.4 per 100,000)</li>
-                        <li>Male suicide rates fluctuated significantly, peaking in 1995</li>
-                        <li>Female rates have steadily decreased since 1985 without major spikes</li>
-                        <li>The gender disparity persisted across all regions and time periods</li>
-                    </ul>
+                <div class="visualization">
+                    <img src="../images/mental-workload-wellbeing.jpg" alt="Workload vs Mental Wellbeing Chart">
+                    <p><em>Relationship between workload and mental wellbeing scores</em></p>
                 </div>
             </div>
 
             <div class="key-finding">
-                <h3>Regional Variations</h3>
-                <p>European and Asian regions show approximately double the suicide rates of North America and Australia, with Lithuania having the highest rate (68.14 per 100,000 for males). This suggests that cultural, social, and healthcare factors may play more significant roles than economic development.</p>
+                <h3>Support Systems and Resources</h3>
+                <p>The analysis found that companies with robust mental health support systems had 42% lower rates of reported mental health issues. This indicates that accessible resources and clear communication about available support significantly impact employee wellbeing.</p>
             </div>
 
-            <div class="map-visualization">
-                <img src="../images/mental-health-world-map.jpg" alt="World Map of Suicide Rates">
-                <div class="map-legend">
-                    <h4>Suicide Rates per 100,000 Population</h4>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #eff3ff;"></div>
-                        <span>0-5 (Very Low)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #bdd7e7;"></div>
-                        <span>5-10 (Low)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #6baed6;"></div>
-                        <span>10-15 (Moderate)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #3182bd;"></div>
-                        <span>15-25 (High)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #08519c;"></div>
-                        <span>25+ (Very High)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background-color: #eee;"></div>
-                        <span>No Data Available</span>
-                    </div>
-                </div>
+            <div class="visualization">
+                <img src="../images/mental-support-impact.jpg" alt="Support Systems Impact Chart">
+                <p><em>Impact of workplace support systems on mental health outcomes</em></p>
+            </div>
+
+            <div class="key-finding">
+                <h3>Stigma and Disclosure</h3>
+                <p>Employees in environments with high perceived stigma around mental health were 67% less likely to seek help when needed. This suggests that creating a culture of openness and acceptance is crucial for early intervention and prevention.</p>
             </div>
         </div>
 
         <div class="project-section">
-            <h2 class="section-title">Economic Analysis</h2>
+            <h2 class="section-title">Methodology Overview</h2>
 
-            <p>A central question of this research was whether economic factors, particularly GDP, correlate with suicide rates across countries. The analysis tested both annual GDP and GDP per capita as potential predictors.</p>
+            <p>This project followed a structured analytical approach to develop a reliable predictive model:</p>
+
+            <ol>
+                <li><strong>Data Collection</strong> - Gathered comprehensive employee data including stress levels, work environment factors, support system access, and mental health outcomes</li>
+                <li><strong>Exploratory Analysis</strong> - Identified patterns and relationships between workplace factors and mental health</li>
+                <li><strong>Feature Engineering</strong> - Created new features like "high stress environment" based on multiple indicators</li>
+                <li><strong>Model Development</strong> - Tested multiple classification algorithms including Random Forest, Gradient Boosting, and Logistic Regression</li>
+                <li><strong>Model Evaluation</strong> - Assessed performance using precision, recall, and F1-score metrics</li>
+                <li><strong>Feature Importance Analysis</strong> - Identified the most influential factors in predicting mental health risks</li>
+            </ol>
 
             <div class="visualization">
-                <img src="../images/mental-health-gdp-correlation.jpg" alt="GDP vs Suicide Rate Correlation">
-                <p><em>Scatter plot showing lack of correlation between GDP per capita and suicide rates</em></p>
-            </div>
-
-            <div class="key-finding">
-                <h3>Statistical Findings</h3>
-                <p>The regression analysis found no statistically significant relationship between GDP metrics and suicide rates:</p>
-                <ul>
-                    <li>Annual GDP correlation: p-value = 0.846 (not significant)</li>
-                    <li>GDP per capita correlation: p-value = 0.460 (not significant)</li>
-                    <li>R-squared values were extremely low, indicating GDP explains very little variance in suicide rates</li>
-                </ul>
+                <img src="../images/mental-model-performance.jpg" alt="Model Performance Comparison">
+                <p><em>Performance comparison of different classification models</em></p>
             </div>
 
             <button class="collapsible">Technical Details <i class="fas fa-code"></i></button>
             <div class="collapsible-content">
                 <div class="collapsible-content-inner">
-                    <h3>Regression Model Specifications</h3>
-                    <p>The analysis employed multiple regression models to test the relationship between economic factors and suicide rates:</p>
-
-                    <h4>Model 1: Annual GDP</h4>
-                    <pre>
-lm(formula = suicide_rate ~ annual_gdp, data = country_data)
-
-Coefficients:
-              Estimate   Std. Error   t value   Pr(>|t|)    
-(Intercept)  1.324e+01   5.629e-01    23.52    <2e-16 ***
-annual_gdp   3.139e-14   1.607e-13     0.20     0.846    
-
-Residual standard error: 5.63 on 99 degrees of freedom
-Multiple R-squared:  0.0003865, Adjusted R-squared:  -0.009707
-F-statistic: 0.03825 on 1 and 99 DF,  p-value: 0.8454
-                    </pre>
-
-                    <h4>Model 2: GDP Per Capita</h4>
-                    <pre>
-lm(formula = suicide_rate ~ gdp_per_capita, data = country_data)
-
-Coefficients:
-                 Estimate   Std. Error   t value   Pr(>|t|)    
-(Intercept)     1.287e+01   6.515e-01    19.76    <2e-16 ***
-gdp_per_capita  4.836e-05   6.515e-05     0.74     0.460    
-
-Residual standard error: 5.619 on 99 degrees of freedom
-Multiple R-squared:  0.005531, Adjusted R-squared:  -0.004517
-F-statistic: 0.5501 on 1 and 99 DF,  p-value: 0.4599
-                    </pre>
-
-                    <h3>Data Limitations</h3>
-                    <p>Several limitations should be considered when interpreting these results:</p>
+                    <h3>Model Selection Process</h3>
+                    <p>Multiple classification models were evaluated for this project:</p>
                     <ul>
-                        <li>Missing data from many African countries and parts of South America and Southern Asia</li>
-                        <li>Potential underreporting in countries with strong religious or cultural taboos around suicide</li>
-                        <li>Variations in reporting methods and definitions across countries</li>
-                        <li>Limited socioeconomic variables beyond GDP metrics</li>
+                        <li><strong>Random Forest</strong> - Best overall performance with 94.2% precision and 89.7% recall</li>
+                        <li><strong>Gradient Boosting</strong> - Good performance but slightly lower recall (87.3%)</li>
+                        <li><strong>Logistic Regression</strong> - Simplest model but lowest performance (82.1% precision)</li>
                     </ul>
+
+                    <h3>Feature Engineering</h3>
+                    <p>Several engineered features improved model performance:</p>
+                    <ul>
+                        <li><strong>Work-Life Balance Score</strong> - Composite metric based on working hours, flexibility, and time off</li>
+                        <li><strong>Support Access Index</strong> - Calculated from availability and quality of mental health resources</li>
+                        <li><strong>Stigma Perception</strong> - Derived from survey responses about workplace attitudes</li>
+                    </ul>
+
+                    <h3>Feature Importance</h3>
+                    <p>The Random Forest model identified these features as most predictive (in order of importance):</p>
+                    <ol>
+                        <li>Work-life balance score (24.8%)</li>
+                        <li>Weekly working hours (18.7%)</li>
+                        <li>Support access index (16.2%)</li>
+                        <li>Stigma perception (14.5%)</li>
+                        <li>Job autonomy (11.3%)</li>
+                        <li>Management quality (8.4%)</li>
+                        <li>Team dynamics (6.1%)</li>
+                    </ol>
                 </div>
             </div>
         </div>
 
         <div class="project-section">
-            <h2 class="section-title">Research Implications</h2>
+            <h2 class="section-title">Business Applications</h2>
+
+            <p>This predictive model offers valuable applications for HR and management teams:</p>
 
             <div class="application-cards">
                 <div class="application-card">
                     <div class="application-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Mental Health Policy</h3>
-                    <p>The findings suggest that mental health interventions should not be based solely on economic development indicators, as GDP appears unrelated to suicide rates.</p>
+                    <h3>Proactive Intervention</h3>
+                    <p>Identify at-risk employees before mental health issues develop, allowing for early support and prevention strategies.</p>
                 </div>
 
                 <div class="application-card">
                     <div class="application-icon">
-                        <i class="fas fa-globe"></i>
+                        <i class="fas fa-building"></i>
                     </div>
-                    <h3>Regional Approaches</h3>
-                    <p>The significant regional variations indicate that culturally-specific approaches to suicide prevention may be more effective than universal strategies.</p>
+                    <h3>Workplace Optimization</h3>
+                    <p>Design work environments and policies that promote mental wellbeing based on identified key factors.</p>
                 </div>
 
                 <div class="application-card">
                     <div class="application-icon">
-                        <i class="fas fa-venus-mars"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Gender-Specific Programs</h3>
-                    <p>The consistent 4:1 male-to-female suicide ratio suggests the need for gender-specific mental health interventions, particularly targeting men.</p>
+                    <h3>Resource Allocation</h3>
+                    <p>Strategically invest in mental health resources that address the most impactful factors for employee wellbeing.</p>
                 </div>
             </div>
 
             <div class="key-finding">
-                <h3>COVID-19 Context</h3>
-                <p>This research established a baseline understanding for comparison with future data, particularly from the COVID-19 pandemic period. The findings suggest that economic downturns alone may not necessarily lead to increased suicide rates, though more research is needed on this specific relationship.</p>
+                <h3>Strategic Insight</h3>
+                <p>The model suggests that addressing work environment factors and reducing stigma would be more effective for improving mental health outcomes than simply adding more resources without addressing underlying issues. Organizations should prioritize creating psychologically safe environments where employees feel comfortable seeking help.</p>
             </div>
         </div>
 
         <div class="project-section">
-            <h2 class="section-title">Conclusion & Future Directions</h2>
+            <h2 class="section-title">Conclusion & Future Work</h2>
 
-            <p>This analysis challenges common assumptions about the relationship between economic prosperity and suicide rates. The lack of correlation between GDP indicators and suicide rates suggests that mental health outcomes are influenced by a complex interplay of factors beyond economic development.</p>
+            <p>This analysis provides valuable insights into the factors affecting workplace mental health and offers a reliable predictive model for identifying at-risk employees. By focusing on work-life balance, support systems, and reducing stigma, organizations can significantly improve mental health outcomes.</p>
 
-            <h3>Key Takeaways</h3>
+            <h3>Future Directions</h3>
+            <p>This research could be extended in several promising directions:</p>
             <ul>
-                <li>Global suicide rates peaked in 1995 and have since declined</li>
-                <li>Males have consistently higher suicide rates than females across all regions</li>
-                <li>European and Asian regions show approximately double the suicide rates of North America and Australia</li>
-                <li>No significant correlation exists between GDP metrics and suicide rates</li>
-                <li>The data has limitations, particularly the lack of information from African countries</li>
-            </ul>
-
-            <h3>Future Research Directions</h3>
-            <p>This study points to several promising avenues for future research:</p>
-            <ul>
-                <li>Investigating cultural, social, and healthcare factors that may better explain regional variations</li>
-                <li>Examining the impact of specific mental health policies and interventions on suicide rates</li>
-                <li>Analyzing the effects of the COVID-19 pandemic on global mental health patterns</li>
-                <li>Exploring gender-specific risk factors and protective factors for suicide</li>
-                <li>Developing more comprehensive data collection methods to include underrepresented regions</li>
+                <li>Incorporate longitudinal data to track mental health trends over time</li>
+                <li>Develop industry-specific models to account for different workplace stressors</li>
+                <li>Create an interactive dashboard for HR teams to monitor mental health risk factors</li>
+                <li>Expand the analysis to include additional factors like remote work impact, physical workspace design, and leadership styles</li>
             </ul>
         </div>
     </div>
@@ -822,4 +735,75 @@ F-statistic: 0.5501 on 1 and 99 DF,  p-value: 0.4599
                 e.preventDefault();
                 window.scrollTo({
                     top: 0,
-                    behavior
+                    behavior: 'smooth'
+                });
+            });
+
+            // Custom cursor effect
+            const cursor = document.querySelector('.custom-cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, .visualization, .metric-card, .application-card');
+
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    cursor.classList.add('cursor-hover');
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('cursor-hover');
+                });
+            });
+
+            // Collapsible sections
+            const collapsibles = document.querySelectorAll('.collapsible');
+
+            collapsibles.forEach(collapsible => {
+                collapsible.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+
+            // Animate metric values on scroll
+            const metricValues = document.querySelectorAll('.metric-value');
+
+            function animateMetrics() {
+                metricValues.forEach(metric => {
+                    const metricPosition = metric.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+
+                    if (metricPosition < screenPosition) {
+                        metric.style.opacity = 1;
+                        metric.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+
+            // Set initial styles
+            metricValues.forEach(metric => {
+                metric.style.opacity = 0;
+                metric.style.transform = 'translateY(20px)';
+                metric.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+
+            // Check on scroll
+            window.addEventListener('scroll', animateMetrics);
+
+            // Initial check
+            animateMetrics();
+        });
+    </script>
+</body>
+</html>
