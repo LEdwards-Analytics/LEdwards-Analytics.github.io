@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
     
 }
 
-body, a, button, .interactive-element {
+body, a, button, .interactive-element, .visualization, .metric-card, .application-card {
     cursor: none !important;
 }
 
