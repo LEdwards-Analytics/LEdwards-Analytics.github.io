@@ -386,9 +386,9 @@ nav {
     transform: translateY(-3px);
 }
 
-/* Section styling */
+/* Section styling - MODIFIED TO REDUCE SPACING */
 section {
-    padding: 80px 20px;
+    padding: 40px 20px; /* Changed from 80px to 40px to reduce spacing */
     max-width: 1200px;
     margin: 0 auto;
 }
