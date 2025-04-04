@@ -855,3 +855,10 @@ footer::before {
     margin-bottom: 8px;
     font-size: 0.95rem;
 }
+
+/* 2 column sizing */
+.two-column .visualization img {
+    max-width: 140%;
+    margin-left: -20%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
