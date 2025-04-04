@@ -858,7 +858,7 @@ footer::before {
 
 /* 2 column sizing */
 .two-column .visualization img {
-    max-width: 140%;
-    margin-left: -20%;
+    max-width: 120%; /* Reduced from 140% to prevent overflow */
+    margin-left: -10%; /* Adjusted for better centering */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
