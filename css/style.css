@@ -17,10 +17,7 @@
     --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
     --transition: all 0.3s ease;
 
-    /* Smooth scrolling when clicking to jump to sections */
-    html {
-  scroll-behavior: smooth;
-    }
+
     
     /* Theme-specific variables (these don't override the main variables) */
     --mental-primary: #20bf55;
@@ -869,4 +866,9 @@ footer::before {
 .key-findings .visualization img {
     max-width: 100%; /* Full width within its container */
     margin: 0 auto; /* Center the image */
+}
+
+/* Smooth scrolling when clicking to jump to sections */
+html {
+    scroll-behavior: smooth;
 }
