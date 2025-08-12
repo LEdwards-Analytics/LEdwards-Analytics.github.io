@@ -1,519 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2WWQF2C6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2WWQF2C6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QH2WWQF2C6');
+  </script>
 
-        gtag('config', 'G-QH2WWQF2C6');
-        </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luke Edwards | Data Science Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luke Edwards | Data Science Portfolio</title>
+  <meta name="description" content="Luke Edwards - Data Science and Analytics Portfolio showcasing projects in machine learning, statistical analysis, and business intelligence.">
+  <meta name="keywords" content="data science, analytics, machine learning, portfolio, Luke Edwards">
 
-    <meta name="description" content="Luke Edwards - Data Science and Analytics Portfolio showcasing projects in machine learning, statistical analysis, and business intelligence.">
-    <meta name="keywords" content="data science, analytics, machine learning, portfolio, Luke Edwards">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Added Montserrat as a secondary font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 </head>
 
 <body class="home-page">
-    <div class="custom-cursor"></div>
+  <div class="custom-cursor" aria-hidden="true"></div>
 
-    <header>
-        <div class="header-background"></div>
-        <nav>
-            <a href="#home" class="nav-link"><span>Home</span></a>
-            <a href="#projects" class="nav-link"><span>Projects</span></a>
-            <a href="#experience" class="nav-link"><span>Experience</span></a>
-            <a href="#about" class="nav-link"><span>About</span></a>
-            <a href="#contact" class="nav-link"><span>Contact</span></a>
-            <a href="files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
-        </nav>
-    </header>
+  <header>
+    <div class="header-background" aria-hidden="true"></div>
+    <nav>
+      <a href="#home" class="nav-link"><span>Home</span></a>
+      <a href="#projects" class="nav-link"><span>Projects</span></a>
+      <a href="#experience" class="nav-link"><span>Experience</span></a>
+      <a href="#about" class="nav-link"><span>About</span></a>
+      <a href="#contact" class="nav-link"><span>Contact</span></a>
+      <a href="files/Edwards, Luke - Resume.pdf" target="_blank" rel="noopener" class="nav-link"><span>Resume</span></a>
+      <!-- Theme toggle -->
+      <button id="theme-toggle" class="nav-link" type="button" aria-label="Toggle color theme"><span>Theme</span></button>
+    </nav>
+  </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="profile-container">
-                <div class="profile-image">
-                    <img src="images/profile-photo.jpg" alt="Luke Edwards">
-                </div>
-                <div class="profile-backdrop"></div>
-            </div>
-            <div class="hero-text">
-                <h1>Luke Edwards</h1>
-                <h2>Data Science & Analytics Professional</h2>I'm a data scientist who loves turning messy, real-world data into meaningful insights and smarter decisions. Whether it's building predictive models, running experiments, or automating workflows with Python, I enjoy solving problems that matter. I got my start in economics, sharpened my skills in analytics roles, and now focus on making data science both practical and impactful. I used to be a college athlete—now I channel that same focus and drive into tackling tough data challenges.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="button primary-button">View Projects</a>
-                    <a href="#contact" class="button secondary-button">Contact Me</a>
-                </div>
-            </div>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="profile-container">
+        <div class="profile-image">
+          <img src="images/profile-photo.jpg" alt="Luke Edwards headshot">
         </div>
-    </section>
+        <div class="profile-backdrop" aria-hidden="true"></div>
+      </div>
 
-    <section id="projects">
-        <h2 class="section-title">Projects</h2>
-        <div class="section-subtitle">Explore my data science work</div>
-        <div class="projects-grid">
-            
-<!-- Amazon Prime Subscription Project Card -->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="images/amazon-project.jpg" alt="Why Prime Members Stay: A Deep-Dive with XGBoost">
-                    <div class="project-overlay">
-                        <div class="project-tags">
-                            <span>Machine Learning</span>
-                            <span>Python</span>
-                            <span>Decision Trees</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Why Prime Members Stay: A Deep-Dive with XGBoost</h3>
-                    <p>Built and tuned XGBoost, Decision Tree, and Random Forest models to predict subscription behavior and identify key drivers of customer retention.</p>
-                    <a href="projects/amazon-prime-analysis.html" class="button">View Project</a>
-                </div>
-            </div>
-            
-<!-- Employee Churn Risk Prediction Card -->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="images/employee-retention.jpg" alt="Stopping Turnover: A Decision-Tree Churn Risk Analyzer">
-                    <div class="project-overlay">
-                        <div class="project-tags">
-                            <span>Classification</span>
-                            <span>HR Analytics</span>
-                            <span>Python</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Stopping Turnover: A Decision-Tree Churn Risk Analyzer</h3>
-                    <p>Developed a decision tree model with 95.9% accuracy to identify employees at risk of leaving.</p>
-                    <a href="projects/employee-retention.html" class="button">View Project</a>
-                </div>
-            </div>
-            
-<!-- Mental Health Analysis Project Card -->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="images/mental-health.jpg" alt="Three Decades of Mental Health: Regression Reveals the Story">
-                    <div class="project-overlay">
-                        <div class="project-tags">
-                            <span>Regression</span>
-                            <span>Time Series</span>
-                            <span>R</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Three Decades of Mental Health: Regression Reveals the Story</h3>
-                    <p>Explored 30 years of global mental health data from 101 countries using multivariate regression to uncover key trends and patterns.</p>
-                    <a href="projects/mental-health-analysis.html" class="button">View Project</a>
-                </div>
-            </div>
-            
-    <!-- NBA Win Prediction Project Card -->
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="images/nba-project-thumbnail.jpg" alt="From ’80 to Today: Modeling NBA Win Chances">
-                    <div class="project-overlay">
-                        <div class="project-tags">
-                            <span>Sports Analytics</span>
-                            <span>Regression Modeling</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>From ’80 to Today: Modeling NBA Win Chances</h3>
-                    <p>Analyzed 40 years of NBA data to find the key factors that influence team success, using statistical methods and regression analysis.</p>
-                    <a href="projects/nba-win-prediction.html" class="button">View Project</a>
-                </div>
-            </div>
-
-            
-    </section>
-<!-- Experience timeline -->
-    <section id="experience">
-        <h2 class="section-title">Experience & Education</h2>
-        <div class="section-subtitle">My professional journey</div>
-
-        <div class="timeline">
-            
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Data Scientist</h3>
-                    <h4>May 2025 - Current</h4>
-                    <ul>
-                        <li>Developing a machine learning model in Python to explain NRPU performance and reduce manual variance analysis by 2–3 hours per week.</li>
-                        <li>Building a generative AI tool for automated lead sourcing to reduce manual research effort by over 70%.</li>
-                        <li>Designing Power BI dashboards to automate commission reporting and improve accuracy.</li>
-                        <li>Delivering weekly insights on performance trends to leadership, streamlining reporting and supporting data-driven business decisions.</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content certification-timeline">
-                    <h3>Google Advanced Data Analytics Professional Certificate</h3>
-                    <h4>May 2025</h4>
-                    <p>Extensively covered statistical analysis, machine learning fundamentals, predictive modeling, and data-driven decision-making using Python.</p>
-                </div>
-            </div>
-        
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content certification-timeline">
-                    <h3>Power BI Masterclass</h3>
-                    <h4>February 2024</h4>
-                    <p>Company-sponsored professional development</p>
-                </div>
-            </div>
-
-        
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Senior Business Intelligence Analyst</h3>
-                    <h4>CIBT | July 2023 - April 2024</h4>
-                    <ul>
-                        <li>Standardized enterprise-wide reporting, reducing redundancies by 60%.</li>
-                        <li>Built Power BI dashboards for real-time insights, improving decision-making.</li>
-                        <li>Optimized SQL queries to cut reporting time by 43%.</li>
-                        <li>Integrated Snowflake pipelines for more efficient access to reporting data.</li>
-                    </ul>
-                </div>
-            </div>
-        
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Senior Financial Analyst</h3>
-                    <h4>Interface Financial Group | June 2022 - April 2023</h4>
-                    <ul>
-                        <li>Automated client analysis with Python, reducing processing time by 93%, saving the finance team 20+ hours monthly.</li>
-                        <li>Conducted credit risk and investment evaluations across clients.</li>
-                        <li>Partnered with leadership to improve data-driven underwriting.</li>
-                    </ul>
-                </div>
-            </div>
-        
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content education-timeline">
-                    <h3>Master of Arts in Economics</h3>
-                    <h4>Boise State University | 2022</h4>
-                    <p>Specialized in Econometrics, Statistical Analysis, and Machine Learning.</p>
-                </div>
-            </div>
-        
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content education-timeline">
-                    <h3>Bachelor's Degree in Economics</h3>
-                    <h4>University of La Verne | 2019</h4>
-                </div>
-            </div>
+      <div class="hero-text">
+        <h1>Luke Edwards</h1>
+        <h2>Data Science & Analytics Professional</h2>
+        <p>I'm a data scientist who loves turning messy, real-world data into meaningful insights and smarter decisions. Whether it's building predictive models, running experiments, or automating workflows with Python, I enjoy solving problems that matter. I got my start in economics, sharpened my skills in analytics roles, and now focus on making data science both practical and impactful. I used to be a college athlete—now I channel that same focus and drive into tackling tough data challenges.</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="button primary-button">View Projects</a>
+          <a href="#contact" class="button secondary-button">Contact Me</a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="section-subtitle">My journey in data science</div>
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="section-subtitle">Explore my data science work</div>
 
-        <div class="about-text">
-            <p>I grew up obsessed with solving problems, whether it meant breaking down a tricky boss fight, strategizing with teammates, or later, figuring out how to make sense of messy data.</p>
-        
-            <p>Gaming taught me early on how to approach complex problems. Stay curious, adapt quickly, learn from failure, and always find a way to optimize. Those same habits pulled me toward Economics in high school, and later the Data Science side of my Master's program, where I realized I could use those skills to tackle real-world challenges.</p>
-        
-            <p>Since then, I've been using data science to help businesses operate smarter. Automating client analysis, building predictive models for employee retention, and even designing an NLP pipeline that extracts insights from SEC earnings calls to connect financial sentiment to stock performance. Every project is just a new puzzle to solve, and that's exactly why I love it.</p>
-        
-            <p>The same mindset that made me a strong teammate in esports and basketball: collaboration, critical thinking, and constant iteration, is the same one I bring to every role and project I take on.</p>
-
-            <p>I just finished a personal machine learning project where I built a model to predict professional match outcomes in Counter-Strike 2 (CS2), a popular esports title with over 1 million concurrent players each month.</p>
-
+    <div class="projects-grid">
+      <!-- Amazon Prime Subscription Project Card -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/amazon-project.jpg" alt="Why Prime Members Stay: A Deep-Dive with XGBoost">
+          <div class="project-overlay">
+            <div class="project-tags">
+              <span>Machine Learning</span><span>Python</span><span>Decision Trees</span>
+            </div>
+          </div>
         </div>
-
-
-
-
-
-            <div class="skills-container">
-                <h3>Technical Skills</h3>
-                <!-- Data Science -->
-                <div class="skill-category">
-                    <h4><i class="fas fa-brain"></i> Data Science Tools</h4>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-name">Scikit-learn</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name">Pandas</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 92%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name">NumPy</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- BI section -->
-                <div class="skill-category">
-                    <h4><i class="fas fa-database"></i> Business Intelligence</h4>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-name">Power BI</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name">SQL</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 100%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name">DAX</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Programming -->
-                <div class="skill-category">
-                    <h4><i class="fas fa-code"></i> Programming</h4>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-name">Python</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 100%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name">SQL</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 100%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name">R</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Visualization -->
-                <div class="skill-category">
-                    <h4><i class="fas fa-chart-line"></i> Data Visualization</h4>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-name">Power BI</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name">Tableau</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-name">Matplotlib</div>
-                            <div class="skill-progress">
-                                <div class="skill-progress-bar" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="section-subtitle">Let's connect</div>
-        <p>I'm currently looking for data science opportunities where I can put my skills to work. Have a position in mind or questions about my projects? I'd love to connect!</p>
-
-
-        <div class="contact-container">
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <h3>Email</h3>
-                <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a>
-            </div>
-
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fab fa-linkedin"></i>
-                </div>
-                <h3>LinkedIn</h3>
-                <a href="https://www.linkedin.com/in/lukeedwards32/" target="_blank">Connect with me</a>
-            </div>
-
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fab fa-github"></i>
-                </div>
-                <h3>GitHub</h3>
-                <a href="https://github.com/ledwards-analytics" target="_blank">View my repositories</a>
-            </div>
+        <div class="project-content">
+          <h3>Why Prime Members Stay: A Deep-Dive with XGBoost</h3>
+          <p>Built and tuned XGBoost, Decision Tree, and Random Forest models to predict subscription behavior and identify key drivers of customer retention.</p>
+          <a href="projects/amazon-prime-analysis.html" class="button">View Project</a>
         </div>
-    </section>
+      </div>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Luke Edwards</p>
-            <div class="footer-links">
-                <a href="mailto:luke3dwards32@gmail.com">Email</a>
-                <a href="https://www.linkedin.com/in/lukeedwards32/">LinkedIn</a>
-                <a href="https://github.com/ledwards-analytics">GitHub</a>
+      <!-- Employee Churn Risk Prediction Card -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/employee-retention.jpg" alt="Stopping Turnover: A Decision-Tree Churn Risk Analyzer">
+          <div class="project-overlay">
+            <div class="project-tags">
+              <span>Classification</span><span>HR Analytics</span><span>Python</span>
             </div>
+          </div>
         </div>
-    </footer>
+        <div class="project-content">
+          <h3>Stopping Turnover: A Decision-Tree Churn Risk Analyzer</h3>
+          <p>Developed a decision tree model with 95.9% accuracy to identify employees at risk of leaving.</p>
+          <a href="projects/employee-retention.html" class="button">View Project</a>
+        </div>
+      </div>
 
-    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+      <!-- Mental Health Analysis Project Card -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/mental-health.jpg" alt="Three Decades of Mental Health: Regression Reveals the Story">
+          <div class="project-overlay">
+            <div class="project-tags">
+              <span>Regression</span><span>Time Series</span><span>R</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Three Decades of Mental Health: Regression Reveals the Story</h3>
+          <p>Explored 30 years of global mental health data from 101 countries using multivariate regression to uncover key trends and patterns.</p>
+          <a href="projects/mental-health-analysis.html" class="button">View Project</a>
+        </div>
+      </div>
 
-    <script>
-        // Highlight active navigation item
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('nav a');
-            const sections = document.querySelectorAll('section[id]');
+      <!-- NBA Win Prediction Project Card -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/nba-project-thumbnail.jpg" alt="From ’80 to Today: Modeling NBA Win Chances">
+          <div class="project-overlay">
+            <div class="project-tags">
+              <span>Sports Analytics</span><span>Regression Modeling</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>From ’80 to Today: Modeling NBA Win Chances</h3>
+          <p>Analyzed 40 years of NBA data to find the key factors that influence team success, using statistical methods and regression analysis.</p>
+          <a href="projects/nba-win-prediction.html" class="button">View Project</a>
+        </div>
+      </div>
 
-            function highlightNav() {
-                let current = '';
-                const scrollPosition = window.scrollY;
+      <!-- NEW: CIBT Product Launch BI Dashboard -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/cibt-product-launch.png" alt="CIBT product launch Power BI dashboard">
+          <div class="project-overlay">
+            <div class="project-tags">
+              <span>Power BI</span><span>DAX</span><span>SQL</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Product Launch Performance (Power BI)</h3>
+          <p>KPI cards and region drilldowns (orders, activations, invoice status) with DAX measures & scheduled refresh. Helped sales/ops track rollout in near-real time.</p>
+          <a href="images/cibt-product-launch.png" target="_blank" class="button" rel="noopener">View Screenshot</a>
+          <!-- Optional: add a PBIX download later -->
+          <!-- <a href="files/CIBT-Product-Launch.pbix" class="button" style="margin-left:8px;">Download PBIX</a> -->
+        </div>
+      </div>
 
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
+      <!-- NEW: Video Game Sales Dashboard (Excel) -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/vg-sales-excel.png" alt="Excel dashboard of video game sales">
+          <div class="project-overlay">
+            <div class="project-tags">
+              <span>Excel</span><span>Pivot Tables</span><span>Visualization</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Video Game Sales Dashboard (Excel)</h3>
+          <p>Interactive Excel report with slicers & pivots: top genres/publishers, year trend, and platform comps. Built for quick executive reads.</p>
+          <a href="images/vg-sales-excel.png" target="_blank" class="button" rel="noopener">View Screenshot</a>
+          <!-- <a href="files/Video-Game-Sales-Dashboard.xlsx" class="button" style="margin-left:8px;">Download XLSX</a> -->
+        </div>
+      </div>
+    </div>
+  </section>
 
-                    if (scrollPosition >= sectionTop - 60) {
-                        current = section.getAttribute('id');
-                    }
-                });
+  <!-- Experience timeline -->
+  <section id="experience">
+    <h2 class="section-title">Experience & Education</h2>
+    <div class="section-subtitle">My professional journey</div>
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.classList.add('active');
-                    }
-                });
-            }
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Data Scientist</h3>
+          <h4>May 2025 - Current</h4>
+          <ul>
+            <li>Developing a machine learning model in Python to explain NRPU performance and reduce manual variance analysis by 2–3 hours per week.</li>
+            <li>Building a generative AI tool for automated lead sourcing to reduce manual research effort by over 70%.</li>
+            <li>Designing Power BI dashboards to automate commission reporting and improve accuracy.</li>
+            <li>Delivering weekly insights on performance trends to leadership, streamlining reporting and supporting data-driven business decisions.</li>
+          </ul>
+        </div>
+      </div>
 
-            // Back to top button functionality
-            const backToTopButton = document.querySelector('.back-to-top');
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content certification-timeline">
+          <h3>Google Advanced Data Analytics Professional Certificate</h3>
+          <h4>May 2025</h4>
+          <p>Statistical analysis, ML fundamentals, predictive modeling, and data-driven decision-making in Python.</p>
+        </div>
+      </div>
 
-            function toggleBackToTop() {
-                if (window.scrollY > 300) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
-            }
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content certification-timeline">
+          <h3>Power BI Masterclass</h3>
+          <h4>February 2024</h4>
+          <p>Company-sponsored professional development</p>
+        </div>
+      </div>
 
-            // Initial checks
-            highlightNav();
-            toggleBackToTop();
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Senior Business Intelligence Analyst</h3>
+          <h4>CIBT | July 2023 - April 2024</h4>
+          <ul>
+            <li>Standardized enterprise-wide reporting, reducing redundancies by 60%.</li>
+            <li>Built Power BI dashboards for real-time insights, improving decision-making.</li>
+            <li>Optimized SQL queries to cut reporting time by 43%.</li>
+            <li>Integrated Snowflake pipelines for more efficient access to reporting data.</li>
+          </ul>
+        </div>
+      </div>
 
-            // Event listeners
-            window.addEventListener('scroll', highlightNav);
-            window.addEventListener('scroll', toggleBackToTop);
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Senior Financial Analyst</h3>
+          <h4>Interface Financial Group | June 2022 - April 2023</h4>
+          <ul>
+            <li>Automated client analysis with Python, reducing processing time by 93% (20+ hours/month saved).</li>
+            <li>Conducted credit risk and investment evaluations across clients.</li>
+            <li>Partnered with leadership to improve data-driven underwriting.</li>
+          </ul>
+        </div>
+      </div>
 
-            // Smooth scroll to top when clicked
-            backToTopButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content education-timeline">
+          <h3>Master of Arts in Economics</h3>
+          <h4>Boise State University | 2022</h4>
+          <p>Specialized in Econometrics, Statistical Analysis, and Machine Learning.</p>
+        </div>
+      </div>
 
-            // Typewriter effect
-            const typewriterText = document.getElementById('typewriter-text');
-            const phrases = [
-                "Turning data into insights.",
-                "Building predictive models.",
-                "Solving business problems.",
-                "Creating data visualizations."
-            ];
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content education-timeline">
+          <h3>Bachelor's Degree in Economics</h3>
+          <h4>University of La Verne | 2019</h4>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            function typeWriter() {
-                const currentPhrase = phrases[phraseIndex];
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="section-subtitle">My journey in data science</div>
 
-                if (isDeleting) {
-                    typewriterText.textContent = currentPhrase.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                } else {
-                    typewriterText.textContent = currentPhrase.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 100;
-                }
+    <div class="about-text">
+      <p>I grew up obsessed with solving problems, whether it meant breaking down a tricky boss fight, strategizing with teammates, or later, figuring out how to make sense of messy data.</p>
+      <p>Gaming taught me early on how to approach complex problems: stay curious, adapt quickly, learn from failure, and always optimize. Those habits pulled me toward Economics and then data science, where I use those skills to tackle real-world challenges.</p>
+      <p>Since then I’ve automated client analysis, built predictive models for employee retention, and designed an NLP pipeline to extract insights from SEC earnings calls. Every project is a new puzzle to solve—and that’s why I love it.</p>
+      <p>I recently built a model to predict professional match outcomes in Counter-Strike 2 (CS2), a popular esports title with 1M+ concurrent monthly players.</p>
+    </div>
 
-                if (!isDeleting && charIndex === currentPhrase.length) {
-                    isDeleting = true;
-                    typingSpeed = 1500; // Pause at end of phrase
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    typingSpeed = 500; // Pause before starting new phrase
-                }
+    <div class="skills-container">
+      <h3>Technical Skills</h3>
 
-                setTimeout(typeWriter, typingSpeed);
-            }
+      <div class="skill-category">
+        <h4><i class="fas fa-brain"></i> Data Science Tools</h4>
+        <div class="skill-bars">
+          <div class="skill-bar"><div class="skill-name">Scikit-learn</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">Pandas</div><div class="skill-progress"><div class="skill-progress-bar" style="width:92%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">NumPy</div><div class="skill-progress"><div class="skill-progress-bar" style="width:90%"></div></div></div>
+        </div>
+      </div>
 
-            // Start the typewriter effect
-            setTimeout(typeWriter, 1000);
+      <div class="skill-category">
+        <h4><i class="fas fa-database"></i> Business Intelligence</h4>
+        <div class="skill-bars">
+          <div class="skill-bar"><div class="skill-name">Power BI</div><div class="skill-progress"><div class="skill-progress-bar" style="width:95%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">SQL</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">DAX</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
+        </div>
+      </div>
 
-            // Custom cursor effect
-            const cursor = document.querySelector('.custom-cursor');
+      <div class="skill-category">
+        <h4><i class="fas fa-code"></i> Programming</h4>
+        <div class="skill-bars">
+          <div class="skill-bar"><div class="skill-name">Python</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">SQL</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">R</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
+        </div>
+      </div>
 
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            });
+      <div class="skill-category">
+        <h4><i class="fas fa-chart-line"></i> Data Visualization</h4>
+        <div class="skill-bars">
+          <div class="skill-bar"><div class="skill-name">Power BI</div><div class="skill-progress"><div class="skill-progress-bar" style="width:95%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">Tableau</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">Matplotlib</div><div class="skill-progress"><div class="skill-progress-bar" style="width:90%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // Add hover effect to interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .project-card');
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-subtitle">Let's connect</div>
+    <p>I'm currently looking for data science opportunities where I can put my skills to work. Have a position in mind or questions about my projects? I'd love to connect!</p>
 
-            interactiveElements.forEach(element => {
-                element.addEventListener('mouseenter', () => {
-                    cursor.classList.add('cursor-hover');
-                });
+    <div class="contact-container">
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <h3>Email</h3>
+        <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+        <h3>LinkedIn</h3>
+        <a href="https://www.linkedin.com/in/lukeedwards32/" target="_blank" rel="noopener">Connect with me</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fab fa-github"></i></div>
+        <h3>GitHub</h3>
+        <a href="https://github.com/ledwards-analytics" target="_blank" rel="noopener">View my repositories</a>
+      </div>
+    </div>
+  </section>
 
-                element.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('cursor-hover');
-                });
-            });
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Luke Edwards</p>
+      <div class="footer-links">
+        <a href="mailto:luke3dwards32@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/lukeedwards32/">LinkedIn</a>
+        <a href="https://github.com/ledwards-analytics">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+
+  <script>
+    // Highlight active navigation item + back-to-top + typewriter + custom cursor
+    document.addEventListener('DOMContentLoaded', function () {
+      const navLinks = document.querySelectorAll('nav a');
+      const sections = document.querySelectorAll('section[id]');
+      function highlightNav() {
+        let current = '';
+        const scrollPosition = window.scrollY;
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (scrollPosition >= sectionTop - 60) current = section.getAttribute('id');
         });
-    </script>
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').includes(current)) link.classList.add('active');
+        });
+      }
+
+      const backToTopButton = document.querySelector('.back-to-top');
+      function toggleBackToTop() {
+        if (window.scrollY > 300) backToTopButton.classList.add('visible');
+        else backToTopButton.classList.remove('visible');
+      }
+
+      highlightNav(); toggleBackToTop();
+      window.addEventListener('scroll', highlightNav);
+      window.addEventListener('scroll', toggleBackToTop);
+      backToTopButton.addEventListener('click', function (e) {
+        e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Custom cursor effect
+      const cursor = document.querySelector('.custom-cursor');
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+      document.querySelectorAll('a, button, .project-card').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+      });
+
+      // ----- Theme toggle with persistence + OS preference -----
+      (function () {
+        const STORAGE_KEY = 'site-theme';
+        const toggleBtn = document.getElementById('theme-toggle');
+        const stored = localStorage.getItem(STORAGE_KEY);
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) document.body.classList.add('dark');
+        toggleBtn?.addEventListener('click', () => {
+          document.body.classList.toggle('dark');
+          localStorage.setItem(STORAGE_KEY, document.body.classList.contains('dark') ? 'dark' : 'light');
+        });
+      })();
+    });
+  </script>
 </body>
 </html>
