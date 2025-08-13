@@ -1,841 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2WWQF2C6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2WWQF2C6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QH2WWQF2C6');
+  </script>
 
-        gtag('config', 'G-QH2WWQF2C6');
-    </script>
+  <!-- No-flash theme preset -->
+  <script>
+    (function () {
+      try {
+        var KEY = 'site-theme';
+        var stored = localStorage.getItem(KEY);
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var useDark = stored ? stored === 'dark' : prefersDark;
+        if (useDark) document.documentElement.classList.add('dark'); // add to <html> pre-paint
+      } catch (e) {}
+    })();
+  </script>
 
-    <!-- No-flash theme preset -->
-    <script>
-      (function () {
-        try {
-          var KEY = 'site-theme';
-          var stored = localStorage.getItem(KEY);
-          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var useDark = stored ? stored === 'dark' : prefersDark;
-          if (useDark) document.documentElement.classList.add('dark'); // add to <html> pre-paint
-        } catch (e) {}
-      })();
-    </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stopping Turnover: A Decision-Tree Churn Risk Analyzer | Luke Edwards</title>
-    <!-- root-relative so it works from any page depth -->
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stopping Turnover: A Decision-Tree Churn Risk Analyzer | Luke Edwards</title>
 
-    <!-- Project-specific styles -->
-    <style>
-            .cursor-hover {
-                    width: 40px;
-                    height: 40px;
-                    background-color: rgba(0, 102, 204, 0.1);
-                    border-color: var(--secondary);
-            }
+  <!-- Root-relative so it works from any page depth -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-        /* Enhanced header */header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+  <!-- Page-specific touches (kept minimal) -->
+  <style>
+    /* Force the shared cursor look so it never disappears on gradients */
+    .custom-cursor {
+      mix-blend-mode: normal;
+      background-color: rgba(var(--primary-rgb), 0.12);
+    }
+    .cursor-hover {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 102, 204, 0.1);
+      border-color: var(--secondary);
+    }
 
-        .header-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0066cc 0%, #6c42c7 100%);
-            opacity: 0.05;
-            z-index: -1;
-        }
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 15px 0;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0066cc 0%, #6c42c7 100%);
+      opacity: 0.05;
+      z-index: -1;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .nav-link {
+      position: relative;
+      margin: 0 15px;
+      padding: 8px 12px;
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+      overflow: hidden;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-link:hover { color: var(--primary); }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    /* Project header */
+    .project-header {
+      background: linear-gradient(135deg, #0066cc 0%, #6c42c7 100%);
+      color: white;
+      padding: 100px 30px 60px;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('/images/pattern-bg.png');
+      opacity: 0.1;
+      z-index: 0;
+    }
+    .project-header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .project-header h1 { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; margin-bottom: 15px; display: inline-block; }
+    .project-header p { font-size: 1.3rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+    .project-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+    .project-tag { background-color: rgba(255, 255, 255, 0.2); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; backdrop-filter: blur(5px); }
 
-        .nav-link {
-            position: relative;
-            margin: 0 15px;
-            padding: 8px 12px;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-            overflow: hidden;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
+    /* Project sections */
+    .project-section {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-section:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); }
+    .project-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #0066cc, #6c42c7);
+      border-radius: 4px 0 0 4px;
+    }
 
-        .nav-link:hover {
-            color: var(--primary);
-        }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, #0066cc, #6c42c7);
+      border-radius: 3px;
+    }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: all 0.3s ease;
-        }
+    /* Visualizations */
+    .visualization { margin: 40px 0; text-align: center; transition: transform 0.3s ease; }
+    .visualization:hover { transform: scale(1.02); }
+    .visualization img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    .visualization:hover img { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); }
+    .visualization p { margin-top: 15px; color: #666; font-style: italic; }
 
-        .nav-link:hover::after {
-            width: 100%;
-        }
+    /* Key findings */
+    .key-finding {
+      background-color: rgba(0, 102, 204, 0.08);
+      border-left: 4px solid #0066cc;
+      padding: 20px 25px;
+      margin: 25px 0;
+      border-radius: 0 12px 12px 0;
+      transition: transform 0.3s ease;
+    }
+    .key-finding:hover { transform: translateX(5px); }
+    .key-finding h3 { color: #0066cc; margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
 
-        /* Project header */
-        .project-header {
-            background: linear-gradient(135deg, #0066cc 0%, #6c42c7 100%);
-            color: white;
-            padding: 100px 30px 60px;
-            text-align: center;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
+    /* Metrics */
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin: 35px 0; }
+    .metric-card {
+      background: linear-gradient(145deg, #ffffff, #f5f7fa);
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .metric-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(to right, #0066cc, #6c42c7); }
+    .metric-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    .metric-card h4 { font-family: 'Montserrat', sans-serif; color: #555; font-size: 1.1rem; }
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #0066cc, #6c42c7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 15px 0;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-        .project-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('/images/pattern-bg.png');
-            opacity: 0.1;
-            z-index: 0;
-        }
+    /* Lists */
+    ul, ol { padding-left: 20px; margin: 20px 0; }
+    ul li, ol li { margin-bottom: 10px; position: relative; }
+    ul li::before { content: '•'; color: #0066cc; font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; }
+    ol { counter-reset: item; list-style-type: none; }
+    ol li { counter-increment: item; }
+    ol li::before { content: counter(item) "."; color: #0066cc; font-weight: bold; display: inline-block; width: 1.5em; margin-left: -1.5em; }
 
-        .project-header-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    /* Collapsible section */
+    .collapsible {
+      background-color: #f8f9fa;
+      color: #333;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .collapsible:hover { background-color: #f1f3f5; }
+    .collapsible:after {
+      content: '\002B';
+      color: #0066cc;
+      font-weight: bold;
+      margin-left: 5px;
+      transition: 0.3s;
+    }
+    .active:after { content: "\2212"; transform: rotate(90deg); }
+    .collapsible-content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background-color: #fff;
+      border-radius: 0 0 10px 10px;
+    }
+    .collapsible-content-inner { padding: 20px 0; }
 
-        .project-header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
+    /* Two-column helper */
+    .two-column { display: grid; grid-template-columns: 1fr; gap: 30px; margin: 30px 0; }
+    @media (min-width: 768px) { .two-column { grid-template-columns: 1fr 1fr; } }
 
-        .project-header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+    /* Footer */
+    footer {
+      background-color: #f1f3f5;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+      margin-top: 60px;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #0066cc, #6c42c7);
+    }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #0066cc, #6c42c7);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .back-to-top:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
 
-        .project-tag {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(5px);
-        }
-
-        /* Project sections */
-        .project-section {
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .project-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, #0066cc, #6c42c7);
-            border-radius: 4px 0 0 4px;
-        }
-
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            color: #333;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to right, #0066cc, #6c42c7);
-            border-radius: 3px;
-        }
-
-        /* Visualizations */
-        .visualization {
-            margin: 40px 0;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .visualization:hover {
-            transform: scale(1.02);
-        }
-
-        .visualization img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .visualization:hover img {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .visualization p {
-            margin-top: 15px;
-            color: #666;
-            font-style: italic;
-        }
-
-        /* Key findings */
-        .key-finding {
-            background-color: rgba(0, 102, 204, 0.08);
-            border-left: 4px solid #0066cc;
-            padding: 20px 25px;
-            margin: 25px 0;
-            border-radius: 0 12px 12px 0;
-            transition: transform 0.3s ease;
-        }
-
-        .key-finding:hover {
-            transform: translateX(5px);
-        }
-
-        .key-finding h3 {
-            color: #0066cc;
-            margin-bottom: 10px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Metrics grid */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin: 35px 0;
-        }
-
-        .metric-card {
-            background: linear-gradient(145deg, #ffffff, #f5f7fa);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .metric-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, #0066cc, #6c42c7);
-        }
-
-        .metric-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .metric-card h4 {
-            font-family: 'Montserrat', sans-serif;
-            color: #555;
-            font-size: 1.1rem;
-        }
-
-        .metric-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #0066cc, #6c42c7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin: 15px 0;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Lists */
-        ul, ol {
-            padding-left: 20px;
-            margin: 20px 0;
-        }
-
-        ul li, ol li {
-            margin-bottom: 10px;
-            position: relative;
-        }
-
-        ul li::before {
-            content: '•';
-            color: #0066cc;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        ol {
-            counter-reset: item;
-            list-style-type: none;
-        }
-
-        ol li {
-            counter-increment: item;
-        }
-
-        ol li::before {
-            content: counter(item) ".";
-            color: #0066cc;
-            font-weight: bold;
-            display: inline-block;
-            width: 1.5em;
-            margin-left: -1.5em;
-        }
-
-        /* Collapsible section */
-        .collapsible {
-            background-color: #f8f9fa;
-            color: #333;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .collapsible:hover {
-            background-color: #f1f3f5;
-        }
-
-        .collapsible:after {
-            content: '\002B';
-            color: #0066cc;
-            font-weight: bold;
-            float: right;
-            margin-left: 5px;
-            transition: 0.3s;
-        }
-
-        .active:after {
-            content: "\2212";
-            transform: rotate(90deg);
-        }
-
-        .collapsible-content {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: white;
-            border-radius: 0 0 10px 10px;
-        }
-
-        .collapsible-content-inner {
-            padding: 20px 0;
-        }
-
-        /* Two-column layout */
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        @media (min-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* Footer */
-        footer {
-            background-color: #f1f3f5;
-            padding: 30px 20px;
-            text-align: center;
-            position: relative;
-            margin-top: 60px;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, #0066cc, #6c42c7);
-        }
-
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #0066cc, #6c42c7);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Application cards */
-        .application-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-
-        .application-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .application-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .application-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0066cc, #6c42c7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .application-icon i {
-            font-size: 24px;
-            color: white;
-        }
-
-        .application-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 15px;
-            color: #333;
-        }
-    </style>
+    /* Application cards */
+    .application-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin: 30px 0; }
+    .application-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .application-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    .application-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0066cc, #6c42c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .application-icon i { font-size: 24px; color: white; }
+    .application-card h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 15px; color: #333; }
+  </style>
 </head>
 
-
 <body class="employee-retention">
-    <div class="custom-cursor"></div>
+  <div class="custom-cursor"></div>
 
-    <header>
-        <div class="header-background"></div>
-        <nav>
-            <a href="/index.html" class="nav-link"><span>Home</span></a>
-            <a href="/index.html#projects" class="nav-link"><span>Projects</span></a>
-            <a href="/index.html#about" class="nav-link"><span>About</span></a>
-            <a href="/index.html#contact" class="nav-link"><span>Contact</span></a>
-            <a href="/files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
-            <!-- Theme toggle -->
-            <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle color theme">
-                <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
-                <span class="sr-only">Toggle theme</span>
-            </button>
-        </nav>
-    </header>
+  <header>
+    <div class="header-background"></div>
+    <nav>
+      <a href="/index.html" class="nav-link"><span>Home</span></a>
+      <a href="/index.html#projects" class="nav-link"><span>Projects</span></a>
+      <a href="/index.html#about" class="nav-link"><span>About</span></a>
+      <a href="/index.html#contact" class="nav-link"><span>Contact</span></a>
+      <a href="/files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
+      <!-- Theme toggle -->
+      <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle color theme">
+        <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+        <span class="sr-only">Toggle theme</span>
+      </button>
+    </nav>
+  </header>
 
-    <div class="project-header">
-        <div class="project-header-content">
-            <h1>Stopping Turnover: A Decision-Tree Churn Risk Analyzer</h1>
-            <p>Identifying Key Factors Driving Employee Turnover</p>
-            <div class="project-tags">
-                <span class="project-tag">HR Analytics</span>
-                <span class="project-tag">Machine Learning</span>
-                <span class="project-tag">Random Forest</span>
-                <span class="project-tag">Classification</span>
-            </div>
-        </div>
+  <div class="project-header">
+    <div class="project-header-content">
+      <h1>Stopping Turnover: A Decision-Tree Churn Risk Analyzer</h1>
+      <p>Identifying Key Factors Driving Employee Turnover</p>
+      <div class="project-tags">
+        <span class="project-tag">HR Analytics</span>
+        <span class="project-tag">Machine Learning</span>
+        <span class="project-tag">Random Forest</span>
+        <span class="project-tag">Classification</span>
+      </div>
     </div>
+  </div>
 
-    <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
-        <div class="project-section">
-            <h2 class="section-title">Executive Summary</h2>
-            <p>This project analyzes employee data to identify key factors driving turnover and develops a predictive model that can accurately forecast which employees are at risk of leaving the organization.</p>
+  <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+    <div class="project-section">
+      <h2 class="section-title">Executive Summary</h2>
+      <p>This project analyzes employee data to identify key factors driving turnover and develops a predictive model that can accurately forecast which employees are at risk of leaving the organization.</p>
 
-            <div class="key-finding">
-                <h3>Key Achievement</h3>
-                <p>Developed a Random Forest classification model that predicts employee turnover with 98.4% precision and 91.5% recall, identifying workload and satisfaction as the primary drivers of retention issues.</p>
-            </div>
+      <div class="key-finding">
+        <h3>Key Achievement</h3>
+        <p>Developed a Random Forest classification model that predicts employee turnover with 98.4% precision and 91.5% recall, identifying workload and satisfaction as the primary drivers of retention issues.</p>
+      </div>
 
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <h4>Model Precision</h4>
-                    <div class="metric-value">98.4%</div>
-                    <p>Accuracy in predicting turnover</p>
-                </div>
-                <div class="metric-card">
-                    <h4>Model Recall</h4>
-                    <div class="metric-value">91.5%</div>
-                    <p>Ability to identify at-risk employees</p>
-                </div>
-                <div class="metric-card">
-                    <h4>Key Factors</h4>
-                    <div class="metric-value">4</div>
-                    <p>Primary drivers of turnover</p>
-                </div>
-            </div>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h4>Model Precision</h4>
+          <div class="metric-value">98.4%</div>
+          <p>Accuracy in predicting turnover</p>
         </div>
-
-        <div class="project-section">
-            <h2 class="section-title">Key Findings</h2>
-
-                <div>
-                        <h3>Workload Impact</h3>
-                        <p>The analysis revealed a strong correlation between excessive workload and employee turnover:</p>
-                        <ul>
-                                <li><strong>100% of employees with 7 projects</strong> left the company</li>
-                                <li><strong>Nearly 50% of employees with 6 projects</strong> departed</li>
-                                <li>Satisfaction levels drop significantly once employees have more than 6 projects</li>
-                                <li>Employees working more than 175 monthly hours were classified as "overworked" and showed higher turnover rates</li>
-                        </ul>
-                </div>
-
-                    <div class="visualization">
-                            <img src="/images/employee-projects-turnover.jpg" alt="Projects vs Turnover Chart">
-                            <p><em>Relationship between number of projects and employee turnover</em></p>
-                    </div>
-                
-                    <div class="key-finding">
-                            <h3>Tenure and Retention</h3>
-                            <p>The analysis found that no employee who has been at the company for more than 6 years left, suggesting that longer tenure correlates strongly with higher retention. This indicates that retention strategies should focus on employees in their first 5 years with the company.</p>
-                    </div>
-
-            <div class="visualization">
-                <img src="/images/employee-satisfaction-hours.jpg" alt="Satisfaction vs Hours Chart">
-                <p><em>Relationship between working hours, satisfaction, and turnover</em></p>
-            </div>
-
-            <div class="key-finding">
-                <h3>Recognition and Workload Balance</h3>
-                <p>Employees who received low evaluation scores despite working fewer hours were at risk of leaving, suggesting potential issues with recognition or career development. This indicates that workload management alone is not sufficient - employees need to feel valued and recognized for their contributions.</p>
-            </div>
+        <div class="metric-card">
+          <h4>Model Recall</h4>
+          <div class="metric-value">91.5%</div>
+          <p>Ability to identify at-risk employees</p>
         </div>
-
-        <div class="project-section">
-            <h2 class="section-title">Methodology Overview</h2>
-
-            <p>This project followed a structured analytical approach to develop a reliable predictive model:</p>
-
-            <ol>
-                <li><strong>Data Collection</strong> - Gathered comprehensive employee data including satisfaction levels, project counts, working hours, tenure, and turnover status</li>
-                <li><strong>Exploratory Analysis</strong> - Identified patterns and relationships between variables</li>
-                <li><strong>Feature Engineering</strong> - Created new features like "overworked" status based on monthly hours</li>
-                <li><strong>Model Development</strong> - Tested multiple classification algorithms including Random Forest, Decision Trees, and Logistic Regression</li>
-                <li><strong>Model Evaluation</strong> - Assessed performance using precision, recall, and F1-score metrics</li>
-                <li><strong>Feature Importance Analysis</strong> - Identified the most influential factors in predicting turnover</li>
-            </ol>
-
-            <div class="visualization">
-                <img src="/images/employee-model-performance.jpg" alt="Model Performance Comparison">
-                <p><em>Performance comparison of different classification models</em></p>
-            </div>
-
-            <button class="collapsible">Technical Details <i class="fas fa-code"></i></button>
-            <div class="collapsible-content">
-                <div class="collapsible-content-inner">
-                    <h3>Model Selection Process</h3>
-                    <p>Multiple classification models were evaluated for this project:</p>
-                    <ul>
-                        <li><strong>Random Forest</strong> - Best overall performance with 98.4% precision and 91.5% recall</li>
-                        <li><strong>Decision Tree</strong> - Good interpretability but slightly lower precision (95.2%)</li>
-                        <li><strong>Logistic Regression</strong> - Simplest model but lowest performance (89.7% precision)</li>
-                    </ul>
-
-                    <h3>Feature Engineering</h3>
-                    <p>Several engineered features improved model performance:</p>
-                    <ul>
-                        <li><strong>Overworked</strong> - Binary feature indicating if an employee works more than 175 hours monthly</li>
-                        <li><strong>Project Load</strong> - Categorized project count into Low (1-3), Medium (4-5), and High (6+)</li>
-                        <li><strong>Satisfaction Trend</strong> - Calculated from historical satisfaction surveys to capture changes over time</li>
-                    </ul>
-
-                    <h3>Feature Importance</h3>
-                    <p>The Random Forest model identified these features as most predictive (in order of importance):</p>
-                    <ol>
-                        <li>Number of projects (27.3%)</li>
-                        <li>Monthly working hours (23.1%)</li>
-                        <li>Satisfaction level (19.8%)</li>
-                        <li>Years at company (15.4%)</li>
-                        <li>Last evaluation score (8.2%)</li>
-                        <li>Department (3.7%)</li>
-                        <li>Salary level (2.5%)</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-section">
-            <h2 class="section-title">Business Applications</h2>
-
-            <p>This predictive model offers valuable applications for HR and management teams:</p>
-
-            <div class="application-cards">
-                <div class="application-card">
-                    <div class="application-icon">
-                        <i class="fas fa-user-shield"></i>
-                    </div>
-                    <h3>Proactive Retention</h3>
-                    <p>Identify at-risk employees before they decide to leave, allowing for targeted interventions and retention strategies.</p>
-                </div>
-
-                <div class="application-card">
-                    <div class="application-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3>Workload Management</h3>
-                    <p>Optimize project assignments and working hours to prevent employee burnout and maintain satisfaction levels.</p>
-                </div>
-
-                <div class="application-card">
-                    <div class="application-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Strategic Planning</h3>
-                    <p>Forecast potential turnover rates to better plan recruitment needs and maintain operational continuity.</p>
-                </div>
-            </div>
-
-            <div class="key-finding">
-                <h3>Strategic Insight</h3>
-                <p>The model suggests that addressing work-life balance and recognition issues would be more effective for improving retention than focusing solely on compensation. Management should prioritize optimizing project workloads and ensuring employees receive appropriate recognition for their contributions.</p>
-            </div>
-        </div>
-
-        <div class="project-section">
-            <h2 class="section-title">Conclusion & Future Work</h2>
-
-            <p>This analysis provides valuable insights into the factors driving employee turnover and offers a reliable predictive model for identifying at-risk employees. By focusing on workload management, recognition, and targeted retention strategies for employees in their first 5 years, organizations can significantly improve retention rates.</p>
-
-            <h3>Future Directions</h3>
-            <p>This research could be extended in several promising directions:</p>
-            <ul>
-                <li>Incorporate qualitative data from exit interviews to enhance model accuracy</li>
-                <li>Develop department-specific models to account for different working conditions and expectations</li>
-                <li>Create an interactive dashboard for HR teams to monitor retention risk in real-time</li>
-                <li>Expand the analysis to include additional factors like remote work preferences, team dynamics, and career growth opportunities</li>
-            </ul>
-        </div>
-    </div>
-
-    <footer>
-      <div class="footer-content">
-        <p>&copy; 2025 Luke Edwards</p>
-        <div class="footer-links">
-          <a class="link-button" href="mailto:luke3dwards32@gmail.com" aria-label="Email Luke">
-            <i class="fas fa-envelope" aria-hidden="true"></i><span>Email me</span>
-          </a>
-          <a class="link-button" href="https://www.linkedin.com/in/lukeedwards32/" target="_blank" rel="noopener" aria-label="Visit LinkedIn">
-            <i class="fab fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span>
-          </a>
-          <a class="link-button" href="https://github.com/ledwards-analytics" target="_blank" rel="noopener" aria-label="Visit GitHub">
-            <i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span>
-          </a>
+        <div class="metric-card">
+          <h4>Key Factors</h4>
+          <div class="metric-value">4</div>
+          <p>Primary drivers of turnover</p>
         </div>
       </div>
-    </footer>
+    </div>
 
-    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    <div class="project-section">
+      <h2 class="section-title">Key Findings</h2>
 
-    <!-- Shared theme logic -->
-    <script src="/js/theme.js" defer></script>
+      <div>
+        <h3>Workload Impact</h3>
+        <p>The analysis revealed a strong correlation between excessive workload and employee turnover:</p>
+        <ul>
+          <li><strong>100% of employees with 7 projects</strong> left the company</li>
+          <li><strong>Nearly 50% of employees with 6 projects</strong> departed</li>
+          <li>Satisfaction levels drop significantly once employees have more than 6 projects</li>
+          <li>Employees working more than 175 monthly hours were classified as "overworked" and showed higher turnover rates</li>
+        </ul>
+      </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Back to top button functionality
-            const backToTopButton = document.querySelector('.back-to-top');
+      <div class="visualization">
+        <img src="/images/employee-projects-turnover.jpg" alt="Projects vs Turnover Chart" />
+        <p><em>Relationship between number of projects and employee turnover</em></p>
+      </div>
 
-            function toggleBackToTop() {
-                if (window.scrollY > 300) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
-            }
+      <div class="key-finding">
+        <h3>Tenure and Retention</h3>
+        <p>The analysis found that no employee who has been at the company for more than 6 years left, suggesting that longer tenure correlates strongly with higher retention. This indicates that retention strategies should focus on employees in their first 5 years with the company.</p>
+      </div>
 
-            // Initial check
-            toggleBackToTop();
+      <div class="visualization">
+        <img src="/images/employee-satisfaction-hours.jpg" alt="Satisfaction vs Hours Chart" />
+        <p><em>Relationship between working hours, satisfaction, and turnover</em></p>
+      </div>
 
-            // Event listener
-            window.addEventListener('scroll', toggleBackToTop);
+      <div class="key-finding">
+        <h3>Recognition and Workload Balance</h3>
+        <p>Employees who received low evaluation scores despite working fewer hours were at risk of leaving, suggesting potential issues with recognition or career development. This indicates that workload management alone is not sufficient - employees need to feel valued and recognized for their contributions.</p>
+      </div>
+    </div>
 
-            // Smooth scroll to top when clicked
-            backToTopButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+    <div class="project-section">
+      <h2 class="section-title">Methodology Overview</h2>
 
-            // Custom cursor effect
-            const cursor = document.querySelector('.custom-cursor');
+      <p>This project followed a structured analytical approach to develop a reliable predictive model:</p>
 
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            });
+      <ol>
+        <li><strong>Data Collection</strong> - Gathered comprehensive employee data including satisfaction levels, project counts, working hours, tenure, and turnover status</li>
+        <li><strong>Exploratory Analysis</strong> - Identified patterns and relationships between variables</li>
+        <li><strong>Feature Engineering</strong> - Created new features like "overworked" status based on monthly hours</li>
+        <li><strong>Model Development</strong> - Tested multiple classification algorithms including Random Forest, Decision Trees, and Logistic Regression</li>
+        <li><strong>Model Evaluation</strong> - Assessed performance using precision, recall, and F1-score metrics</li>
+        <li><strong>Feature Importance Analysis</strong> - Identified the most influential factors in predicting turnover</li>
+      </ol>
 
-            // Add hover effect to interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .visualization, .metric-card, .application-card');
+      <div class="visualization">
+        <img src="/images/employee-model-performance.jpg" alt="Model Performance Comparison" />
+        <p><em>Performance comparison of different classification models</em></p>
+      </div>
 
-            interactiveElements.forEach(element => {
-                element.addEventListener('mouseenter', () => {
-                    cursor.classList.add('cursor-hover');
-                });
+      <button class="collapsible">Technical Details <i class="fas fa-code"></i></button>
+      <div class="collapsible-content">
+        <div class="collapsible-content-inner">
+          <h3>Model Selection Process</h3>
+          <p>Multiple classification models were evaluated for this project:</p>
+          <ul>
+            <li><strong>Random Forest</strong> - Best overall performance with 98.4% precision and 91.5% recall</li>
+            <li><strong>Decision Tree</strong> - Good interpretability but slightly lower precision (95.2%)</li>
+            <li><strong>Logistic Regression</strong> - Simplest model but lowest performance (89.7% precision)</li>
+          </ul>
 
-                element.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('cursor-hover');
-                });
-            });
+          <h3>Feature Engineering</h3>
+          <p>Several engineered features improved model performance:</p>
+          <ul>
+            <li><strong>Overworked</strong> - Binary feature indicating if an employee works more than 175 hours monthly</li>
+            <li><strong>Project Load</strong> - Categorized project count into Low (1-3), Medium (4-5), and High (6+)</li>
+            <li><strong>Satisfaction Trend</strong> - Calculated from historical satisfaction surveys to capture changes over time</li>
+          </ul>
 
-            // Collapsible sections
-            const collapsibles = document.querySelectorAll('.collapsible');
+          <h3>Feature Importance</h3>
+          <p>The Random Forest model identified these features as most predictive (in order of importance):</p>
+          <ol>
+            <li>Number of projects (27.3%)</li>
+            <li>Monthly working hours (23.1%)</li>
+            <li>Satisfaction level (19.8%)</li>
+            <li>Years at company (15.4%)</li>
+            <li>Last evaluation score (8.2%)</li>
+            <li>Department (3.7%)</li>
+            <li>Salary level (2.5%)</li>
+          </ol>
+        </div>
+      </div>
+    </div>
 
-            collapsibles.forEach(collapsible => {
-                collapsible.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    const content = this.nextElementSibling;
+    <div class="project-section">
+      <h2 class="section-title">Business Applications</h2>
 
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
-                    }
-                });
-            });
+      <p>This predictive model offers valuable applications for HR and management teams:</p>
 
-            // Animate metric values on scroll
-            const metricValues = document.querySelectorAll('.metric-value');
+      <div class="application-cards">
+        <div class="application-card">
+          <div class="application-icon"><i class="fas fa-user-shield"></i></div>
+          <h3>Proactive Retention</h3>
+          <p>Identify at-risk employees before they decide to leave, allowing for targeted interventions and retention strategies.</p>
+        </div>
 
-            function animateMetrics() {
-                metricValues.forEach(metric => {
-                    const metricPosition = metric.getBoundingClientRect().top;
-                    const screenPosition = window.innerHeight / 1.3;
+        <div class="application-card">
+          <div class="application-icon"><i class="fas fa-balance-scale"></i></div>
+          <h3>Workload Management</h3>
+          <p>Optimize project assignments and working hours to prevent employee burnout and maintain satisfaction levels.</p>
+        </div>
 
-                    if (metricPosition < screenPosition) {
-                        metric.style.opacity = 1;
-                        metric.style.transform = 'translateY(0)';
-                    }
-                });
-            }
+        <div class="application-card">
+          <div class="application-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Strategic Planning</h3>
+          <p>Forecast potential turnover rates to better plan recruitment needs and maintain operational continuity.</p>
+        </div>
+      </div>
 
-            // Set initial styles
-            metricValues.forEach(metric => {
-                metric.style.opacity = 0;
-                metric.style.transform = 'translateY(20px)';
-                metric.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            });
+      <div class="key-finding">
+        <h3>Strategic Insight</h3>
+        <p>The model suggests that addressing work-life balance and recognition issues would be more effective for improving retention than focusing solely on compensation. Management should prioritize optimizing project workloads and ensuring employees receive appropriate recognition for their contributions.</p>
+      </div>
+    </div>
+  </div>
 
-            // Check on scroll
-            window.addEventListener('scroll', animateMetrics);
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Luke Edwards</p>
+      <div class="footer-links">
+        <a class="link-button" href="mailto:luke3dwards32@gmail.com" aria-label="Email Luke">
+          <i class="fas fa-envelope" aria-hidden="true"></i><span>Email me</span>
+        </a>
+        <a class="link-button" href="https://www.linkedin.com/in/lukeedwards32/" target="_blank" rel="noopener" aria-label="Visit LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span>
+        </a>
+        <a class="link-button" href="https://github.com/ledwards-analytics" target="_blank" rel="noopener" aria-label="Visit GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
 
-            // Initial check
-            animateMetrics();
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+  <!-- Shared theme logic -->
+  <script src="/js/theme.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Back to top button visibility
+      const backToTopButton = document.querySelector('.back-to-top');
+      function toggleBackToTop() {
+        if (window.scrollY > 300) backToTopButton.classList.add('visible');
+        else backToTopButton.classList.remove('visible');
+      }
+      toggleBackToTop();
+      window.addEventListener('scroll', toggleBackToTop);
+
+      // Smooth scroll to top
+      backToTopButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Custom cursor
+      const cursor = document.querySelector('.custom-cursor');
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+
+      // Hover targets
+      const interactiveElements = document.querySelectorAll('a, button, .visualization, .metric-card, .application-card');
+      interactiveElements.forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+          cursor.classList.add('cursor-hover'); // fixed
         });
-    </script>
+        el.addEventListener('mouseleave', () => {
+          cursor.classList.remove('cursor-hover'); // fixed
+        });
+      });
+
+      // Collapsibles
+      const collapsibles = document.querySelectorAll('.collapsible');
+      collapsibles.forEach((c) => {
+        c.addEventListener('click', function () {
+          this.classList.toggle('active');
+          const content = this.nextElementSibling;
+          if (content.style.maxHeight) content.style.maxHeight = null;
+          else content.style.maxHeight = content.scrollHeight + 'px';
+        });
+      });
+
+      // Animate metrics
+      const metricValues = document.querySelectorAll('.metric-value');
+      function animateMetrics() {
+        metricValues.forEach((metric) => {
+          const metricPosition = metric.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+          if (metricPosition < screenPosition) {
+            metric.style.opacity = 1;
+            metric.style.transform = 'translateY(0)';
+          }
+        });
+      }
+      metricValues.forEach((metric) => {
+        metric.style.opacity = 0;
+        metric.style.transform = 'translateY(20px)';
+        metric.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      });
+      window.addEventListener('scroll', animateMetrics);
+      animateMetrics();
+    });
+  </script>
 </body>
 </html>
