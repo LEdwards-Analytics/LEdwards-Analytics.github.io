@@ -398,3 +398,53 @@ footer::before { content:''; position:absolute; top:0; left:0; width:100%; heigh
 .cursor-hover{
   background-color: rgba(var(--primary-rgb), .22);
 }
+
+/* Metric card title contrast fix */
+.metric-card h4 { color: var(--text-light) !important; }
+
+/* Contact section tiles */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.contact-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.contact-card i { font-size: 18px; color: var(--primary); }
+.contact-card a { color: var(--text-dark); text-decoration: none; }
+.dark .contact-card a { color: var(--text-light); }
+
+/* Employee Retention page-specific (theme vars applied) */
+.employee-retention .project-header,
+.employee-retention .project-section::before,
+.employee-retention .metric-card::before,
+.employee-retention .application-icon {
+  background: var(--gradient-primary);
+}
+.employee-retention .key-finding {
+  background-color: rgba(var(--primary-rgb), 0.08);
+  border-left: 4px solid var(--primary);
+}
+.employee-retention .key-finding h3 { color: var(--primary); }
+
+/* Cursor hardening (already near bottom of your CSS) */
+.custom-cursor {
+  background-color: rgba(var(--primary-rgb), .14);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.25);
+}
+.dark .custom-cursor {
+  border-color: rgba(255,255,255,.75);
+  background-color: rgba(255,255,255,.08);
+  box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset;
+}
+.cursor-hover {
+  background-color: rgba(var(--primary-rgb), .22);
+}
