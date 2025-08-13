@@ -10,7 +10,7 @@
     gtag('config', 'G-QH2WWQF2C6');
   </script>
 
-  <!-- No-flash theme preset -->
+  <!-- No-flash theme preset (applies before first paint) -->
   <script>
     (function () {
       try {
@@ -18,150 +18,227 @@
         var stored = localStorage.getItem(KEY);
         var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         var useDark = stored ? stored === 'dark' : prefersDark;
-        if (useDark) document.documentElement.classList.add('dark'); // add to <html> pre-paint
+        if (useDark) document.documentElement.classList.add('dark'); // <html> for lowest CLS
       } catch (e) {}
     })();
   </script>
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stopping Turnover: A Decision-Tree Churn Risk Analyzer | Luke Edwards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Three Decades of Mental Health: Regression Reveals the Story | Luke Edwards</title>
 
-  <!-- Root-relative so it works from any page depth -->
+  <!-- Root-relative so it works from any subpage -->
   <link rel="stylesheet" href="/css/style.css" />
+
+  <!-- Icons & fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Page-specific touches (kept minimal) -->
+  <!-- Project-specific styles (only what’s unique to this page) -->
   <style>
-  /* Cursor: consistent + visible on light/green panels */
-    .custom-cursor{
-      mix-blend-mode: normal;
-      background-color: rgba(var(--primary-rgb), .16);
-      border: 2px solid var(--primary);
-    }
-    .cursor-hover { width: 40px; height: 40px; background-color: rgba(var(--primary-rgb), .20); border-color: var(--secondary); }
-  
-    /* Header */
-    header {
-      position: fixed; top:0; left:0; width:100%; z-index:1000; padding:15px 0;
-      transition: var(--transition); background-color: rgba(255,255,255,.95);
-      box-shadow: 0 2px 10px rgba(0,0,0,.1);
-    }
-    .dark header { background-color: rgba(17,20,24,.9); }
-    .header-background { position:absolute; inset:0; background: var(--gradient-primary); opacity:.05; z-index:-1; }
-  
-    nav { display:flex; justify-content:center; align-items:center; max-width:1200px; margin:0 auto; padding:0 20px; }
-    .nav-link {
-      position:relative; margin:0 15px; padding:8px 12px; color:var(--text-dark);
-      text-decoration:none; font-weight:500; transition:var(--transition); border-radius:4px; overflow:hidden; background:transparent; border:none; cursor:pointer;
-    }
-    .dark .nav-link{ color:var(--text-light); }
-    .nav-link:hover{ color:var(--primary); }
-    .nav-link::after{ content:''; position:absolute; bottom:0; left:0; width:0; height:2px; background:var(--primary); transition:var(--transition); }
-    .nav-link:hover::after{ width:100%; }
-  
-    /* Hero */
+    /* Project header */
     .project-header {
-      background: var(--gradient-primary); color:#fff; padding:100px 30px 60px; text-align:center;
-      border-radius:0 0 20px 20px; margin-bottom:40px; position:relative; overflow:hidden;
+      background: var(--gradient-primary);
+      color: white;
+      padding: 100px 30px 60px;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
     }
-    .project-header::before { content:''; position:absolute; inset:0; background:url('/images/pattern-bg.png'); opacity:.1; z-index:0; }
-    .project-header-content { position:relative; z-index:1; max-width:800px; margin:0 auto; }
-    .project-header h1 { font-family:'Montserrat',sans-serif; font-size:2.8rem; margin-bottom:15px; display:inline-block; }
-    .project-header p { font-size:1.3rem; opacity:.95; max-width:700px; margin:0 auto; }
-    .project-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:20px; }
-    .project-tag { background-color:rgba(255,255,255,.2); color:#fff; padding:5px 15px; border-radius:20px; font-size:.9rem; backdrop-filter:blur(5px); }
-  
-    /* Sections */
+    .project-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('/images/pattern-bg.png');
+      opacity: 0.1;
+      z-index: 0;
+    }
+    .project-header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .project-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    .project-header p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .project-tag {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(5px);
+    }
+
+    /* Card sections (kept minimal—rest is in global CSS) */
     .project-section {
-      background-color: var(--card-bg); padding:40px; border-radius:15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.08); margin-bottom:40px;
-      transition: transform .3s ease, box-shadow .3s ease; position:relative; overflow:hidden;
+      background-color: var(--card-bg);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .project-section:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,.12); }
-    .project-section::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background: var(--gradient-primary); border-radius:4px 0 0 4px; }
-  
-    .section-title { font-family:'Montserrat',sans-serif; font-size:1.8rem; color:var(--text-dark); margin-bottom:20px; padding-bottom:10px; position:relative; }
-    .section-title::after { content:''; position:absolute; bottom:0; left:0; width:60px; height:3px; background: var(--gradient-primary); border-radius:3px; }
-  
-    /* Visualizations */
-    .visualization { margin:40px 0; text-align:center; transition: transform .3s ease; }
+    .project-section:hover { transform: translateY(-5px); }
+    .project-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 4px 0 0 4px;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 60px; height: 3px;
+      background: var(--gradient-primary);
+      border-radius: 3px;
+    }
+
+    /* Visuals */
+    .visualization { margin: 40px 0; text-align: center; transition: transform .3s ease; }
     .visualization:hover { transform: scale(1.02); }
-    .visualization img { max-width:100%; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,.1); transition: box-shadow .3s ease; }
-    .visualization:hover img { box-shadow:0 8px 25px rgba(0,0,0,.15); }
-    .visualization p { margin-top:15px; color:var(--text-light); font-style:italic; }
-  
-    /* Key finding */
+    .visualization img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.1);
+      transition: box-shadow .3s ease;
+      display:block;             /* center images */
+      margin:0 auto;             /* center images */
+    }
+    .visualization:hover img { box-shadow: 0 8px 25px rgba(0,0,0,.15); }
+    .visualization p { margin-top: 15px; color: var(--text-light); font-style: italic; }
+
+    /* Key finding callout */
     .key-finding {
-      background-color: rgba(var(--primary-rgb), .08);
+      background-color: rgba(var(--primary-rgb), 0.08);
       border-left: 4px solid var(--primary);
-      padding: 20px 25px; margin:25px 0; border-radius:0 12px 12px 0; transition: transform .3s ease;
+      padding: 20px 25px;
+      margin: 25px 0;
+      border-radius: 0 12px 12px 0;
+      transition: transform .3s ease;
     }
     .key-finding:hover { transform: translateX(5px); }
-    .key-finding h3 { color: var(--primary); margin-bottom:10px; font-family:'Montserrat',sans-serif; }
-  
-    /* Metrics */
-    .metrics-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:25px; margin:35px 0; }
+    .key-finding h3 { color: var(--primary); margin-bottom: 10px; font-family: 'Montserrat', sans-serif; }
+
+    /* Metrics grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin: 35px 0;
+    }
     .metric-card {
       background: linear-gradient(145deg, #ffffff, #f5f7fa);
-      padding:25px; border-radius:15px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,.05);
-      transition: transform .3s ease, box-shadow .3s ease; position:relative; overflow:hidden;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,.05);
+      transition: transform .3s ease, box-shadow .3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .dark .metric-card { background: linear-gradient(145deg, #1a1f26, #12161c); }
-    .metric-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:4px; background: var(--gradient-primary); }
-    .metric-card:hover { transform: translateY(-8px); box-shadow:0 12px 30px rgba(0,0,0,.1); }
-    .metric-card h4 { color: var(--text-light); font-size:1.1rem; }  /* <-- readable in dark mode */
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: var(--gradient-primary);
+    }
+    .metric-card:hover { transform: translateY(-8px); }
+    .metric-card h4 { font-family: 'Montserrat', sans-serif; color: #555; font-size: 1.1rem; }
     .metric-value {
-      font-size:2.5rem; font-weight:700; background: var(--gradient-primary);
-      -webkit-background-clip:text; background-clip:text; color:transparent; margin:15px 0;
-      font-family:'Montserrat',sans-serif;
+      font-size: 2.5rem; font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin: 15px 0; font-family: 'Montserrat', sans-serif;
     }
-  
-    /* Lists */
-    ul,ol { padding-left:20px; margin:20px 0; }
-    ul li, ol li { margin-bottom:10px; position:relative; }
-    ul li::before { content:'•'; color:var(--primary); font-weight:bold; display:inline-block; width:1em; margin-left:-1em; }
-    ol { counter-reset:item; list-style-type:none; }
-    ol li { counter-increment:item; }
-    ol li::before { content: counter(item) "."; color:var(--primary); font-weight:bold; display:inline-block; width:1.5em; margin-left:-1.5em; }
-  
-    /* Collapsible */
-    .collapsible { background-color:#f8f9fa; color:#333; cursor:pointer; padding:18px; width:100%; border:none; text-align:left; outline:none; font-size:1.1rem; font-weight:600; border-radius:10px; transition:.3s; display:flex; justify-content:space-between; align-items:center; font-family:'Montserrat',sans-serif; }
-    .dark .collapsible { background-color:#1a1f26; color:var(--text-dark); }
-    .collapsible:hover { background-color:#f1f3f5; } .dark .collapsible:hover{ background-color:#232a34; }
-    .collapsible:after { content:'\002B'; color:var(--primary); font-weight:bold; margin-left:5px; transition:.3s; }
-    .active:after { content:'\2212'; transform:rotate(90deg); }
-    .collapsible-content { padding:0 18px; max-height:0; overflow:hidden; transition:max-height .3s ease-out; background-color:var(--card-bg); border-radius:0 0 10px 10px; }
-    .collapsible-content-inner { padding:20px 0; }
-  
-    /* Footer */
-    footer { background-color:#f1f3f5; padding:30px 20px; text-align:center; position:relative; margin-top:60px; }
-    .dark footer { background-color:#12161c; }
-    footer::before { content:''; position:absolute; top:0; left:0; width:100%; height:4px; background: var(--gradient-primary); }
-  
-    /* Back to top */
-    .back-to-top{
-      position:fixed; bottom:30px; right:30px; width:50px; height:50px; background: var(--primary);
-      color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none;
-      box-shadow:0 4px 15px rgba(0,0,0,.2); opacity:0; visibility:hidden; transition:all .3s ease; z-index:999;
-    }
-    .back-to-top.visible{ opacity:1; visibility:visible; }
-    .back-to-top:hover{ transform:translateY(-5px); background:var(--primary-dark); box-shadow:0 6px 20px rgba(0,0,0,.3); }
-  
-    /* Application cards */
-    .application-cards{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:25px; margin:30px 0; }
-    .application-card{ background-color: var(--card-bg); border-radius:15px; padding:25px; box-shadow:0 5px 15px rgba(0,0,0,.05); transition: transform .3s ease, box-shadow .3s ease; position:relative; overflow:hidden; }
-    .application-card:hover{ transform:translateY(-8px); box-shadow:0 12px 30px rgba(0,0,0,.1); }
-    .application-icon{ width:60px; height:60px; border-radius:50%; background: var(--gradient-primary); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
-    .application-icon i{ font-size:24px; color:#fff; }
-    .application-card h3{ font-family:'Montserrat',sans-serif; margin-bottom:15px; color:var(--text-dark); }
-  </style>
 
+    /* Collapsible */
+    .collapsible {
+      background-color: #f8f9fa;
+      color: #333;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: .3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .collapsible:hover { background-color: #f1f3f5; }
+    .collapsible:after { content: '\002B'; color: var(--primary); font-weight: bold; margin-left: 5px; transition: .3s; }
+    .active:after { content: "\2212"; transform: rotate(90deg); }
+    .collapsible-content {
+      padding: 0 18px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease-out;
+      background-color: var(--card-bg);
+      border-radius: 0 0 10px 10px;
+    }
+    .collapsible-content-inner { padding: 20px 0; }
+
+    /* Two-column layout */
+    .two-column { display:grid; grid-template-columns: 1fr; gap:30px; margin:30px 0; }
+    @media (min-width: 768px) { .two-column { grid-template-columns: 1fr 1fr; } }
+
+    /* Map block */
+    .map-visualization { margin: 40px 0; position: relative; }
+    .map-visualization img { max-width:100%; border-radius:12px; box-shadow: 0 5px 15px rgba(0,0,0,.1); display:block; margin:0 auto; }
+
+    /* Replace discrete legend with a compact gradient bar that matches the heatmap */
+    .legend-bar{
+      height:14px; border-radius:8px; margin:12px auto 0;
+      max-width:420px;
+      background: linear-gradient(to right, #ffffb2, #fecc5c, #fd8d3c, #f03b20, #bd0026);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.15);
+    }
+  </style>
 </head>
 
-<body class="employee-retention">
+<body class="mental-health">
   <div class="custom-cursor"></div>
 
   <header>
@@ -172,7 +249,6 @@
       <a href="/index.html#about" class="nav-link"><span>About</span></a>
       <a href="/index.html#contact" class="nav-link"><span>Contact</span></a>
       <a href="/files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
-      <!-- Theme toggle -->
       <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle color theme">
         <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
         <span class="sr-only">Toggle theme</span>
@@ -182,181 +258,211 @@
 
   <div class="project-header">
     <div class="project-header-content">
-      <h1>Stopping Turnover: A Decision-Tree Churn Risk Analyzer</h1>
-      <p>Identifying Key Factors Driving Employee Turnover</p>
+      <h1>Three Decades of Mental Health: Regression Reveals the Story</h1>
+      <p>Suicide Rates Around the World (1985–2016)</p>
       <div class="project-tags">
-        <span class="project-tag">HR Analytics</span>
-        <span class="project-tag">Machine Learning</span>
-        <span class="project-tag">Random Forest</span>
-        <span class="project-tag">Classification</span>
+        <span class="project-tag">Time Series Analysis</span>
+        <span class="project-tag">Global Health</span>
+        <span class="project-tag">Regression</span>
+        <span class="project-tag">R</span>
       </div>
     </div>
   </div>
 
-  <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+  <div class="container-narrow">
     <div class="project-section">
       <h2 class="section-title">Executive Summary</h2>
-      <p>This project analyzes employee data to identify key factors driving turnover and develops a predictive model that can accurately forecast which employees are at risk of leaving the organization.</p>
+      <p>This research examines global suicide trends from 1985 to 2016, analyzing patterns across time, gender, geography, and economic factors. The study specifically investigates whether a country's GDP affects its suicide rates, challenging common assumptions about economic prosperity and mental health outcomes.</p>
 
       <div class="key-finding">
-        <h3>Key Achievement</h3>
-        <p>Developed a Random Forest classification model that predicts employee turnover with 98.4% precision and 91.5% recall, identifying workload and satisfaction as the primary drivers of retention issues.</p>
+        <h3>Key Finding</h3>
+        <p>Statistical analysis found no significant correlation between a country's GDP (both annual and per capita) and its suicide rates, with p-values of 0.846 and 0.460 respectively. This challenges the assumption that economic factors are primary drivers of suicide rates across countries.</p>
       </div>
 
       <div class="metrics-grid">
         <div class="metric-card">
-          <h4>Model Precision</h4>
-          <div class="metric-value">98.4%</div>
-          <p>Accuracy in predicting turnover</p>
+          <h4>Study Period</h4>
+          <div class="metric-value">31 Years</div>
+          <p>1985–2016</p>
         </div>
         <div class="metric-card">
-          <h4>Model Recall</h4>
-          <div class="metric-value">91.5%</div>
-          <p>Ability to identify at-risk employees</p>
+          <h4>Countries Analyzed</h4>
+          <div class="metric-value">101</div>
+          <p>Across multiple continents</p>
         </div>
         <div class="metric-card">
-          <h4>Key Factors</h4>
-          <div class="metric-value">4</div>
-          <p>Primary drivers of turnover</p>
+          <h4>Gender Disparity</h4>
+          <div class="metric-value">4:1</div>
+          <p>Male to female suicide ratio</p>
         </div>
       </div>
     </div>
 
     <div class="project-section">
-      <h2 class="section-title">Key Findings</h2>
+      <h2 class="section-title">Global Trends & Patterns</h2>
 
-      <div>
-        <h3>Workload Impact</h3>
-        <p>The analysis revealed a strong correlation between excessive workload and employee turnover:</p>
+      <div class="visualization">
+        <img src="/images/mental-health-global-trend.jpg" alt="Global Suicide Rate Trends 1985-2016" />
+        <p><em>Global suicide rates over time, showing peak in 1995 and subsequent decline</em></p>
+      </div>
+
+      <div class="two-column">
+        <div>
+          <h3>Temporal Trends</h3>
+          <p>The analysis revealed distinct patterns in global suicide rates over the 31-year study period:</p>
+          <ul>
+            <li>Global suicide rates increased until 2002 and have since decreased</li>
+            <li>The highest rate occurred in 1995 (15.7 per 100,000 population)</li>
+            <li>By 2015, rates had fallen to 11.1 per 100,000 population</li>
+            <li>The trend shows a clear inverted U-shape pattern over the study period</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Gender Disparities</h3>
+          <p>The study found significant differences in suicide rates between males and females:</p>
+          <ul>
+            <li>Males have approximately four times higher suicide rates than females (20 vs. 5.4 per 100,000)</li>
+            <li>Male suicide rates fluctuated significantly, peaking in 1995</li>
+            <li>Female rates have steadily decreased since 1985 without major spikes</li>
+            <li>The gender disparity persisted across all regions and time periods</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="key-finding">
+        <h3>Regional Variations</h3>
+        <p>European and Asian regions show approximately double the suicide rates of North America and Australia, with Lithuania having the highest rate (68.14 per 100,000 for males). This suggests that cultural, social, and healthcare factors may play more significant roles than economic development.</p>
+      </div>
+
+      <div class="map-visualization">
+        <img src="/images/mental-health-world-map.jpg" alt="World Map of Suicide Rates" />
+        <!-- Gradient legend that matches the heatmap -->
+        <div class="legend-bar" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h2 class="section-title">Economic Analysis</h2>
+
+      <p>A central question of this research was whether economic factors, particularly GDP, correlate with suicide rates across countries. The analysis tested both annual GDP and GDP per capita as potential predictors.</p>
+
+      <div class="visualization">
+        <img src="/images/mental-health-gdp-correlation.jpg" alt="GDP vs Suicide Rate Correlation" />
+        <p><em>Scatter plot showing lack of correlation between GDP per capita and suicide rates</em></p>
+      </div>
+
+      <div class="key-finding">
+        <h3>Statistical Findings</h3>
+        <p>The regression analysis found no statistically significant relationship between GDP metrics and suicide rates:</p>
         <ul>
-          <li><strong>100% of employees with 7 projects</strong> left the company</li>
-          <li><strong>Nearly 50% of employees with 6 projects</strong> departed</li>
-          <li>Satisfaction levels drop significantly once employees have more than 6 projects</li>
-          <li>Employees working more than 175 monthly hours were classified as "overworked" and showed higher turnover rates</li>
+          <li>Annual GDP correlation: p-value = 0.846 (not significant)</li>
+          <li>GDP per capita correlation: p-value = 0.460 (not significant)</li>
+          <li>R-squared values were extremely low, indicating GDP explains very little variance in suicide rates</li>
         </ul>
-      </div>
-
-      <div class="visualization">
-        <img src="/images/employee-projects-turnover.jpg" alt="Projects vs Turnover Chart" />
-        <p><em>Relationship between number of projects and employee turnover</em></p>
-      </div>
-
-      <div class="key-finding">
-        <h3>Tenure and Retention</h3>
-        <p>The analysis found that no employee who has been at the company for more than 6 years left, suggesting that longer tenure correlates strongly with higher retention. This indicates that retention strategies should focus on employees in their first 5 years with the company.</p>
-      </div>
-
-      <div class="visualization">
-        <img src="/images/employee-satisfaction-hours.jpg" alt="Satisfaction vs Hours Chart" />
-        <p><em>Relationship between working hours, satisfaction, and turnover</em></p>
-      </div>
-
-      <div class="key-finding">
-        <h3>Recognition and Workload Balance</h3>
-        <p>Employees who received low evaluation scores despite working fewer hours were at risk of leaving, suggesting potential issues with recognition or career development. This indicates that workload management alone is not sufficient - employees need to feel valued and recognized for their contributions.</p>
-      </div>
-    </div>
-
-    <div class="project-section">
-      <h2 class="section-title">Methodology Overview</h2>
-
-      <p>This project followed a structured analytical approach to develop a reliable predictive model:</p>
-
-      <ol>
-        <li><strong>Data Collection</strong> - Gathered comprehensive employee data including satisfaction levels, project counts, working hours, tenure, and turnover status</li>
-        <li><strong>Exploratory Analysis</strong> - Identified patterns and relationships between variables</li>
-        <li><strong>Feature Engineering</strong> - Created new features like "overworked" status based on monthly hours</li>
-        <li><strong>Model Development</strong> - Tested multiple classification algorithms including Random Forest, Decision Trees, and Logistic Regression</li>
-        <li><strong>Model Evaluation</strong> - Assessed performance using precision, recall, and F1-score metrics</li>
-        <li><strong>Feature Importance Analysis</strong> - Identified the most influential factors in predicting turnover</li>
-      </ol>
-
-      <div class="visualization">
-        <img src="/images/employee-model-performance.jpg" alt="Model Performance Comparison" />
-        <p><em>Performance comparison of different classification models</em></p>
       </div>
 
       <button class="collapsible">Technical Details <i class="fas fa-code"></i></button>
       <div class="collapsible-content">
         <div class="collapsible-content-inner">
-          <h3>Model Selection Process</h3>
-          <p>Multiple classification models were evaluated for this project:</p>
-          <ul>
-            <li><strong>Random Forest</strong> - Best overall performance with 98.4% precision and 91.5% recall</li>
-            <li><strong>Decision Tree</strong> - Good interpretability but slightly lower precision (95.2%)</li>
-            <li><strong>Logistic Regression</strong> - Simplest model but lowest performance (89.7% precision)</li>
-          </ul>
+          <h3>Regression Model Specifications</h3>
+          <p>The analysis employed multiple regression models to test the relationship between economic factors and suicide rates:</p>
 
-          <h3>Feature Engineering</h3>
-          <p>Several engineered features improved model performance:</p>
-          <ul>
-            <li><strong>Overworked</strong> - Binary feature indicating if an employee works more than 175 hours monthly</li>
-            <li><strong>Project Load</strong> - Categorized project count into Low (1-3), Medium (4-5), and High (6+)</li>
-            <li><strong>Satisfaction Trend</strong> - Calculated from historical satisfaction surveys to capture changes over time</li>
-          </ul>
+          <h4>Model 1: Annual GDP</h4>
+          <pre>
+lm(formula = suicide_rate ~ annual_gdp, data = country_data)
 
-          <h3>Feature Importance</h3>
-          <p>The Random Forest model identified these features as most predictive (in order of importance):</p>
-          <ol>
-            <li>Number of projects (27.3%)</li>
-            <li>Monthly working hours (23.1%)</li>
-            <li>Satisfaction level (19.8%)</li>
-            <li>Years at company (15.4%)</li>
-            <li>Last evaluation score (8.2%)</li>
-            <li>Department (3.7%)</li>
-            <li>Salary level (2.5%)</li>
-          </ol>
+Coefficients:
+              Estimate   Std. Error   t value   Pr(>|t|)    
+(Intercept)  1.324e+01   5.629e-01    23.52    &lt;2e-16 ***
+annual_gdp   3.139e-14   1.607e-13     0.20     0.846    
+
+Residual standard error: 5.63 on 99 degrees of freedom
+Multiple R-squared:  0.0003865, Adjusted R-squared:  -0.009707
+F-statistic: 0.03825 on 1 and 99 DF,  p-value: 0.8454
+          </pre>
+
+          <h4>Model 2: GDP Per Capita</h4>
+          <pre>
+lm(formula = suicide_rate ~ gdp_per_capita, data = country_data)
+
+Coefficients:
+                 Estimate   Std. Error   t value   Pr(>|t|)    
+(Intercept)     1.287e+01   6.515e-01    19.76    &lt;2e-16 ***
+gdp_per_capita  4.836e-05   6.515e-05     0.74     0.460    
+
+Residual standard error: 5.619 on 99 degrees of freedom
+Multiple R-squared:  0.005531, Adjusted R-squared:  -0.004517
+F-statistic: 0.5501 on 1 and 99 DF,  p-value: 0.4599
+          </pre>
+
+          <h3>Data Limitations</h3>
+          <ul>
+            <li>Missing data from many African countries and parts of South America and Southern Asia</li>
+            <li>Potential underreporting in countries with strong religious or cultural taboos around suicide</li>
+            <li>Variations in reporting methods and definitions across countries</li>
+            <li>Limited socioeconomic variables beyond GDP metrics</li>
+          </ul>
         </div>
       </div>
     </div>
 
     <div class="project-section">
-      <h2 class="section-title">Business Applications</h2>
-
-      <p>This predictive model offers valuable applications for HR and management teams:</p>
+      <h2 class="section-title">Research Implications</h2>
 
       <div class="application-cards">
         <div class="application-card">
-          <div class="application-icon"><i class="fas fa-user-shield"></i></div>
-          <h3>Proactive Retention</h3>
-          <p>Identify at-risk employees before they decide to leave, allowing for targeted interventions and retention strategies.</p>
+          <div class="application-icon"><i class="fas fa-brain"></i></div>
+          <h3>Mental Health Policy</h3>
+          <p>The findings suggest that mental health interventions should not be based solely on economic development indicators, as GDP appears unrelated to suicide rates.</p>
         </div>
 
         <div class="application-card">
-          <div class="application-icon"><i class="fas fa-balance-scale"></i></div>
-          <h3>Workload Management</h3>
-          <p>Optimize project assignments and working hours to prevent employee burnout and maintain satisfaction levels.</p>
+          <div class="application-icon"><i class="fas fa-globe"></i></div>
+          <h3>Regional Approaches</h3>
+          <p>The significant regional variations indicate that culturally specific approaches to suicide prevention may be more effective than universal strategies.</p>
         </div>
 
         <div class="application-card">
-          <div class="application-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Strategic Planning</h3>
-          <p>Forecast potential turnover rates to better plan recruitment needs and maintain operational continuity.</p>
+          <div class="application-icon"><i class="fas fa-venus-mars"></i></div>
+          <h3>Gender-Specific Programs</h3>
+          <p>The consistent 4:1 male-to-female suicide ratio suggests the need for gender-specific mental health interventions, particularly targeting men.</p>
         </div>
       </div>
 
       <div class="key-finding">
-        <h3>Strategic Insight</h3>
-        <p>The model suggests that addressing work-life balance and recognition issues would be more effective for improving retention than focusing solely on compensation. Management should prioritize optimizing project workloads and ensuring employees receive appropriate recognition for their contributions.</p>
+        <h3>COVID-19 Context</h3>
+        <p>This research established a baseline understanding for comparison with future data, particularly from the COVID-19 pandemic period. The findings suggest that economic downturns alone may not necessarily lead to increased suicide rates, though more research is needed on this specific relationship.</p>
       </div>
+    </div>
+
+    <div class="project-section">
+      <h2 class="section-title">Conclusion & Future Directions</h2>
+
+      <p>This analysis challenges common assumptions about the relationship between economic prosperity and suicide rates. The lack of correlation between GDP indicators and suicide rates suggests that mental health outcomes are influenced by a complex interplay of factors beyond economic development.</p>
+
+      <h3>Key Takeaways</h3>
+      <ul>
+        <li>Global suicide rates peaked in 1995 and have since declined</li>
+        <li>Males have consistently higher suicide rates than females across all regions</li>
+        <li>European and Asian regions show approximately double the suicide rates of North America and Australia</li>
+        <li>No significant correlation exists between GDP metrics and suicide rates</li>
+        <li>The data has limitations, particularly the lack of information from African countries</li>
+      </ul>
+
+      <h3>Future Research Directions</h3>
+      <ul>
+        <li>Investigating cultural, social, and healthcare factors that may better explain regional variations</li>
+        <li>Examining the impact of specific mental health policies and interventions on suicide rates</li>
+        <li>Analyzing the effects of the COVID-19 pandemic on global mental health patterns</li>
+        <li>Exploring gender-specific risk factors and protective factors for suicide</li>
+        <li>Developing more comprehensive data collection methods to include underrepresented regions</li>
+      </ul>
     </div>
   </div>
 
   <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 Luke Edwards</p>
-      <div class="footer-links">
-        <a class="link-button" href="mailto:luke3dwards32@gmail.com" aria-label="Email Luke">
-          <i class="fas fa-envelope" aria-hidden="true"></i><span>Email me</span>
-        </a>
-        <a class="link-button" href="https://www.linkedin.com/in/lukeedwards32/" target="_blank" rel="noopener" aria-label="Visit LinkedIn">
-          <i class="fab fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span>
-        </a>
-        <a class="link-button" href="https://github.com/ledwards-analytics" target="_blank" rel="noopener" aria-label="Visit GitHub">
-          <i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span>
-        </a>
-      </div>
-    </div>
+    <p>&copy; 2025 Luke Edwards | <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a></p>
   </footer>
 
   <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
@@ -366,7 +472,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // Back to top button visibility
+      // Back to top
       const backToTopButton = document.querySelector('.back-to-top');
       function toggleBackToTop() {
         if (window.scrollY > 300) backToTopButton.classList.add('visible');
@@ -374,8 +480,6 @@
       }
       toggleBackToTop();
       window.addEventListener('scroll', toggleBackToTop);
-
-      // Smooth scroll to top
       backToTopButton.addEventListener('click', function (e) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -387,21 +491,15 @@
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
       });
-
-      // Hover targets
-      const interactiveElements = document.querySelectorAll('a, button, .visualization, .metric-card, .application-card');
-      interactiveElements.forEach((el) => {
-        el.addEventListener('mouseenter', () => {
-          cursor.classList.add('cursor-hover'); // fixed
-        });
-        el.addEventListener('mouseleave', () => {
-          cursor.classList.remove('cursor-hover'); // fixed
-        });
+      const interactive = document.querySelectorAll('a, button, .visualization, .metric-card, .application-card');
+      interactive.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
       });
 
-      // Collapsibles
+      // Collapsible sections
       const collapsibles = document.querySelectorAll('.collapsible');
-      collapsibles.forEach((c) => {
+      collapsibles.forEach(c => {
         c.addEventListener('click', function () {
           this.classList.toggle('active');
           const content = this.nextElementSibling;
@@ -409,26 +507,6 @@
           else content.style.maxHeight = content.scrollHeight + 'px';
         });
       });
-
-      // Animate metrics
-      const metricValues = document.querySelectorAll('.metric-value');
-      function animateMetrics() {
-        metricValues.forEach((metric) => {
-          const metricPosition = metric.getBoundingClientRect().top;
-          const screenPosition = window.innerHeight / 1.3;
-          if (metricPosition < screenPosition) {
-            metric.style.opacity = 1;
-            metric.style.transform = 'translateY(0)';
-          }
-        });
-      }
-      metricValues.forEach((metric) => {
-        metric.style.opacity = 0;
-        metric.style.transform = 'translateY(20px)';
-        metric.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      });
-      window.addEventListener('scroll', animateMetrics);
-      animateMetrics();
     });
   </script>
 </body>
