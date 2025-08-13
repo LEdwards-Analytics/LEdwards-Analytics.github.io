@@ -53,10 +53,12 @@
   --text-light: #b6c0cc;
   --shadow: 0 6px 20px rgba(0,0,0,0.35);
 
-  --primary: #7ab8ff;
-  --primary-dark: #4d94ff;
-  --primary-light: #a8d0ff;
-  --primary-rgb: 122,184,255;
+  /* toned-down blues for dark mode */
+  --primary: #4d94ff;
+  --primary-dark: #3a7cf0;
+  --primary-light: #76b2ff;
+  --primary-rgb: 77, 148, 255;
+
   --secondary: #b79cff;
   --secondary-light: #d0c1ff;
 
@@ -103,7 +105,7 @@ nav { display: flex; justify-content: center; align-items: center; max-width: 12
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 .dark .nav-link { color: var(--text-light); }
 
-/* ADDED: theme toggle icon sizing/alignment */
+/* Theme toggle icon */
 .theme-toggle i { font-size: 18px; line-height: 1; }
 
 /* Hero */
@@ -135,8 +137,12 @@ nav { display: flex; justify-content: center; align-items: center; max-width: 12
 .hero p { font-size: 1.1rem; margin-bottom: 30px; color: var(--text-light); line-height: 1.8; }
 .hero-buttons { display: flex; gap: 15px; margin-top: 20px; }
 .button { display:inline-block; padding:12px 24px; border-radius:30px; text-decoration:none; font-weight:500; transition:var(--transition); text-align:center; }
-.primary-button { background: var(--gradient-primary); color:#fff; box-shadow: 0 4px 15px rgba(var(--primary-rgb),0.3); }
-.primary-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(var(--primary-rgb),0.4); }
+
+/* Solid primary CTA */
+.primary-button { background: var(--primary); color:#fff; box-shadow: 0 4px 15px rgba(var(--primary-rgb),0.3); }
+.primary-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(var(--primary-rgb),0.4); background: var(--primary-dark); }
+
+/* Secondary (outline) */
 .secondary-button { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
 .secondary-button:hover { background-color: rgba(var(--primary-rgb),0.1); transform: translateY(-3px); }
 
@@ -183,21 +189,14 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
   border-radius: 4px; 
   overflow: hidden; 
 }
-.dark .skill-progress { 
-  background-color: #2a2f36; 
-}
-.skill-progress-bar { 
-  height: 100%; 
-  background: var(--primary);  /* solid color for better readability */
-  border-radius: 4px; 
-  transition: width 1s ease-in-out; 
-}
+.dark .skill-progress { background-color: #2a2f36; }
+.skill-progress-bar { height: 100%; background: var(--primary); border-radius: 4px; transition: width 1s ease-in-out; }
 
 /* Contact */
 .contact-container { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; margin-top:40px; }
 .contact-card { background-color: var(--card-bg); padding:30px; border-radius:12px; text-align:center; box-shadow: var(--shadow); transition: var(--transition); }
 .contact-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-.contact-icon { width:70px; height:70px; border-radius:50%; background: var(--gradient-primary); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; }
+.contact-icon { width:70px; height:70px; border-radius:50%; background: var(--gradient-primary); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; text-decoration:none; }
 .contact-icon i { font-size:30px; color:#fff; }
 .contact-card h3 { margin-bottom:15px; color: var(--text-dark); }
 .contact-card a { color: var(--primary); text-decoration:none; transition: var(--transition); }
@@ -207,42 +206,26 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
 footer { background-color:#f1f3f5; padding:30px 20px; text-align:center; position:relative; }
 footer::before { content:''; position:absolute; top:0; left:0; width:100%; height:4px; background: var(--gradient-primary); }
 
-/* ADDED: footer link buttons */
-.footer-links {
-  display: inline-flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 10px;
-}
+/* Footer link buttons — solid to match skill bars */
+.footer-links { display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
 .link-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  text-decoration: none;
-  border: 1px solid var(--primary);
-  color: var(--primary);
-  background: rgba(var(--primary-rgb), 0.08);
-  transition: transform .12s ease, color .15s ease, border-color .15s ease, background .15s ease;
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px;
+  border-radius: 999px; text-decoration: none; border: 1px solid var(--primary);
+  color: #fff; background: var(--primary);
+  transition: transform .12s ease, background .15s ease;
 }
-.link-button:hover {
-  transform: translateY(-2px);
-  color: var(--primary-light);
-  border-color: var(--primary-light);
-  background: rgba(var(--primary-rgb), 0.12);
-}
+.link-button:hover { transform: translateY(-2px); background: var(--primary-dark); }
 .link-button i { font-size: 14px; }
+.dark .link-button:hover { background: var(--primary-light); color: #000; }
 
-/* Back to top */
+/* Back to top — solid */
 .back-to-top {
-  position: fixed; bottom:30px; right:30px; width:50px; height:50px; background: var(--gradient-primary); color:#fff; border-radius:50%;
+  position: fixed; bottom:30px; right:30px; width:50px; height:50px; background: var(--primary); color:#fff; border-radius:50%;
   display:flex; align-items:center; justify-content:center; text-decoration:none; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   opacity:0; visibility:hidden; transition: all .3s ease; z-index:999;
 }
 .back-to-top.visible { opacity:1; visibility:visible; }
-.back-to-top:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.back-to-top:hover { transform: translateY(-5px); background: var(--primary-dark); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
 
 /* Timeline */
 .timeline { position:relative; max-width:1200px; margin:40px auto; }
@@ -273,7 +256,7 @@ footer::before { content:''; position:absolute; top:0; left:0; width:100%; heigh
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
 
-/* ADDED: accessibility helper */
+/* Accessibility helper */
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0, 0, 1px, 1px); white-space: nowrap; border: 0;
