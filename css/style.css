@@ -386,3 +386,116 @@ body, a, button, .project-card { cursor: none; }
    THEME-SPECIFIC OVERRIDES
 ==================================*/
 html[data-theme="dark"] .project-overlay { background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 65%); }
+
+
+
+
+/* ===========================
+   DARK THEME OVERRIDES
+   =========================== */
+:root[data-theme="dark"] {
+  --primary: #6aa9ff;
+  --primary-dark: #5688cc;
+  --primary-light: #9dc3ff;
+  --primary-rgb: 106, 169, 255;
+
+  --secondary: #b89cff;
+  --secondary-light: #cebaff;
+  --accent: #ff8b8b;
+
+  --text-dark: #f1f3f5;
+  --text-light: #c7c9cc;
+  --background: #0f1115;
+  --card-bg: #161a22;
+  --shadow: 0 6px 18px rgba(0,0,0,0.5);
+
+  --gradient-primary: linear-gradient(135deg, #24324a 0%, #1c2233 100%);
+  --gradient-secondary: linear-gradient(135deg, #2a1f4d 0%, #3a284f 100%);
+}
+
+:root[data-theme="dark"] header {
+  background-color: rgba(15, 17, 21, 0.85);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+:root[data-theme="dark"] .header-background { opacity: 0.15; }
+
+:root[data-theme="dark"] body {
+  color: var(--text-dark);
+  background-color: var(--background);
+}
+:root[data-theme="dark"] .project-card,
+:root[data-theme="dark"] .skills-container,
+:root[data-theme="dark"] .contact-card,
+:root[data-theme="dark"] .timeline-content {
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+}
+:root[data-theme="dark"] .project-card h3,
+:root[data-theme="dark"] .contact-card h3,
+:root[data-theme="dark"] .timeline-content h3,
+:root[data-theme="dark"] .degree,
+:root[data-theme="dark"] .cert-name {
+  color: var(--text-dark);
+}
+:root[data-theme="dark"] .project-card p,
+:root[data-theme="dark"] .about-text p,
+:root[data-theme="dark"] .timeline-content li,
+:root[data-theme="dark"] .section-subtitle,
+:root[data-theme="dark"] .institution,
+:root[data-theme="dark"] .cert-date,
+:root[data-theme="dark"] .year,
+:root[data-theme="dark"] .gpa {
+  color: var(--text-light);
+}
+
+:root[data-theme="dark"] .hero h1 { color: var(--text-dark); }
+:root[data-theme="dark"] .hero h2 { color: var(--primary); }
+:root[data-theme="dark"] .hero p  { color: var(--text-light); }
+
+:root[data-theme="dark"] .nav-link { color: var(--text-dark); }
+:root[data-theme="dark"] .nav-link:hover { color: var(--primary); }
+
+:root[data-theme="dark"] footer { background-color: #11141a; }
+:root[data-theme="dark"] .footer-content a { color: var(--primary); }
+
+:root[data-theme="dark"] .back-to-top {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* ===========================
+   THEME TOGGLE BUTTON
+   =========================== */
+.theme-toggle {
+  margin-left: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background-color: rgba(var(--primary-rgb), 0.10);
+  transform: translateY(-1px);
+}
+
+.theme-toggle i {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Show moon in light mode (to indicate click = dark), sun in dark mode (click = light) */
+.theme-toggle .sun { display: none; }
+.theme-toggle .moon { display: inline-block; }
+:root[data-theme="dark"] .theme-toggle .sun { display: inline-block; }
+:root[data-theme="dark"] .theme-toggle .moon { display: none; }
+
+@media (hover: none) {
+  .theme-toggle:hover { transform: none; }
+}
