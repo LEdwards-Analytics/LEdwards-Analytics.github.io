@@ -30,9 +30,17 @@
   --nba-secondary:#ffb700; --nba-secondary-light:#ffc944;
   --nba-gradient: linear-gradient(135deg, var(--nba-primary) 0%, var(--nba-secondary) 100%);
 
-  --employee-primary:#0066cc; --employee-primary-dark:#004d99; --employee-primary-light:#4d94ff; --employee-primary-rgb:0,102,204;
-  --employee-secondary:#6c42c7; --employee-secondary-light:#9b7dd4;
-  --employee-gradient: linear-gradient(135deg, var(--employee-primary) 0%, var(--employee-secondary) 100%);
+    /* Purple theme for Employee Retention */
+   --employee-primary: #7b3fe4; /* primary purple */
+   --employee-primary-dark: #5f2fb2; 
+   --employee-primary-light: #a37bf0; 
+   --employee-primary-rgb: 123, 63, 228;
+   
+   --employee-secondary: #e73c7e; /* magenta-pink accent */
+   --employee-secondary-light: #f28db5;
+   
+   --employee-gradient: linear-gradient(135deg, var(--employee-primary) 0%, var(--employee-secondary) 100%);
+
 
   --amazon-primary:#0066cc; --amazon-primary-dark:#004d99; --amazon-primary-light:#4d94ff; --amazon-primary-rgb:0,102,204;
   --amazon-secondary:#6c42c7; --amazon-secondary-light:#9b7dd4;
