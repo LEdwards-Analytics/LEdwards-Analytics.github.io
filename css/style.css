@@ -427,3 +427,83 @@ footer::before { content:''; position:absolute; top:0; left:0; width:100%; heigh
   border-left: 4px solid var(--primary);
 }
 .employee-retention .key-finding h3 { color: var(--primary); }
+
+
+
+/* ===== Contact tiles (centered, same look as skill cards) ===== */
+#contact {
+  /* optional: tiny top spacing sync with other sections */
+  padding-top: 20px;
+}
+
+/* Row container: centered and width-limited */
+#contact .contact-tiles{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+
+  /* keep the row aligned with your main content width */
+  max-width: 1000px;        /* match .container-narrow */
+  margin: 18px auto 0;      /* centers it */
+  padding: 0 20px;          /* edge buffer on small screens */
+}
+
+/* Card look (mirrors tool/skill cards) */
+#contact .contact-card{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  background-color: #f8f9fa;           /* light */
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  text-decoration: none;
+  color: var(--text-dark);
+}
+.dark #contact .contact-card{
+  background-color: #1a1f26;           /* dark */
+  color: var(--text-dark);
+}
+
+#contact .contact-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
+/* Icon chip (same as skill/app cards) */
+#contact .contact-card .icon{
+  width: 42px; height: 42px; flex: 0 0 42px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--gradient-primary);
+  color: #fff;
+  font-size: 18px;
+}
+
+/* Text stack */
+#contact .contact-card .label{
+  display: block;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-dark);
+}
+.dark #contact .contact-card .label{ color: var(--text-dark); }
+
+#contact .contact-card .meta{
+  display: block;
+  color: var(--text-light);
+  font-size: .95rem;
+}
+
+/* Accessibility: focus ring for keyboard users */
+#contact .contact-card:focus{
+  outline: 3px solid rgba(var(--primary-rgb), .35);
+  outline-offset: 2px;
+}
+
+/* Keep three cards from over-stretching on huge screens */
+@media (min-width: 1280px){
+  #contact .contact-tiles{ max-width: 1100px; } /* slight breathing room if you want */
+}
