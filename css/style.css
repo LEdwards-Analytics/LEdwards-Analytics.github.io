@@ -174,8 +174,24 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
 .skill-bars { display:flex; flex-direction:column; gap:15px; }
 .skill-bar { display:flex; align-items:center; }
 .skill-name { width:100px; font-weight:500; }
-.skill-progress { flex-grow:1; height:8px; background-color:#e9ecef; border-radius:4px; overflow:hidden; }
-.skill-progress-bar { height:100%; background: var(--gradient-primary); border-radius:4px; transition: width 1s ease-in-out; }
+
+/* Skills (solid color bars) */
+.skill-progress { 
+  flex-grow: 1; 
+  height: 10px; 
+  background-color: #e9ecef; 
+  border-radius: 4px; 
+  overflow: hidden; 
+}
+.dark .skill-progress { 
+  background-color: #2a2f36; 
+}
+.skill-progress-bar { 
+  height: 100%; 
+  background: var(--primary);  /* solid color for better readability */
+  border-radius: 4px; 
+  transition: width 1s ease-in-out; 
+}
 
 /* Contact */
 .contact-container { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; margin-top:40px; }
