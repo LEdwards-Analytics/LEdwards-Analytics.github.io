@@ -379,3 +379,22 @@ footer::before { content:''; position:absolute; top:0; left:0; width:100%; heigh
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0, 0, 1px, 1px); white-space: nowrap; border: 0;
 }
+
+/* ---------- Cursor hardening (global) ---------- */
+/* Slightly stronger fill so it never vanishes on bright or saturated panels */
+.custom-cursor{
+  background-color: rgba(var(--primary-rgb), .14);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.25); /* inner ring for contrast on light bg */
+}
+
+/* Dark mode: lighten the ring and add an inner contrast ring */
+.dark .custom-cursor{
+  border-color: rgba(255,255,255,.75);
+  background-color: rgba(255,255,255,.08);
+  box-shadow: 0 0 0 2px rgba(0,0,0,.45) inset; /* inner contrast on dark bg */
+}
+
+/* When hovering interactive things, make it a touch bolder */
+.cursor-hover{
+  background-color: rgba(var(--primary-rgb), .22);
+}
