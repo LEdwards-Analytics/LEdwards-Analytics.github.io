@@ -30,47 +30,42 @@
   --nba-secondary:#ffb700; --nba-secondary-light:#ffc944;
   --nba-gradient: linear-gradient(135deg, var(--nba-primary) 0%, var(--nba-secondary) 100%);
 
-    /* Purple theme for Employee Retention */
-   --employee-primary: #7b3fe4; /* primary purple */
-   --employee-primary-dark: #5f2fb2; 
-   --employee-primary-light: #a37bf0; 
-   --employee-primary-rgb: 123, 63, 228;
-   
-   --employee-secondary: #e73c7e; /* magenta-pink accent */
-   --employee-secondary-light: #f28db5;
-   
-   --employee-gradient: linear-gradient(135deg, var(--employee-primary) 0%, var(--employee-secondary) 100%);
-
+  /* Purple theme for Employee Retention */
+  --employee-primary:#7b3fe4; --employee-primary-dark:#5f2fb2; --employee-primary-light:#a37bf0; --employee-primary-rgb:123,63,228;
+  --employee-secondary:#e73c7e; --employee-secondary-light:#f28db5;
+  --employee-gradient: linear-gradient(135deg, var(--employee-primary) 0%, var(--employee-secondary) 100%);
 
   --amazon-primary:#0066cc; --amazon-primary-dark:#004d99; --amazon-primary-light:#4d94ff; --amazon-primary-rgb:0,102,204;
   --amazon-secondary:#6c42c7; --amazon-secondary-light:#9b7dd4;
   --amazon-gradient: linear-gradient(135deg, var(--amazon-primary) 0%, var(--amazon-secondary) 100%);
 }
 
-/* Optional themed pages */
-.mental-health { --primary:var(--mental-primary); --primary-dark:var(--mental-primary-dark); --primary-light:var(--mental-primary-light); --primary-rgb:var(--mental-primary-rgb); --secondary:var(--mental-secondary); --secondary-light:var(--mental-secondary-light); --gradient-primary:var(--mental-gradient); }
-.nba-analysis { --primary:var(--nba-primary); --primary-dark:var(--nba-primary-dark); --primary-light:var(--nba-primary-light); --primary-rgb:var(--nba-primary-rgb); --secondary:var(--nba-secondary); --secondary-light:var(--nba-secondary-light); --gradient-primary:var(--nba-gradient); }
-.employee-retention { --primary:var(--employee-primary); --primary-dark:var(--employee-primary-dark); --primary-light:var(--employee-primary-light); --primary-rgb:var(--employee-primary-rgb); --secondary:var(--employee-secondary); --secondary-light:var(--employee-secondary-light); --gradient-primary:var(--employee-gradient); }
-.amazon-prime { --primary:var(--amazon-primary); --primary-dark:var(--amazon-primary-dark); --primary-light:var(--amazon-primary-light); --primary-rgb:var(--amazon-primary-rgb); --secondary:var(--amazon-secondary); --secondary-light:var(--amazon-secondary-light); --gradient-primary:var(--amazon-gradient); }
+/* Optional themed pages (maps page class -> active tokens) */
+.mental-health {
+  --primary:var(--mental-primary); --primary-dark:var(--mental-primary-dark); --primary-light:var(--mental-primary-light); --primary-rgb:var(--mental-primary-rgb);
+  --secondary:var(--mental-secondary); --secondary-light:var(--mental-secondary-light); --gradient-primary:var(--mental-gradient);
+}
+.nba-analysis {
+  --primary:var(--nba-primary); --primary-dark:var(--nba-primary-dark); --primary-light:var(--nba-primary-light); --primary-rgb:var(--nba-primary-rgb);
+  --secondary:var(--nba-secondary); --secondary-light:var(--nba-secondary-light); --gradient-primary:var(--nba-gradient);
+}
+.employee-retention {
+  --primary:var(--employee-primary); --primary-dark:var(--employee-primary-dark); --primary-light:var(--employee-primary-light); --primary-rgb:var(--employee-primary-rgb);
+  --secondary:var(--employee-secondary); --secondary-light:var(--employee-secondary-light); --gradient-primary:var(--employee-gradient);
+}
+.amazon-prime {
+  --primary:var(--amazon-primary); --primary-dark:var(--amazon-primary-dark); --primary-light:var(--amazon-primary-light); --primary-rgb:var(--amazon-primary-rgb);
+  --secondary:var(--amazon-secondary); --secondary-light:var(--amazon-secondary-light); --gradient-primary:var(--amazon-gradient);
+}
 
-/* ===== Dark Theme Swap ===== */
+/* ===== Dark Theme Swap (neutrals only; do NOT override brand colors) ===== */
 .dark {
   --background: #111418;
   --card-bg: #171b21;
   --text-dark: #eaeef5;
   --text-light: #b6c0cc;
   --shadow: 0 6px 20px rgba(0,0,0,0.35);
-
-  /* toned-down blues for dark mode */
-  --primary: #4d94ff;
-  --primary-dark: #3a7cf0;
-  --primary-light: #76b2ff;
-  --primary-rgb: 77, 148, 255;
-
-  --secondary: #b79cff;
-  --secondary-light: #d0c1ff;
-
-  --accent: #ff7d7d;
+  /* Leave --primary/--secondary alone so per-page themes stay intact in dark mode */
 }
 
 /* ===== Base ===== */
@@ -222,7 +217,7 @@ footer::before { content:''; position:absolute; top:0; left:0; width:100%; heigh
 
 /* Timeline */
 .timeline { position:relative; max-width:1200px; margin:40px auto; }
-.timeline::before {content: '';position: absolute;width: 4px;background: var(--primary); /* solid color */top: 0;bottom: 0;left: 50%;margin-left: -2px;border-radius: 2px;}
+.timeline::before { content:''; position:absolute; width:4px; background: var(--primary); top:0; bottom:0; left:50%; margin-left:-2px; border-radius:2px; }
 .timeline-item { padding:10px 40px; position:relative; width:50%; box-sizing:border-box; }
 .timeline-item:nth-child(odd){ left:0; } .timeline-item:nth-child(even){ left:50%; }
 .timeline-dot { position:absolute; width:20px; height:20px; right:-10px; background: var(--primary); border-radius:50%; top:15px; z-index:1; }
