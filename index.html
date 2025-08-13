@@ -13,6 +13,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luke Edwards | Data Science Portfolio</title>
+
+  <!-- ✨ No-flash theme pre-set (runs before CSS) -->
+  <script>
+    (function () {
+      try {
+        var KEY = 'site-theme';
+        var stored = localStorage.getItem(KEY);
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var useDark = stored ? stored === 'dark' : prefersDark;
+        if (useDark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="stylesheet" href="css/style.css"/>
 
   <meta name="description" content="Luke Edwards - Data Science and Analytics Portfolio showcasing projects in machine learning, statistical analysis, and business intelligence.">
@@ -36,8 +50,12 @@
       <a href="#about" class="nav-link"><span>About</span></a>
       <a href="#contact" class="nav-link"><span>Contact</span></a>
       <a href="files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
-      <!-- Theme toggle -->
-      <button id="theme-toggle" class="nav-link" aria-label="Toggle color theme"><span>Theme</span></button>
+
+      <!-- Theme toggle (sun -> moon) -->
+      <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle color theme" title="Toggle color theme">
+        <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+        <span class="sr-only">Toggle theme</span>
+      </button>
     </nav>
   </header>
 
@@ -170,189 +188,54 @@
           <h3>Video Game Sales Dashboard (Excel)</h3>
           <p>Interactive Excel report with slicers and pivots: top genres/publishers, year trends, and platform comparisons for quick executive reads.</p>
           <a href="images/vg-sales-excel.png" class="button" target="_blank">View Screenshot</a>
-          <!-- Optional download:
-          <a href="files/Video-Game-Sales-Dashboard.xlsx" class="button" style="margin-left:8px;">Download XLSX</a> -->
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Experience timeline -->
+  <!-- Experience timeline (unchanged content) -->
   <section id="experience">
     <h2 class="section-title">Experience & Education</h2>
     <div class="section-subtitle">My professional journey</div>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Data Scientist</h3>
-          <h4>May 2025 - Current</h4>
-          <ul>
-            <li>Developed a Python-based ML model to explain NRPU fluctuations by product and region using SHAP values, reducing manual variance analysis by 90%</li>
-            <li>Engineered AI prompts in OpenAI to automate lead-sourcing research, reducing manual marketing effort by 70%</li>
-            <li>Built fully automated Power BI dashboards to track commissions; designed filtering and revenue logic, enabling near-instant payout validation</li>
-            <li>Delivered weekly insights and trend breakdowns to leadership, accelerating decision-making across multiple business lines</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content certification-timeline">
-          <h3>Google Advanced Data Analytics Professional Certificate</h3>
-          <h4>May 2025</h4>
-          <p>Statistical analysis, ML fundamentals, predictive modeling, and data-driven decisions in Python.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content certification-timeline">
-          <h3>Power BI Masterclass</h3>
-          <h4>February 2024</h4>
-          <p>Company-sponsored professional development</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Senior Business Intelligence Analyst</h3>
-          <h4>CIBT | July 2023 - April 2024</h4>
-          <ul>
-            <li>Standardized enterprise-wide reporting, reducing redundant metrics by 60%</li>
-            <li>Built KPI-driven Power BI dashboards, providing executives with real-time performance views</li>
-            <li>Rewrote and optimized SQL queries to cut reporting load times by 43%</li>
-            <li>Partnered with data engineers to develop DAX logic and integrate Snowflake pipelines, improving accuracy and scalability</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Senior Financial Analyst</h3>
-          <h4>Interface Financial Group | June 2022 - April 2023</h4>
-          <ul>
-            <li>Automated client analysis with Python, reducing processing time by 93% (20+ hours/month saved)</li>
-            <li>Conducted credit risk and investment evaluations for small business clients, supporting multi-million-dollar funding decisions</li>
-            <li>Integrated data-driven logic into underwriting, improving portfolio quality</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content education-timeline">
-          <h3>Master of Arts in Economics</h3>
-          <h4>Boise State University | 2022</h4>
-          <p>Specialized in Econometrics, Statistical Analysis, and Machine Learning.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content education-timeline">
-          <h3>Bachelor's Degree in Economics</h3>
-          <h4>University of La Verne | 2019</h4>
-        </div>
-      </div>
-    </div>
+    <!-- ... keep your existing timeline items exactly as you had them ... -->
+    <!-- (content omitted here only to save space—use your original) -->
   </section>
 
   <section id="about">
     <h2 class="section-title">About Me</h2>
     <div class="section-subtitle">My journey in data science</div>
-
-    <div class="about-text">
-      <p>I grew up obsessed with solving problems—breaking down tricky boss fights, strategizing with teammates, and later, making sense of messy data.</p>
-      <p>Those habits pulled me toward Economics and then applied Data Science, where I learned to use statistics and ML to tackle real business challenges.</p>
-      <p>Since then I’ve automated client analysis, built predictive models, and designed an NLP pipeline that extracts insights from SEC earnings calls. Every project is a new puzzle to solve.</p>
-      <p>As a former college athlete, I bring collaboration, focus, and constant iteration to every role and project.</p>
-      <p>Recently, I built a model to predict professional match outcomes in Counter-Strike 2 (CS2), a title with 1M+ concurrent players each month.</p>
-    </div>
-
-    <div class="skills-container">
-      <h3>Technical Skills</h3>
-
-      <div class="skill-category">
-        <h4><i class="fas fa-brain"></i> Data Science Tools</h4>
-        <div class="skill-bars">
-          <div class="skill-bar"><div class="skill-name">Scikit-learn</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
-          <div class="skill-bar"><div class="skill-name">Pandas</div><div class="skill-progress"><div class="skill-progress-bar" style="width:92%"></div></div></div>
-          <div class="skill-bar"><div class="skill-name">NumPy</div><div class="skill-progress"><div class="skill-progress-bar" style="width:90%"></div></div></div>
-        </div>
-      </div>
-
-      <div class="skill-category">
-        <h4><i class="fas fa-database"></i> Business Intelligence</h4>
-        <div class="skill-bars">
-          <div class="skill-bar"><div class="skill-name">Power BI</div><div class="skill-progress"><div class="skill-progress-bar" style="width:95%"></div></div></div>
-          <div class="skill-bar"><div class="skill-name">SQL</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
-          <div class="skill-bar"><div class="skill-name">DAX</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
-        </div>
-      </div>
-
-      <div class="skill-category">
-        <h4><i class="fas fa-code"></i> Programming</h4>
-        <div class="skill-bars">
-          <div class="skill-bar"><div class="skill-name">Python</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
-          <div class="skill-bar"><div class="skill-name">SQL</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
-          <div class="skill-bar"><div class="skill-name">R</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
-        </div>
-      </div>
-
-      <div class="skill-category">
-        <h4><i class="fas fa-chart-line"></i> Data Visualization</h4>
-        <div class="skill-bars">
-          <div class="skill-bar"><div class="skill-name">Power BI</div><div class="skill-progress"><div class="skill-progress-bar" style="width:95%"></div></div></div>
-          <div class="skill-bar"><div class="skill-name">Tableau</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
-          <div class="skill-bar"><div class="skill-name">Matplotlib</div><div class="skill-progress"><div class="skill-progress-bar" style="width:90%"></div></div></div>
-        </div>
-      </div>
-    </div>
+    <!-- ... keep your existing about + skills content ... -->
   </section>
 
   <section id="contact">
     <h2 class="section-title">Get In Touch</h2>
     <div class="section-subtitle">Let's connect</div>
-    <p>I'm currently looking for data science opportunities where I can put my skills to work. Have a position in mind or questions about my projects? I'd love to connect!</p>
-
-    <div class="contact-container">
-      <div class="contact-card">
-        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-        <h3>Email</h3>
-        <a href="mailto:luke3dwards32@gmail.com">luke3dwards32@gmail.com</a>
-      </div>
-
-      <div class="contact-card">
-        <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
-        <h3>LinkedIn</h3>
-        <a href="https://www.linkedin.com/in/lukeedwards32/" target="_blank">Connect with me</a>
-      </div>
-
-      <div class="contact-card">
-        <div class="contact-icon"><i class="fab fa-github"></i></div>
-        <h3>GitHub</h3>
-        <a href="https://github.com/ledwards-analytics" target="_blank">View my repositories</a>
-      </div>
-    </div>
+    <!-- ... keep your existing contact cards ... -->
   </section>
 
   <footer>
     <div class="footer-content">
       <p>&copy; 2025 Luke Edwards</p>
       <div class="footer-links">
-        <a href="mailto:luke3dwards32@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/lukeedwards32/">LinkedIn</a>
-        <a href="https://github.com/ledwards-analytics">GitHub</a>
+        <a class="link-button" href="mailto:luke3dwards32@gmail.com" aria-label="Email">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <span>Email</span>
+        </a>
+        <a class="link-button" href="https://www.linkedin.com/in/lukeedwards32/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a class="link-button" href="https://github.com/ledwards-analytics" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          <span>GitHub</span>
+        </a>
       </div>
     </div>
   </footer>
 
   <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
+  <!-- Your existing JS + the new theme.js at the end -->
   <script>
     // Highlight active nav + back to top
     document.addEventListener('DOMContentLoaded', function () {
@@ -410,20 +293,10 @@
         el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
       });
-
-      // Theme toggle (respects OS preference + persists)
-      (function () {
-        const STORAGE_KEY = 'site-theme';
-        const toggleBtn = document.getElementById('theme-toggle');
-        const stored = localStorage.getItem(STORAGE_KEY);
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && prefersDark)) document.body.classList.add('dark');
-        toggleBtn?.addEventListener('click', () => {
-          document.body.classList.toggle('dark');
-          localStorage.setItem(STORAGE_KEY, document.body.classList.contains('dark') ? 'dark' : 'light');
-        });
-      })();
     });
   </script>
+
+  <!-- New: persistent theme logic -->
+  <script src="js/theme.js" defer></script>
 </body>
 </html>
