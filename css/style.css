@@ -169,28 +169,10 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
 .project-card .button { align-self:flex-start; padding:8px 20px; background-color: var(--primary); color:#fff; border-radius:20px; transition: var(--transition); }
 .project-card .button:hover { background-color: var(--primary-dark); transform: translateY(-3px); }
 
-/* About & Skills */
+/* About */
 .about-container { display:grid; grid-template-columns:1fr; gap:40px; margin-top:30px; }
 @media (min-width:768px){ .about-container{ grid-template-columns:1fr 1fr; } }
 .about-text p { margin-bottom:20px; color: var(--text-light); line-height:1.8; }
-.skills-container { background-color: var(--card-bg); padding:30px; border-radius:12px; box-shadow: var(--shadow); }
-.skill-category { margin-bottom:25px; }
-.skill-category h4 { display:flex; align-items:center; margin-bottom:15px; color: var(--primary); }
-.skill-category h4 i { margin-right:10px; }
-.skill-bars { display:flex; flex-direction:column; gap:15px; }
-.skill-bar { display:flex; align-items:center; }
-.skill-name { width:100px; font-weight:500; }
-
-/* Skills (solid color bars) */
-.skill-progress { 
-  flex-grow: 1; 
-  height: 10px; 
-  background-color: #e9ecef; 
-  border-radius: 4px; 
-  overflow: hidden; 
-}
-.dark .skill-progress { background-color: #2a2f36; }
-.skill-progress-bar { height: 100%; background: var(--primary); border-radius: 4px; transition: width 1s ease-in-out; }
 
 /* Contact */
 .contact-container { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; margin-top:40px; }
