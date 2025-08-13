@@ -7,14 +7,30 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-QH2WWQF2C6');
     </script>
     
+    <!-- No-flash theme preset (applies before first paint) -->
+    <script>
+      (function () {
+        try {
+          var KEY = 'site-theme';
+          var stored = localStorage.getItem(KEY);
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var useDark = stored ? stored === 'dark' : prefersDark;
+          if (useDark) document.documentElement.classList.add('dark'); // use <html> for lowest CLS
+        } catch (e) {}
+      })();
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why Prime Members Stay: A Deep-Dive with XGBoost | Luke Edwards</title>
-    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Root-relative so it works from any subpage -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Icons & fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,7 +56,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('../images/pattern.png');
+            background: url('/images/pattern.png'); /* root-relative */
             opacity: 0.1;
             z-index: 0;
         }
@@ -358,11 +374,15 @@
     <header>
         <div class="header-background"></div>
         <nav>
-            <a href="../index.html" class="nav-link"><span>Home</span></a>
-            <a href="../index.html#projects" class="nav-link"><span>Projects</span></a>
-            <a href="../index.html#about" class="nav-link"><span>About</span></a>
-            <a href="../index.html#contact" class="nav-link"><span>Contact</span></a>
-            <a href="../files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
+            <a href="/index.html" class="nav-link"><span>Home</span></a>
+            <a href="/index.html#projects" class="nav-link"><span>Projects</span></a>
+            <a href="/index.html#about" class="nav-link"><span>About</span></a>
+            <a href="/index.html#contact" class="nav-link"><span>Contact</span></a>
+            <a href="/files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
+            <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle color theme">
+                <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+                <span class="sr-only">Toggle theme</span>
+            </button>
         </nav>
     </header>
 
@@ -405,7 +425,7 @@
             </ol>
 
             <div class="visualization">
-                <img src="../images/amazon-workflow.jpg" alt="Project Workflow Diagram">
+                <img src="/images/amazon-workflow.jpg" alt="Project Workflow Diagram">
                 <p><em>Workflow diagram showing the end-to-end process from data preprocessing to recommendations</em></p>
             </div>
 
@@ -471,7 +491,7 @@ print("\nClassification Report:\n", classification_report(y_test, y_pred))
             </div>
 
             <div class="visualization">
-                <img src="../images/amazon-model-comparison.jpg" alt="Model Performance Comparison">
+                <img src="/images/amazon-model-comparison.jpg" alt="Model Performance Comparison">
                 <p><em>Performance comparison of different modeling approaches</em></p>
             </div>
 
@@ -482,7 +502,7 @@ print("\nClassification Report:\n", classification_report(y_test, y_pred))
             <h2 class="section-title">Key Findings</h2>
 
             <div class="visualization">
-                <img src="../images/amazon-feature-importance.jpg" alt="Feature Importance Chart">
+                <img src="/images/amazon-feature-importance.jpg" alt="Feature Importance Chart">
                 <p><em>Feature importance chart showing the top factors influencing subscription plan choice</em></p>
             </div>
 
@@ -574,6 +594,9 @@ print("\nClassification Report:\n", classification_report(y_test, y_pred))
     </footer>
 
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Shared theme logic (defer so DOM is ready) -->
+    <script src="/js/theme.js" defer></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
