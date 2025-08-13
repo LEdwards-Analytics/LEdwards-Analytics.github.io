@@ -361,39 +361,55 @@ footer::before { content:''; position:absolute; top:0; left:0; width:100%; heigh
   clip: rect(0, 0, 1px, 1px); white-space: nowrap; border: 0;
 }
 
-/* ===== Contact tiles (Home) ===== */
+/* ===== Contact tiles (Home) — like Skills/App cards ===== */
 #contact .contact-tiles{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap:20px;
-  margin-top:18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap:22px;
+  margin-top:22px;
 }
+
 #contact .contact-card{
-  display:flex; align-items:center; gap:14px;
-  background-color:#f8f9fa;
-  padding:16px 18px; border-radius:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,.05);
-  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  /* make the whole card a link or div */
+  display:flex; align-items:center; gap:16px;
+  background: var(--card-bg);
+  padding:22px;
+  border-radius:14px;
   text-decoration:none;
-  color:var(--text-dark);
+  color: var(--text-dark);
+  box-shadow: 0 5px 15px rgba(0,0,0,.05);
+  border: 1px solid rgba(0,0,0,.04);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
-.dark #contact .contact-card{ background-color:#1a1f26; color: var(--text-dark); }
-#contact .contact-card:hover{ transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.12); }
+.dark #contact .contact-card{
+  background:#1a1f26;
+  border-color: rgba(255,255,255,.04);
+}
+
+#contact .contact-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.14);
+  border-color: transparent;
+}
+
+/* gradient icon chip (same as skills/app cards) */
 #contact .contact-card .icon{
-  width:42px;height:42px;border-radius:50%;
-  display:inline-flex;align-items:center;justify-content:center;
-  background:var(--gradient-primary); color:#fff; flex:0 0 42px;
+  width:56px; height:56px; border-radius:50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  background: var(--gradient-primary);
+  color:#fff;
+  flex:0 0 56px;
 }
-#contact .contact-card .label{ font-weight:600; }
+#contact .contact-card .icon i{ font-size:22px; line-height:1; }
+
+/* text block */
+#contact .contact-card .text{ display:flex; flex-direction:column; gap:3px; }
+#contact .contact-card .label{ font-weight:600; font-size:1.02rem; }
 #contact .contact-card .meta{ color:var(--text-light); font-size:.95rem; }
 
-/* ===== Employee Retention – ensure theme elements pick up gradient ===== */
-.employee-retention .project-header,
-.employee-retention .project-section::before,
-.employee-retention .metric-card::before,
-.employee-retention .application-icon { background: var(--gradient-primary); }
-.employee-retention .key-finding {
-  background-color: rgba(var(--primary-rgb), 0.08);
-  border-left: 4px solid var(--primary);
-}
-.employee-retention .key-finding h3 { color: var(--primary); }
+/* remove underlines on hover/focus since the whole card is clickable */
+#contact .contact-card:focus,
+#contact .contact-card:hover{ text-decoration:none; outline:none; }
+
+/* optional: compact the section description a hair */
+#contact .section-subtitle{ margin-bottom:26px; }
