@@ -6,20 +6,22 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); gtag('config', 'G-QH2WWQF2C6');
+    gtag('js', new Date());
+    gtag('config', 'G-QH2WWQF2C6');
   </script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Luke Edwards | Data Science Portfolio</title>
+
   <meta name="description" content="Luke Edwards - Data Science and Analytics Portfolio showcasing projects in machine learning, statistical analysis, and business intelligence.">
   <meta name="keywords" content="data science, analytics, machine learning, portfolio, Luke Edwards">
 
   <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 
 <body class="home-page">
@@ -34,18 +36,8 @@
       <a href="#about" class="nav-link"><span>About</span></a>
       <a href="#contact" class="nav-link"><span>Contact</span></a>
       <a href="files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
-
       <!-- Theme toggle -->
-      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
-        <!-- Sun -->
-        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h-0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm12.69-1.79l1.41 1.41-1.79 1.8-1.41-1.42 1.79-1.79zM12 7a5 5 0 110 10 5 5 0 010-10z"/>
-        </svg>
-        <!-- Moon -->
-        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20.742 13.045A8 8 0 1111 3a7 7 0 109.742 10.045z"/>
-        </svg>
-      </button>
+      <button id="theme-toggle" class="nav-link" aria-label="Toggle color theme"><span>Theme</span></button>
     </nav>
   </header>
 
@@ -53,7 +45,7 @@
     <div class="hero-content">
       <div class="profile-container">
         <div class="profile-image">
-          <img src="images/profile-photo.jpg" alt="Luke Edwards">
+          <img src="images/profile-photo.jpg" alt="Luke Edwards"/>
         </div>
         <div class="profile-backdrop"></div>
       </div>
@@ -74,15 +66,13 @@
     <div class="section-subtitle">Explore my data science work</div>
 
     <div class="projects-grid">
-      <!-- Amazon Prime Subscription Project -->
+      <!-- Amazon Prime Subscription Project Card -->
       <div class="project-card">
         <div class="project-image">
           <img src="images/amazon-project.jpg" alt="Why Prime Members Stay: A Deep-Dive with XGBoost">
           <div class="project-overlay">
             <div class="project-tags">
-              <span>Machine Learning</span>
-              <span>Python</span>
-              <span>Decision Trees</span>
+              <span>Machine Learning</span><span>Python</span><span>Decision Trees</span>
             </div>
           </div>
         </div>
@@ -93,15 +83,13 @@
         </div>
       </div>
 
-      <!-- Employee Churn Risk Prediction -->
+      <!-- Employee Churn Risk Prediction Card -->
       <div class="project-card">
         <div class="project-image">
           <img src="images/employee-retention.jpg" alt="Stopping Turnover: A Decision-Tree Churn Risk Analyzer">
           <div class="project-overlay">
             <div class="project-tags">
-              <span>Classification</span>
-              <span>HR Analytics</span>
-              <span>Python</span>
+              <span>Classification</span><span>HR Analytics</span><span>Python</span>
             </div>
           </div>
         </div>
@@ -112,15 +100,13 @@
         </div>
       </div>
 
-      <!-- Mental Health Regression -->
+      <!-- Mental Health Analysis Project Card -->
       <div class="project-card">
         <div class="project-image">
           <img src="images/mental-health.jpg" alt="Three Decades of Mental Health: Regression Reveals the Story">
           <div class="project-overlay">
             <div class="project-tags">
-              <span>Regression</span>
-              <span>Time Series</span>
-              <span>R</span>
+              <span>Regression</span><span>Time Series</span><span>R</span>
             </div>
           </div>
         </div>
@@ -131,14 +117,13 @@
         </div>
       </div>
 
-      <!-- NBA -->
+      <!-- NBA Win Prediction Project Card -->
       <div class="project-card">
         <div class="project-image">
           <img src="images/nba-project-thumbnail.jpg" alt="From ’80 to Today: Modeling NBA Win Chances">
           <div class="project-overlay">
             <div class="project-tags">
-              <span>Sports Analytics</span>
-              <span>Regression Modeling</span>
+              <span>Sports Analytics</span><span>Regression Modeling</span>
             </div>
           </div>
         </div>
@@ -146,6 +131,46 @@
           <h3>From ’80 to Today: Modeling NBA Win Chances</h3>
           <p>Analyzed 40 years of NBA data to find the key factors that influence team success, using statistical methods and regression analysis.</p>
           <a href="projects/nba-win-prediction.html" class="button">View Project</a>
+        </div>
+      </div>
+
+      <!-- NEW: CIBT Product Launch BI Dashboard -->
+      <!-- NEW: Product Launch BI Dashboard -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/cibt-product-launch.png" alt="CIBT product launch Power BI dashboard">
+          <img src="images/product-launch.png" alt="Product launch Power BI dashboard">
+          <div class="project-overlay">
+            <div class="project-tags">
+              <span>Power BI</span><span>DAX</span><span>SQL</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Product Launch Performance (Power BI)</h3>
+          <p>KPI cards and region-level drilldowns (orders, activations, invoice status) with DAX measures and scheduled refresh. Enabled sales/ops to track rollout in near-real time.</p>
+          <a href="images/product-launch.png" class="button" target="_blank">View Screenshot</a>
+          <!-- Optional PBIX download -->
+          <!-- <a href="files/CIBT-Product-Launch.pbix" class="button" style="margin-left:8px;">Download PBIX</a> -->
+        </div>
+      </div>
+
+      <!-- NEW: Video Game Sales Dashboard (Excel) -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="images/vg-sales-excel.png" alt="Excel dashboard of video game sales">
+          <div class="project-overlay">
+            <div class="project-tags">
+              <span>Excel</span><span>Pivot Tables</span><span>Visualization</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3>Video Game Sales Dashboard (Excel)</h3>
+          <p>Interactive Excel report with slicers & pivots: top genres/publishers, year-trend chart, and platform sales comps. Designed for quick executive reads.</p>
+          <a href="images/vg-sales-excel.png" class="button" target="_blank">View Screenshot</a>
+          <!-- Optional download -->
+          <!-- <a href="files/Video-Game-Sales-Dashboard.xlsx" class="button" style="margin-left:8px;">Download XLSX</a> -->
         </div>
       </div>
     </div>
@@ -176,7 +201,7 @@
         <div class="timeline-content certification-timeline">
           <h3>Google Advanced Data Analytics Professional Certificate</h3>
           <h4>May 2025</h4>
-          <p>Covered statistical analysis, ML fundamentals, predictive modeling, and data-driven decision-making using Python.</p>
+          <p>Extensively covered statistical analysis, machine learning fundamentals, predictive modeling, and data-driven decision-making using Python.</p>
         </div>
       </div>
 
@@ -209,7 +234,7 @@
           <h3>Senior Financial Analyst</h3>
           <h4>Interface Financial Group | June 2022 - April 2023</h4>
           <ul>
-            <li>Automated client analysis with Python, reducing processing time by 93% and saving the finance team 20+ hours monthly.</li>
+            <li>Automated client analysis with Python, reducing processing time by 93%, saving the finance team 20+ hours monthly.</li>
             <li>Conducted credit risk and investment evaluations across clients.</li>
             <li>Partnered with leadership to improve data-driven underwriting.</li>
           </ul>
@@ -219,7 +244,7 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content education-timeline">
-          <h3>Master of Economics</h3>
+          <h3>Master of Arts in Economics</h3>
           <h4>Boise State University | 2022</h4>
           <p>Specialized in Econometrics, Statistical Analysis, and Machine Learning.</p>
         </div>
@@ -235,7 +260,6 @@
     </div>
   </section>
 
-  <!-- About -->
   <section id="about">
     <h2 class="section-title">About Me</h2>
     <div class="section-subtitle">My journey in data science</div>
@@ -254,78 +278,41 @@
       <div class="skill-category">
         <h4><i class="fas fa-brain"></i> Data Science Tools</h4>
         <div class="skill-bars">
-          <div class="skill-bar">
-            <div class="skill-name">Scikit-learn</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-name">Pandas</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 92%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-name">NumPy</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 90%"></div></div>
-          </div>
+          <div class="skill-bar"><div class="skill-name">Scikit-learn</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">Pandas</div><div class="skill-progress"><div class="skill-progress-bar" style="width:92%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">NumPy</div><div class="skill-progress"><div class="skill-progress-bar" style="width:90%"></div></div></div>
         </div>
       </div>
 
       <div class="skill-category">
         <h4><i class="fas fa-database"></i> Business Intelligence</h4>
         <div class="skill-bars">
-          <div class="skill-bar">
-            <div class="skill-name">Power BI</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 95%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-name">SQL</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 100%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-name">DAX</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%"></div></div>
-          </div>
+          <div class="skill-bar"><div class="skill-name">Power BI</div><div class="skill-progress"><div class="skill-progress-bar" style="width:95%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">SQL</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">DAX</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
         </div>
       </div>
 
       <div class="skill-category">
         <h4><i class="fas fa-code"></i> Programming</h4>
         <div class="skill-bars">
-          <div class="skill-bar">
-            <div class="skill-name">Python</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 100%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-name">SQL</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 100%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-name">R</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%"></div></div>
-          </div>
+          <div class="skill-bar"><div class="skill-name">Python</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">SQL</div><div class="skill-progress"><div class="skill-progress-bar" style="width:100%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">R</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
         </div>
       </div>
 
       <div class="skill-category">
         <h4><i class="fas fa-chart-line"></i> Data Visualization</h4>
         <div class="skill-bars">
-          <div class="skill-bar">
-            <div class="skill-name">Power BI</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 95%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-name">Tableau</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 85%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-name">Matplotlib</div>
-            <div class="skill-progress"><div class="skill-progress-bar" style="width: 90%"></div></div>
-          </div>
+          <div class="skill-bar"><div class="skill-name">Power BI</div><div class="skill-progress"><div class="skill-progress-bar" style="width:95%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">Tableau</div><div class="skill-progress"><div class="skill-progress-bar" style="width:85%"></div></div></div>
+          <div class="skill-bar"><div class="skill-name">Matplotlib</div><div class="skill-progress"><div class="skill-progress-bar" style="width:90%"></div></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
     <h2 class="section-title">Get In Touch</h2>
     <div class="section-subtitle">Let's connect</div>
@@ -340,12 +327,12 @@
       <div class="contact-card">
         <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
         <h3>LinkedIn</h3>
-        <a href="https://www.linkedin.com/in/lukeedwards32/" target="_blank" rel="noopener">Connect with me</a>
+        <a href="https://www.linkedin.com/in/lukeedwards32/" target="_blank">Connect with me</a>
       </div>
       <div class="contact-card">
         <div class="contact-icon"><i class="fab fa-github"></i></div>
         <h3>GitHub</h3>
-        <a href="https://github.com/ledwards-analytics" target="_blank" rel="noopener">View my repositories</a>
+        <a href="https://github.com/ledwards-analytics" target="_blank">View my repositories</a>
       </div>
     </div>
   </section>
@@ -355,32 +342,20 @@
       <p>&copy; 2025 Luke Edwards</p>
       <div class="footer-links">
         <a href="mailto:luke3dwards32@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/lukeedwards32/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/ledwards-analytics" target="_blank" rel="noopener">GitHub</a>
-      </div>
-
-      <!-- Footer CTA pills -->
-      <div class="footer-cta">
-        <a class="cta-pill" href="mailto:luke3dwards32@gmail.com">
-          <i class="fas fa-envelope"></i><span>Email</span>
-        </a>
-        <a class="cta-pill" href="https://www.linkedin.com/in/lukeedwards32/" target="_blank" rel="noopener">
-          <i class="fab fa-linkedin"></i><span>LinkedIn</span>
-        </a>
-        <a class="cta-pill" href="https://github.com/ledwards-analytics" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i><span>GitHub</span>
-        </a>
+        <a href="https://www.linkedin.com/in/lukeedwards32/">LinkedIn</a>
+        <a href="https://github.com/ledwards-analytics">GitHub</a>
       </div>
     </div>
   </footer>
 
   <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
-  <!-- Your existing interaction JS -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    // Highlight active nav + Back-to-top + Typewriter + Custom cursor (existing)
+    document.addEventListener('DOMContentLoaded', function () {
       const navLinks = document.querySelectorAll('nav a');
       const sections = document.querySelectorAll('section[id]');
+
       function highlightNav() {
         let current = '';
         const scrollPosition = window.scrollY;
@@ -393,34 +368,62 @@
           if (link.getAttribute('href').includes(current)) link.classList.add('active');
         });
       }
+
       const backToTopButton = document.querySelector('.back-to-top');
       function toggleBackToTop() {
         if (window.scrollY > 300) backToTopButton.classList.add('visible');
         else backToTopButton.classList.remove('visible');
       }
-      highlightNav(); toggleBackToTop();
+
+      highlightNav();
+      toggleBackToTop();
       window.addEventListener('scroll', highlightNav);
       window.addEventListener('scroll', toggleBackToTop);
-      backToTopButton.addEventListener('click', function(e) {
+      backToTopButton.addEventListener('click', function (e) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
+      // Typewriter
+      const typewriterText = document.getElementById('typewriter-text');
+      if (typewriterText) {
+        const phrases = ["Turning data into insights.","Building predictive models.","Solving business problems.","Creating data visualizations."];
+        let i = 0, j = 0, del = false, speed = 100;
+        function type() {
+          const cur = phrases[i];
+          typewriterText.textContent = del ? cur.substring(0, j--) : cur.substring(0, j++);
+          if (!del && j === cur.length) { del = true; speed = 1500; }
+          else if (del && j === 0) { del = false; i = (i + 1) % phrases.length; speed = 500; }
+          else speed = del ? 50 : 100;
+          setTimeout(type, speed);
+        }
+        setTimeout(type, 1000);
+      }
+
       // Custom cursor
       const cursor = document.querySelector('.custom-cursor');
-      document.addEventListener('mousemove', (e) => {
+      document.addEventListener('mousemove', e => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top  = e.clientY + 'px';
       });
-      const interactiveElements = document.querySelectorAll('a, button, .project-card');
-      interactiveElements.forEach(el => {
+      document.querySelectorAll('a, button, .project-card').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
       });
     });
-  </script>
 
-  <!-- Theme script (must load after the button exists) -->
-  <script src="js/theme.js"></script>
+    // Theme toggle with OS preference + persistence
+    (function () {
+      const STORAGE_KEY = 'site-theme';
+      const toggleBtn = document.getElementById('theme-toggle');
+      const stored = localStorage.getItem(STORAGE_KEY);
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) document.body.classList.add('dark');
+      toggleBtn?.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        localStorage.setItem(STORAGE_KEY, document.body.classList.contains('dark') ? 'dark' : 'light');
+      });
+    })();
+  </script>
 </body>
 </html>
