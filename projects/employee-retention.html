@@ -35,29 +35,19 @@
 
     <!-- Project-specific styles -->
     <style>
-        /* Custom cursor */
-        .custom-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-            z-index: 9999;
-            mix-blend-mode: difference;
-        }
+        /* Force the shared cursor look */
+            .custom-cursor{
+                    mix-blend-mode: normal;
+                    background-color: rgba(var(--primary-rgb), .12)
+            }
+            .cursor-hover {
+                    width: 40px;
+                    height: 40px;
+                    background-color: rgba(0, 102, 204, 0.1);
+                    border-color: var(--secondary);
+            }
 
-        .cursor-hover {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0, 102, 204, 0.1);
-            border-color: var(--secondary);
-        }
-
-        /* Enhanced header */
-        header {
+        /* Enhanced header */header {
             position: fixed;
             top: 0;
             left: 0;
@@ -799,11 +789,11 @@
 
             interactiveElements.forEach(element => {
                 element.addEventListener('mouseenter', () => {
-                    cursor.classList.add('cursor-hover'));
+                    cursor.classList.add('cursor-hover');
                 });
 
                 element.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('cursor-hover'));
+                    cursor.classList.remove('cursor-hover');
                 });
             });
 
