@@ -446,3 +446,29 @@ footer::before { content:''; position:absolute; top:0; left:0; width:100%; heigh
 .employee-retention .application-icon { background: var(--gradient-primary); }
 .employee-retention .key-finding { background-color: rgba(var(--primary-rgb), 0.08); border-left: 4px solid var(--primary); }
 .employee-retention .key-finding h3 { color: var(--primary); }
+
+
+/* --- Navbar active underline (only in the nav) --- */
+nav .nav-link {
+  position: relative;
+}
+
+nav .nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  bottom: -4px;              /* sits just under the text */
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+  pointer-events: none;
+}
+
+nav .nav-link:hover { color: var(--primary); }   /* keep hover color */
+nav .nav-link.active::after { transform: scaleX(1); }  /* underline when active */
+
+/* Optional: if you decide you DON'T want the decorative bars under section titles,
+   uncomment the next line to hide them site-wide. */
+/* .section-title::after { display: none; } */
