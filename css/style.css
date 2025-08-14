@@ -141,9 +141,9 @@ nav {
   text-decoration: none; font-weight: 500; transition: var(--transition);
   border-radius: 6px; overflow: hidden; background: transparent; border: none; cursor: pointer;
 }
-.nav-link:hover { color: var(--primary); }
+.nav-link:hover { color: var(--primary); } /* Hover = color only, no underline */
 
-/* Underline uses scale so it never flashes as a vertical bar */
+/* Underline (animated) shown ONLY for active/selected/focus-visible */
 .nav-link::after {
   content: '';
   position: absolute; left: 0; bottom: -2px;
@@ -152,7 +152,6 @@ nav {
   transform-origin: left;
   transition: transform .25s ease;
 }
-.nav-link:hover::after,
 .nav-link.active::after,
 .nav-link:focus-visible::after { transform: scaleX(1); }
 
@@ -200,9 +199,9 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
 .section-subtitle { text-align: center; color: var(--text-light); font-size: 1.2rem; margin-bottom: 50px; }
 
 /* Make short sections easier to “select” on scroll */
-#about, #contact { 
-  scroll-margin-top: 90px;      /* anchors land nicely under header */
-  min-height: 55vh;             /* gives IntersectionObserver more to work with */
+#about, #contact {
+  scroll-margin-top: 90px;  /* anchors land nicely under header */
+  min-height: 55vh;         /* gives the observer more height to lock onto */
 }
 
 /* ===== Project cards (home) ===== */
