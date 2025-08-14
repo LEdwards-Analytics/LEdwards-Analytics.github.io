@@ -23,22 +23,18 @@
   --transition: all 0.3s ease;
 
   /* Theme families */
-  /* Mental Health (green/teal) */
   --mental-primary:#20bf55; --mental-primary-dark:#189a44; --mental-primary-light:#5ad488; --mental-primary-rgb:32,191,85;
   --mental-secondary:#01baef; --mental-secondary-light:#4dd2f8;
   --mental-gradient: linear-gradient(135deg, var(--mental-primary) 0%, var(--mental-secondary) 100%);
 
-  /* NBA (orange/yellow) */
   --nba-primary:#ff7700; --nba-primary-dark:#cc5f00; --nba-primary-light:#ff9e44; --nba-primary-rgb:255,119,0;
   --nba-secondary:#ffb700; --nba-secondary-light:#ffc944;
   --nba-gradient: linear-gradient(135deg, var(--nba-primary) 0%, var(--nba-secondary) 100%);
 
-  /* Employee Retention (purple/magenta) */
   --employee-primary:#7b3fe4; --employee-primary-dark:#5f2fb2; --employee-primary-light:#a37bf0; --employee-primary-rgb:123,63,228;
   --employee-secondary:#e73c7e; --employee-secondary-light:#f28db5;
   --employee-gradient: linear-gradient(135deg, var(--employee-primary) 0%, var(--employee-secondary) 100%);
 
-  /* Amazon (blue/purple) */
   --amazon-primary:#0066cc; --amazon-primary-dark:#004d99; --amazon-primary-light:#4d94ff; --amazon-primary-rgb:0,102,204;
   --amazon-secondary:#6c42c7; --amazon-secondary-light:#9b7dd4;
   --amazon-gradient: linear-gradient(135deg, var(--amazon-primary) 0%, var(--amazon-secondary) 100%);
@@ -241,16 +237,18 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
   text-align: center;
   margin-bottom: 10px;
   position: relative;
-  display: inline-block;           /* shrink to text width */
+  display: inline-block;       /* shrink to text width */
   left: 50%;
   transform: translateX(-50%);
+  line-height: 1.15;           /* tighten the box around text */
+  padding-bottom: 2px;         /* small buffer under text */
 }
 .section-title::after {
   content:'';
   position:absolute;
-  bottom:-1px;                     /* moved closer to the text */
-  left:0;                          /* start at text start */
-  right:0;                         /* end at text end */
+  bottom: 2px;                 /* positive = nudge UP toward the text */
+  left:0;
+  right:0;
   height:4px;
   background:var(--gradient-primary);
   border-radius:2px;
@@ -315,6 +313,7 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
   margin-bottom: 20px;
   padding-bottom: 10px;
   position: relative;
+  line-height: 1.2; /* keep tidy here too */
 }
 .project-section .section-title::after {
   content:''; position:absolute; bottom:0; left:0; width:60px; height:3px;
@@ -455,7 +454,7 @@ ol li::before { content: counter(item) "."; color: var(--primary); font-weight: 
   text-decoration:none; color:var(--text-dark);
 }
 .dark #contact .contact-card{ background-color:#1a1f26; color:var(--text-dark); }
-#contact .contact-card:hover{ transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,.12); }
+#contact .contact-card:hover{ transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,0.12); }
 
 #contact .contact-card .icon{
   width:42px;height:42px;border-radius:50%;
