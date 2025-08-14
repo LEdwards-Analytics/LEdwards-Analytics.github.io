@@ -180,8 +180,10 @@ nav {
 .profile-container:hover .profile-backdrop { transform: translate(5px,5px); }
 
 .hero-text { max-width: 600px; }
-.hero h1 { font-size: 3rem; margin-bottom: 10px; color: var(--text-dark); position: relative; display: inline-block; }
-.hero h1::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 80px; height: 4px; background: var(--gradient-primary); border-radius: 2px; }
+
+.hero h1 { font-size: 3rem; font-weight: 700; position: relative; display: inline-block; }
+.hero h1::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%;  height: 4px; background: var(--gradient-primary); border-radius: 2px; }
+
 .hero h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; }
 .typewriter { height: 30px; margin-bottom: 20px; font-size: 1.1rem; color: var(--secondary); }
 .cursor { display: inline-block; width: 2px; background-color: var(--text-dark); animation: blink 1s infinite; }
