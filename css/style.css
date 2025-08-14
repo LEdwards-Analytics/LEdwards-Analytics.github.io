@@ -248,7 +248,7 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
 .section-title::after {
   content:'';
   position:absolute;
-  bottom:-5px;                     /* moved closer to the text */
+  bottom:-2px;                     /* moved closer to the text */
   left:0;                          /* start at text start */
   right:0;                         /* end at text end */
   height:4px;
