@@ -43,35 +43,67 @@
     const navLinks = Array.from(document.querySelectorAll('nav a.nav-link[href^="#"]'));
     if (!navLinks.length) return;
 
+    const idFromHref = (a) => a.getAttribute('href').slice(1);
+    const linkById = new Map(navLinks.map(a => [idFromHref(a), a]));
+
     const sections = navLinks
-      .map(a => document.querySelector(a.getAttribute('href')))
+      .map(a => document.getElementById(idFromHref(a)))
       .filter(Boolean);
 
     function setActive(id) {
-      navLinks.forEach(a => {
-        const isMatch = a.getAttribute('href') === `#${id}`;
+      linkById.forEach((a, key) => {
+        const isMatch = key === id;
         a.classList.toggle('active', isMatch);
       });
     }
 
-    // Prefer IntersectionObserver for accurate, smooth updates
+    // If there is a hash on load, set it immediately; else pick the first section
+    function setInitialActive() {
+      const hash = (location.hash || '').replace('#', '');
+      if (hash && linkById.has(hash)) {
+        setActive(hash);
+      } else if (sections.length) {
+        setActive(sections[0].id);
+      }
+    }
+
+    // IntersectionObserver that chooses the MOST VISIBLE section
+    const headerOffset = 90; // keep in sync with CSS scroll padding
     if ('IntersectionObserver' in window) {
+      const ratios = new Map(); // id -> latest intersectionRatio
+
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) setActive(entry.target.id);
+          ratios.set(entry.target.id, entry.intersectionRatio);
         });
+
+        // find the id with max ratio
+        let bestId = null;
+        let bestRatio = 0;
+        ratios.forEach((r, id) => {
+          if (r > bestRatio) { bestRatio = r; bestId = id; }
+        });
+        if (bestId) setActive(bestId);
       }, {
         root: null,
-        threshold: 0.55,               // >50% visible counts as active
-        rootMargin: '-90px 0px 0px 0px' // compensates for fixed header height
+        threshold: [0.15, 0.25, 0.35, 0.5, 0.65, 0.8, 0.95],
+        // move the "viewport top" down to avoid the fixed header and bias to upper-middle of screen
+        rootMargin: `-${headerOffset}px 0px -40% 0px`
       });
 
       sections.forEach(sec => observer.observe(sec));
+
+      setInitialActive();
+
+      // also update on hashchange (e.g., clicking nav quickly)
+      window.addEventListener('hashchange', () => {
+        const id = (location.hash || '').replace('#', '');
+        if (id && linkById.has(id)) setActive(id);
+      });
     } else {
       // Fallback: simple scroll position check
-      const headerOffset = 90;
       function onScrollFallback() {
-        let currentId = '';
+        let currentId = sections[0]?.id || '';
         const y = window.scrollY + headerOffset + 1;
         sections.forEach(sec => {
           if (sec.offsetTop <= y) currentId = sec.id;
@@ -80,6 +112,7 @@
       }
       onScrollFallback();
       window.addEventListener('scroll', onScrollFallback, { passive: true });
+      window.addEventListener('resize', onScrollFallback, { passive: true });
     }
   }
 
