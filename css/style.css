@@ -246,7 +246,7 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
 .section-title::after {
   content:'';
   position:absolute;
-  bottom: 2px;                 /* positive = nudge UP toward the text */
+  bottom: 1px;                 /* positive = nudge UP toward the text */
   left:0;
   right:0;
   height:4px;
