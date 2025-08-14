@@ -172,7 +172,7 @@ nav {
 .nav-link::after {
   content: '';
   position: absolute;
-  left: 0; right: 0;              /* equal to text content width because padding is 0 */
+  left: 0; right: 0;              /* equals text content width because padding is 0 */
   bottom: 0;
   height: 2px;
   background: var(--primary);
@@ -237,17 +237,29 @@ nav {
 .secondary-button:hover { background-color: rgba(var(--primary-rgb),0.1); transform: translateY(-3px); }
 
 /* ===== Sections ===== */
-section { padding: 40px 20px  max-width: 1200px  margin: 0 auto; }
+section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
 
-/* Centered title; underline matches text width */
-.section-title { font-size: 2.5rem; text-align: center; margin-bottom: 10px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
-
-.section-title::after { content:''; position:absolute; bottom:-10px; left:0; right:0; height:4px;
+/* Main section title: centered, underline matches text width */
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;           /* shrink to text width */
+  left: 50%;
+  transform: translateX(-50%);
+}
+.section-title::after {
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  left:0;                          /* start at text start */
+  right:0;                         /* end at text end */
+  height:4px;
   background:var(--gradient-primary);
   border-radius:2px;
 }
 .section-subtitle { text-align: center; color: var(--text-light); font-size: 1.2rem; margin-bottom: 50px; }
-
 
 /* Make short sections easier to “select” on scroll */
 #about, #contact { scroll-margin-top: 90px; min-height: 55vh; }
@@ -300,8 +312,18 @@ section { padding: 40px 20px  max-width: 1200px  margin: 0 auto; }
 .project-section:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); }
 .project-section::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gradient-primary); border-radius: 4px 0 0 4px; }
 
-.section-title { font-size: 1.8rem; color: var(--text-dark); margin-bottom: 20px; padding-bottom: 10px; position: relative; }
-.section-title::after { content:''; position:absolute; bottom:0; left:0; width:60px; height:3px; background: var(--gradient-primary); border-radius:3px; }
+/* Project-only title style (short accent line) */
+.project-section .section-title {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  position: relative;
+}
+.project-section .section-title::after {
+  content:''; position:absolute; bottom:0; left:0; width:60px; height:3px;
+  background: var(--gradient-primary); border-radius:3px;
+}
 
 /* ===== Visualizations ===== */
 .visualization { margin: 40px 0; text-align: center; transition: transform 0.3s ease; }
@@ -383,7 +405,7 @@ ol li::before { content: counter(item) "."; color: var(--primary); font-weight: 
 .tool-card,
 .application-card {
   background-color: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); transition: transform 0.3s ease, box-shadow .3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow .3s ease;
 }
 .dark .tool-card,
 .dark .application-card { background-color: #1a1f26; }
