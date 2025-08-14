@@ -143,7 +143,7 @@ nav {
 }
 .nav-link:hover { color: var(--primary); }
 
-/* NEW: underline uses scale, not width, so it never appears as a vertical bar */
+/* Underline uses scale so it never flashes as a vertical bar */
 .nav-link::after {
   content: '';
   position: absolute; left: 0; bottom: -2px;
@@ -153,7 +153,8 @@ nav {
   transition: transform .25s ease;
 }
 .nav-link:hover::after,
-.nav-link.active::after { transform: scaleX(1); }
+.nav-link.active::after,
+.nav-link:focus-visible::after { transform: scaleX(1); }
 
 .dark .nav-link { color: var(--text-light); }
 .theme-toggle i { font-size: 18px; line-height: 1; }
@@ -197,6 +198,12 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
 .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 10px; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
 .section-title::after { content:''; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:80px; height:4px; background:var(--gradient-primary); border-radius:2px; }
 .section-subtitle { text-align: center; color: var(--text-light); font-size: 1.2rem; margin-bottom: 50px; }
+
+/* Make short sections easier to “select” on scroll */
+#about, #contact { 
+  scroll-margin-top: 90px;      /* anchors land nicely under header */
+  min-height: 55vh;             /* gives IntersectionObserver more to work with */
+}
 
 /* ===== Project cards (home) ===== */
 .projects-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap:30px; margin-top:40px; }
