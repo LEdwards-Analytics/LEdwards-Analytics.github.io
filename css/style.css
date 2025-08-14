@@ -87,7 +87,7 @@
 }
 
 /* ===== Base ===== */
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; } /* avoid header overlap on anchor jumps */
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
@@ -132,15 +132,29 @@ header {
 .dark header { background-color: rgba(17,20,24,0.9); }
 .header-background { position: absolute; inset: 0; background: var(--gradient-primary); opacity: .05; z-index: -1; }
 
-nav { display: flex; justify-content: center; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; gap: 4px; flex-wrap: wrap; }
+nav {
+  display: flex; justify-content: center; align-items: center;
+  max-width: 1200px; margin: 0 auto; padding: 0 20px; gap: 4px; flex-wrap: wrap;
+}
 .nav-link {
   position: relative; margin: 0 10px; padding: 8px 12px; color: var(--text-dark);
-  text-decoration: none; font-weight: 500; transition: var(--transition); border-radius: 6px; overflow: hidden;
-  background: transparent; border: none; cursor: pointer;
+  text-decoration: none; font-weight: 500; transition: var(--transition);
+  border-radius: 6px; overflow: hidden; background: transparent; border: none; cursor: pointer;
 }
 .nav-link:hover { color: var(--primary); }
-.nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: var(--transition); }
-.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+/* NEW: underline uses scale, not width, so it never appears as a vertical bar */
+.nav-link::after {
+  content: '';
+  position: absolute; left: 0; bottom: -2px;
+  height: 2px; width: 100%; background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after { transform: scaleX(1); }
+
 .dark .nav-link { color: var(--text-light); }
 .theme-toggle i { font-size: 18px; line-height: 1; }
 
@@ -265,7 +279,7 @@ section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
   transition: transform 0.3s ease;
 }
 .key-finding:hover { transform: translateX(5px); }
-.key-finding h3 { color: var(--primary); margin-bottom: 10px; }
+.key-finding h3 { color: var(--primary); }
 
 /* ===== Metrics grid ===== */
 .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin: 35px 0; }
