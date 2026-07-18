@@ -1,0 +1,52 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d7a5f"/>
+      <stop offset="100%" stop-color="#0a5c46"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#f2c14e" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+
+  <!-- subtle grid -->
+  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
+    <line x1="0" y1="90" x2="800" y2="90"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="270" x2="800" y2="270"/>
+    <line x1="0" y1="360" x2="800" y2="360"/>
+  </g>
+
+  <!-- quote marks: transcript -->
+  <text x="60" y="150" font-family="Georgia, serif" font-size="140" fill="#ffffff" fill-opacity="0.12">&#8220;</text>
+
+  <!-- signature: waveform (speech) morphing into a rising ticker line (price) -->
+  <path d="M 90 300
+           L 110 300 L 118 260 L 126 330 L 134 245 L 142 315 L 150 275 L 158 300
+           L 200 300
+           C 260 300 300 260 350 250
+           C 420 236 470 200 540 175
+           C 610 150 660 130 710 95"
+        fill="none" stroke="url(#lineGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- small candle ticks along the price segment -->
+  <g stroke="#f2c14e" stroke-width="4" stroke-linecap="round" opacity="0.9">
+    <line x1="420" y1="222" x2="420" y2="250"/>
+    <line x1="480" y1="205" x2="480" y2="228"/>
+    <line x1="540" y1="163" x2="540" y2="187"/>
+    <line x1="600" y1="150" x2="600" y2="170"/>
+    <line x1="660" y1="118" x2="660" y2="142"/>
+  </g>
+
+  <circle cx="710" cy="95" r="7" fill="#f2c14e"/>
+
+  <!-- label chips -->
+  <g font-family="'Montserrat', sans-serif" font-weight="600" font-size="18" fill="#ffffff" fill-opacity="0.9">
+    <text x="60" y="380">EARNINGS CALL SENTIMENT</text>
+    <text x="60" y="405" font-size="14" fill-opacity="0.65" font-weight="500">GPT-4 + NLP &#8594; MARKET SIGNAL</text>
+  </g>
+</svg>

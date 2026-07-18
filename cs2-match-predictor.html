@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QH2WWQF2C6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QH2WWQF2C6');
+  </script>
+
+  <!-- No-flash theme preset -->
+  <script>
+    (function () {
+      try {
+        var KEY = 'site-theme';
+        var stored = localStorage.getItem(KEY);
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var useDark = stored ? stored === 'dark' : prefersDark;
+        if (useDark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter-Strike Match Outcome Predictor | Luke Edwards</title>
+
+  <!-- Global styles & fonts -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    .visualization img { display:block; margin:0 auto; }
+    .project-tag { background-color: rgba(255,255,255,.22); }
+    .metric-value { font-size: 1.9rem; }
+  </style>
+</head>
+
+<body class="cs2-predictor">
+  <div class="custom-cursor"></div>
+
+  <header>
+    <div class="header-background"></div>
+    <nav>
+      <a href="/index.html" class="nav-link"><span>Home</span></a>
+      <a href="/index.html#projects" class="nav-link"><span>Projects</span></a>
+      <a href="/index.html#about" class="nav-link"><span>About</span></a>
+      <a href="/index.html#contact" class="nav-link"><span>Contact</span></a>
+      <a href="/files/Edwards, Luke - Resume.pdf" target="_blank" class="nav-link"><span>Resume</span></a>
+      <button id="theme-toggle" class="nav-link theme-toggle" aria-label="Toggle color theme" aria-pressed="false" title="Toggle color theme">
+        <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+        <span class="sr-only">Toggle theme</span>
+      </button>
+    </nav>
+  </header>
+
+  <div class="project-header">
+    <div class="project-header-content">
+      <h1>Counter-Strike Match Outcome Predictor</h1>
+      <p>Simulating Best-of-Three Series with Machine Learning</p>
+      <div class="project-tags page">
+        <span class="project-tag">Machine Learning</span>
+        <span class="project-tag">Esports Analytics</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Simulation</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-narrow">
+    <div class="project-section">
+      <h2 class="section-title">Executive Summary</h2>
+      <p>Counter-Strike 2 (CS2) is one of the most-played esports titles, with over a million concurrent players each month and a competitive scene built around best-of-three (Bo3) map series. This project builds a machine learning model that predicts match outcomes from team performance metrics and map-specific history, then simulates each map in a Bo3 series to estimate a team's overall probability of winning the series — rather than treating the match as a single coin flip.</p>
+
+      <div class="key-finding">
+        <h3>Core Contribution</h3>
+        <p>Modeled team strength at the map level instead of the match level, since a team's odds shift depending on which maps are in play — then ran series-level simulations to turn per-map win probabilities into a full Bo3 forecast.</p>
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h4>Series Format</h4>
+          <div class="metric-value">Best-of-3</div>
+          <p>Map-by-map simulation</p>
+        </div>
+        <div class="metric-card">
+          <h4>Feature Set</h4>
+          <div class="metric-value">Form + Map History</div>
+          <p>Team performance metrics</p>
+        </div>
+        <div class="metric-card">
+          <h4>Output</h4>
+          <div class="metric-value">Win Probability</div>
+          <p>Per-map and series-level</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h2 class="section-title">What It Does</h2>
+
+      <div>
+        <h3>Map-Level, Not Match-Level</h3>
+        <p>Team strength in CS2 isn't uniform across the map pool — a team that dominates on one map can be well below average on another. The model captures this by evaluating team performance metrics and historical results at the individual map level, rather than producing one overall rating per team.</p>
+      </div>
+
+      <div class="key-finding">
+        <h3>Series Simulation</h3>
+        <p>Once each map has a modeled win probability for a given matchup, the Bo3 series is simulated map by map to estimate the probability of each possible series outcome — turning individual map forecasts into a single series-level prediction.</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h2 class="section-title">Methodology Overview</h2>
+
+      <p>The project follows a structured pipeline from raw match data to series-level forecasts:</p>
+
+      <ol>
+        <li><strong>Data Collection</strong> — team and player performance metrics, plus map-by-map match history</li>
+        <li><strong>Feature Engineering</strong> — recent form, head-to-head results, and map-specific win rates</li>
+        <li><strong>Model Development</strong> — a classification model estimating each team's win probability for a given map</li>
+        <li><strong>Series Simulation</strong> — per-map probabilities combined to simulate full Bo3 outcomes</li>
+        <li><strong>Validation</strong> — simulated outcomes compared against actual series results</li>
+      </ol>
+
+      <button class="collapsible">Technical Details <i class="fas fa-code"></i></button>
+      <div class="collapsible-content">
+        <div class="collapsible-content-inner">
+          <h3>Feature Categories</h3>
+          <ul>
+            <li><strong>Team Form</strong> — recent match results and performance trend</li>
+            <li><strong>Map History</strong> — team-specific win rates on each map in the active pool</li>
+            <li><strong>Head-to-Head</strong> — historical results between the two teams, where available</li>
+          </ul>
+          <h3>Simulation Logic</h3>
+          <p>Each map in the series is treated as an independent probabilistic event based on the model's output, and the Bo3 outcome space (2-0 or 2-1 in either direction) is simulated to produce a series-level win probability for each team.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h2 class="section-title">Business Applications</h2>
+
+      <p>Map-aware match prediction has a few natural uses in the esports ecosystem:</p>
+
+      <div class="application-cards">
+        <div class="application-card">
+          <div class="application-icon"><i class="fas fa-tv"></i></div>
+          <h3>Broadcast Insight</h3>
+          <p>Pre-match win probability graphics that account for the specific map pool in play.</p>
+        </div>
+        <div class="application-card">
+          <div class="application-icon"><i class="fas fa-search"></i></div>
+          <h3>Team Scouting</h3>
+          <p>Identify a team's map-pool strengths and weaknesses ahead of a series.</p>
+        </div>
+        <div class="application-card">
+          <div class="application-icon"><i class="fas fa-users"></i></div>
+          <h3>Fan Engagement</h3>
+          <p>Give fans a data-driven view of series odds beyond raw team rankings.</p>
+        </div>
+      </div>
+
+      <div class="key-finding">
+        <h3>Strategic Insight</h3>
+        <p>Because map pool matters as much as overall team strength, forecasts that ignore map-level performance miss a big part of what actually decides a Bo3 series.</p>
+      </div>
+    </div>
+
+    <div class="project-section">
+      <h2 class="section-title">Conclusion & Future Work</h2>
+      <p>Simulating a series map by map, rather than predicting a single match-level winner, produces a forecast that better reflects how Bo3 series actually play out.</p>
+      <ul>
+        <li>Incorporate player-level form and roster changes, which can shift team strength mid-season.</li>
+        <li>Account for patch and meta shifts that affect map balance over time.</li>
+        <li>Extend the simulation framework to best-of-five (Bo5) formats used in playoff stages.</li>
+        <li>Layer in live in-game state (economy, round score) for in-match win probability updates.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2026 Luke Edwards</p>
+      <div class="footer-links">
+        <a class="link-button" href="mailto:luke3dwards32@gmail.com" aria-label="Email Luke">
+          <i class="fas fa-envelope" aria-hidden="true"></i><span>Email me</span>
+        </a>
+        <a class="link-button" href="https://www.linkedin.com/in/luke-edwards-ds/" target="_blank" rel="noopener" aria-label="Visit LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span>
+        </a>
+        <a class="link-button" href="https://github.com/ledwards-analytics" target="_blank" rel="noopener" aria-label="Visit GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+  <script src="/js/theme.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const backToTopButton = document.querySelector('.back-to-top');
+      function toggleBackToTop() {
+        if (window.scrollY > 300) backToTopButton.classList.add('visible');
+        else backToTopButton.classList.remove('visible');
+      }
+      toggleBackToTop();
+      window.addEventListener('scroll', toggleBackToTop);
+      backToTopButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      const cursor = document.querySelector('.custom-cursor');
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+      const interactive = document.querySelectorAll('a, button, .visualization, .metric-card, .application-card');
+      interactive.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+      });
+
+      const collapsibles = document.querySelectorAll('.collapsible');
+      collapsibles.forEach(c => {
+        c.addEventListener('click', function () {
+          this.classList.toggle('active');
+          const content = this.nextElementSibling;
+          if (content.style.maxHeight) content.style.maxHeight = null;
+          else content.style.maxHeight = content.scrollHeight + 'px';
+        });
+      });
+
+      const metricValues = document.querySelectorAll('.metric-value');
+      metricValues.forEach(m => {
+        m.style.opacity = 0;
+        m.style.transform = 'translateY(20px)';
+        m.style.transition = 'opacity .8s ease, transform .8s ease';
+      });
+      function animateMetrics() {
+        metricValues.forEach(metric => {
+          const top = metric.getBoundingClientRect().top;
+          if (top < window.innerHeight * 0.77) {
+            metric.style.opacity = 1;
+            metric.style.transform = 'translateY(0)';
+          }
+        });
+      }
+      window.addEventListener('scroll', animateMetrics);
+      animateMetrics();
+    });
+  </script>
+</body>
+</html>
